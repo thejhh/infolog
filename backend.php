@@ -64,9 +64,15 @@ try {
 	}
 
 	/* get_msgs */
-	if(isset($_POST['get_msgs']) || isset($_GET['msgs']) ) {
+	if(isset($_POST['msgs']) || isset($_GET['msgs']) ) {
+		$start_from = 0;
+		if(isset($_GET['start'])) $start_from = (int) ($_GET['start']);
+		if(isset($_POST['start'])) $start_from = (int) ($_POST['start']);
 		$sql = SQL::init();
-		if( $result = $sql->query('SELECT * FROM `' . SQL_PREFIX . 'log` ORDER BY updated, created') ) {
+		$query = 'SELECT * FROM `' . SQL_PREFIX . 'log`';
+		$query .= ' WHERE log_id >= ' . $start_from;
+		$query .= ' ORDER BY updated, created';
+		if( $result = $sql->query($query) ) {
 			$list = array();
 			while ($row = $result->fetch_object()){
 				$list[] = $row;
