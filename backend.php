@@ -6,7 +6,7 @@ try {
 		throw new Exception("$errno $errstr at $errfile:$errline");
 	}
 	set_error_handler("myErrorHandler");
-	function my_exception_handler($exception) {
+	function my_exception_handler($e) {
 		header("Status: 400 Bad Request");
 		echo 'Exception: ' . $e->getMessage() . "\n"
 		   . '@code: ' . $e->getCode() . "\n"
