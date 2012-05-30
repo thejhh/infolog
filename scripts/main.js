@@ -65,7 +65,7 @@ function post_msg(args) {
 				add_error('Connection failed');
 			}
 		});
-	}, function(err) { add_error(err) });
+	}, function(err) { add_error({'title':'Exception', 'desc':JSON.stringify(err)}) });
 
 	/*
 	require(["prototype"], function(Ajax) {
