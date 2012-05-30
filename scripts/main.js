@@ -83,19 +83,14 @@ function post_msg_form() {
 }
 
 /* Init everything at onLoad event */
-require(["jquery"], function(jquery) {
-	jquery.ready(function(){
+window.onload = function() {
+	require(["bootstrap"], function(b) {});
 		
-		require(["bootstrap"], function(b) {});
+	// TODO: Setup simple clock on control form
 		
-		// TODO: Setup simple clock on control form
+	// TODO: Setup previous event history
 		
-		// TODO: Setup previous event history
-		
-		// TODO: Start fetching new events
-	});
-}, function(err) {
-	add_error({'title':'Exception at main', 'desc':JSON.stringify(err)});
-});
-		
+	// TODO: Start fetching new events
+};
+
 /* EOF */
