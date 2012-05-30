@@ -9,9 +9,9 @@ try {
 	echo 'Exception: ' . $e->getMessage() . "\n"
 	   . '@code: ' . $e->getCode() . "\n"
 	   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
-	   . '@stack:['."\n"
+	   . '@stack/['."\n"
 	   . $e->getTrace(). "\n"
-	   . ']'."\n";
+	   . ']/@stack'."\n";
 }
 return;
 ?>
