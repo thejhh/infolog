@@ -57,7 +57,6 @@ function post_msg(args) {
 					require(["jquery"], function(jquery) {
 						jquery("#control_form .msg_field").val('');
 					}, function(err) { add_error(JSON.stringify(err)); });
-					alert("Success!");
 				} else if(response && (response.status !== undefined)) {
 					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
 				} else {
