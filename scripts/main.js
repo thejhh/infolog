@@ -53,7 +53,7 @@ function post_msg(args) {
 		}, function(err) { add_error(JSON.stringify(err)); });
 		jqxhr.complete(function(response) {
 			try {
-				if(response && response.status && (200 === response.status) ) {
+				if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
 					require(["jquery"], function(jquery) {
 						jquery("#control_form .msg_field").val('');
 					}, function(err) { add_error(JSON.stringify(err)); });
