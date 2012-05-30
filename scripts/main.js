@@ -18,8 +18,7 @@ function add_error(msg) {
 	require(["bootstrap", "jquery"], function(b, jquery) {
 		var dialog = jquery('#elements .error_dialog').clone().appendTo('#history');
 		dialog.alert();
-		var full_text = jquery(dialog)('.full_text');
-		full_text.text(msg);
+		dialog.children('.full_text').text(msg);
 		alert(msg);
 	}, function (err) {
 		alert("Error: " + err);
