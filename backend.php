@@ -63,6 +63,22 @@ try {
 		return;
 	}
 
+	/* get_msgs */
+	if(isset($_POST['get_msgs']) || isset($_GET['msgs']) ) {
+		$sql = SQL::init();
+		if( $result = $sql->query('SELECT FROM `' . SQL_PREFIX . 'log` ORDER BY updated, creation') ) {
+			$list = array();
+			while ($row = $result->fetch_object()){
+				$list[] = $row;
+			}
+			echo json_encode($list);
+		} else {
+			throw new Exception('SQL error: ' . $sql->error);
+		}
+		echo 'OK';
+		return;
+	}
+
 	throw new Exception('Unknown request - _GET has ' . implode(', ', array_keys($_GET)) . ', _POST has ' . implode(', ', array_keys($_POST)) );
 } catch(Exception $e) {
 	my_exception_handler($e);
