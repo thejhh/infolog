@@ -32,7 +32,7 @@ function post_message(args) {
 		    onSuccess: function(transport){
 				var response = transport.responseText || "FAIL";
 				if(response.substr(0, 2) !== "OK") {
-					pop_error_dialog(''+response);
+					add_error(''+response);
 				} else {
 					alert("Success! \n\n" + response);
 				}
