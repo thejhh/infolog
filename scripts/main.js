@@ -13,9 +13,10 @@ requirejs.config({
 	}
 });
 
-/* Pop error message */
-function add_error(args) {
-	require(["bootstrap", "jquery"], function(b, jquery) {
+require(["bootstrap", "jquery"], function(b, jquery) {
+
+	/* Pop error message */
+	function add_error(args) {
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
 			if(args.title || args.desc) {
@@ -40,16 +41,14 @@ function add_error(args) {
 	}, function (err) {
 		alert("Error: " + err);
 	});
-}
 
-/* Post message to server */
-function post_msg(args) {
-	var args = args || {};
-	var msg = (args && (typeof args === 'object') && args.msg) ? ''.args.msg : '';
-	if(msg.length === 0) {
-		return;
-	}
-	require(["jquery"], function(jquery) {
+	/* Post message to server */
+	function post_msg(args) {
+		var args = args || {};
+		var msg = (args && (typeof args === 'object') && args.msg) ? ''.args.msg : '';
+		if(msg.length === 0) {
+			return;
+		}
 		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg});
 		jqxhr.complete(function(response) {
 			try {
@@ -65,60 +64,24 @@ function post_msg(args) {
 				add_error('Connection failed');
 			}
 		});
-	}, function(err) { add_error({'title':'Exception', 'desc':JSON.stringify(err)}) });
+	}
 
-	/*
-	require(["prototype"], function(Ajax) {
-		try {
-			new Ajax.Request('backend.php', {
-			    method:'post',
-				parameters: {'send_msg':'1', 'msg':''.msg},
-			    onComplete: function(response){
-					try {
-						if(response && response.status && (200 === response.status) ) {
-							require(["jquery"], function(jquery) {
-								jquery("#control_form .msg_field").value = '';
-							});
-							alert("Success!");
-						} else if(response && (response.status !== undefined)) {
-							add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
-						} else {
-							add_error('Connection failed');
-						}
-					} catch(e) {
-						add_error('Connection failed');
-					}
-			    }
-			  });
-		} catch(e) {
-			add_error('Connection failed: ' + e);
-		}
-	}, function(err) { add_error(err) });
-	*/
-}
-
-/* Post message to server */
-function post_msg_form() {
-	require(["jquery"], function(jquery) {
+	/* Post message to server */
+	function post_msg_form() {
 		var msg = jquery('#control_form').find('.msg_field').val();
 		post_msg({'msg':msg});
-	}, function(err) { add_error({'title':'Exception at post_msg_form()', 'desc':JSON.stringify(err)}) });
-	return false;
-}
+		return false;
+	}
 
-/* Init everything at onLoad event */
-window.onload = function(){
-	
-	// Load Bootstrap
-	require(["bootstrap"], function() {
+	/* Init everything at onLoad event */
+	jquery.ready(function(){
+		// TODO: Setup simple clock on control form
 		
-	}, function(err) { add_error({'title':'Exception at window.onload', 'desc':JSON.stringify(err)}) });
-	
-	// TODO: Setup simple clock on control form
-	
-	// TODO: Setup previous event history
-	
-	// TODO: Start fetching new events
-}
+		// TODO: Setup previous event history
+		
+		// TODO: Start fetching new events
+	});
 
+}, function(err) { add_error({'title':'Exception at main', 'desc':JSON.stringify(err)}) });
+		
 /* EOF */
