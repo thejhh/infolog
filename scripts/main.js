@@ -13,10 +13,11 @@ requirejs.config({
 	}
 });
 
-require(["bootstrap", "jquery"], function(b, jquery) {
+var ui = {};
 
-	/* Pop error message */
-	function add_error(args) {
+/* Pop error message */
+ui.add_error = function add_error(args) {
+	require(["jquery"], function(jquery) {
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
 			if(args.title || args.desc) {
@@ -38,9 +39,12 @@ require(["bootstrap", "jquery"], function(b, jquery) {
 		}
 		dialog.appendTo('#notifications');
 		dialog.alert();
-	}, function (err) {
-		alert("Error: " + err);
+	}, function(err) {
+		alert('Error: ' . err);
 	});
+}
+
+require(["bootstrap", "jquery"], function(b, jquery) {
 
 	/* Post message to server */
 	function post_msg(args) {
@@ -67,11 +71,11 @@ require(["bootstrap", "jquery"], function(b, jquery) {
 	}
 
 	/* Post message to server */
-	function post_msg_form() {
+	ui.post_msg_form = function post_msg_form() {
 		var msg = jquery('#control_form').find('.msg_field').val();
 		post_msg({'msg':msg});
 		return false;
-	}
+	};
 
 	/* Init everything at onLoad event */
 	jquery.ready(function(){
@@ -82,6 +86,8 @@ require(["bootstrap", "jquery"], function(b, jquery) {
 		// TODO: Start fetching new events
 	});
 
-}, function(err) { add_error({'title':'Exception at main', 'desc':JSON.stringify(err)}) });
+}, function(err) {
+	ui.add_error({'title':'Exception at main', 'desc':JSON.stringify(err)});
+});
 		
 /* EOF */
