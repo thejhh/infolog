@@ -35,12 +35,14 @@ try {
 		}
 	}
 
-	if(isset($_POST['send_msg'])) {
+	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
 		if( $sql->query('INSERT INTO `' . SQL_DATABASE . 'log` (msg) VALUES (' . $sql->escape_string($msg) . ')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error());
 		}
+		echo 'OK';
+		return;
 	}
 
 	throw new Exception('Unknown request');
