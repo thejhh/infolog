@@ -45,7 +45,7 @@ function post_message(args) {
 		try {
 			new Ajax.Request('backend.php', {
 			    method:'post',
-				parameters: {'send_msg': '1','msg':message},
+				parameters: {'send_msg': '1','msg':''.message},
 			    onComplete: function(response){
 					try {
 						if(response && response.status && (200 === response.status) ) {
