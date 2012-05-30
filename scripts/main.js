@@ -109,7 +109,7 @@ function update_events() {
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
-				div.find('.msg').text(''+event.msg);
+				div.find('.msg').text( (''+event.msg).replace(/(#[a-zA-Z0-9])/, function($1) { return '<a href="#'+$1+'">' + $1 + '</a>') );
 				div.prependTo('#events');
 			}
 			INFODESK_GLOBAL.updating = false;
