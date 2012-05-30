@@ -24,10 +24,10 @@ function add_error(args) {
 		}
 		if(!data.date) data.date = new Date();
 		dialog = jquery('#elements .error_dialog').clone();
-		dialog.appendTo('#history');
 		dialog.children('.date').text(data.date);
 		dialog.children('.title').text(data.title);
 		dialog.children('.desc').text(data.desc);
+		dialog.appendTo('#history');
 		dialog.alert();
 	}, function (err) {
 		alert("Error: " + err);
