@@ -41,7 +41,7 @@ function add_error(args) {
 /* Post message to server */
 function post_msg(args) {
 	var msg = args.msg || '';
-	
+	alert(msg);
 	require(["jquery"], function(jquery) {
 		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg});
 		jqxhr.complete(function(response) {
