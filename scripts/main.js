@@ -97,7 +97,6 @@ function post_msg(args) {
 function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
-		alert('post_msg_form('+msg+')');
 		post_msg({'msg':msg});
 	}, function(err) { add_error(err) });
 	return false;
