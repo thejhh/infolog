@@ -128,7 +128,7 @@ function update_events() {
 				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
 					var h = (''+$1).toLowerCase();
 					var div = jquery('<div/>');
-					div.html('<div href="#' + h + '" class="label label-info">#' + $1 + '</div>').click(function() {
+					div.html('<a href="#' + h + '" class="label label-info">#' + $1 + '</a>').click(function() {
 						change_to_hashtag(h);
 						return false;
 					});
