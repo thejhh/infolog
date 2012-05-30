@@ -45,7 +45,7 @@ function add_error(args) {
 /* Post message to server */
 function post_msg(args) {
 	var args = args || {};
-	var msg = args.msg ? ''.args.msg : '';
+	var msg = (args && (typeof args === 'object') && args.msg) ? ''.args.msg : '';
 	if(msg.length === 0) {
 		return;
 	}
@@ -102,7 +102,7 @@ function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
 		post_msg({'msg':msg});
-	}, function(err) { add_error(err) });
+	}, function(err) { add_error({'title':'Exception at post_msg_form()', 'desc':JSON.stringify(err)}) });
 	return false;
 }
 
@@ -112,7 +112,7 @@ window.onload = function(){
 	// Load Bootstrap
 	require(["bootstrap"], function() {
 		
-	}, function(err) { add_error(err) });
+	}, function(err) { add_error({'title':'Exception at window.onload', 'desc':JSON.stringify(err)}) });
 	
 	// TODO: Setup simple clock on control form
 	
