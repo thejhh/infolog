@@ -49,6 +49,9 @@ function post_msg(args) {
 			    onComplete: function(response){
 					try {
 						if(response && response.status && (200 === response.status) ) {
+							require(["jquery"], function(jquery) {
+								jquery("#control_form .msg_field").value = '';
+							});
 							alert("Success!");
 						} else if(response && (response.status !== undefined)) {
 							add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
