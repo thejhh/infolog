@@ -97,7 +97,7 @@ function change_to_hashtag(hashtag) {
 	
 	//alert(hashtag);
 	require(["jquery"], function(jquery) {
-		jquery('#events').clear();
+		jquery('#events').empty();
 	}, function(err) { add_error(JSON.stringify(err)); });
 	INFODESK_GLOBAL.hashtag = ''+hashtag;
 	INFODESK_GLOBAL.last_id = 0;
