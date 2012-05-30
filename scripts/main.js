@@ -98,7 +98,7 @@ function update_events() {
 	next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
 		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
-			var events = JSON.parse(data), event, div, id;
+			var events = JSON.parse(data), event, div, id, msg;
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
@@ -109,7 +109,9 @@ function update_events() {
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
-				div.find('.msg').text( (''+event.msg).replace(/(#[a-zA-Z0-9])/, function($1) { return '<a href="#'+$1+'">' + $1 + '</a>') );
+				msg = ''+event.msg;
+				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($1) { return '<a href="#'+$1+'">#' + $1 + '</a>' });
+				div.find('.msg').text(msg);
 				div.prependTo('#events');
 			}
 			INFODESK_GLOBAL.updating = false;
