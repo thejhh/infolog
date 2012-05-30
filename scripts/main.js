@@ -93,6 +93,7 @@ function post_msg_form() {
 /* */
 function update_events() {
 	var next_id;
+	alert(INFODESK_GLOBAL.updating);
 	if(!INFODESK_GLOBAL.updating) {
 		INFODESK_GLOBAL.updating = true;
 		next_id = INFODESK_GLOBAL.last_id+1;
