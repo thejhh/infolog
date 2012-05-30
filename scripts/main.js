@@ -40,12 +40,12 @@ function add_error(args) {
 
 /* Post message to server */
 function post_message(args) {
-	var message = args.message || '';
+	var msg = args.msg || '';
 	require(["prototype"], function(Ajax) {
 		try {
 			new Ajax.Request('backend.php', {
 			    method:'post',
-				parameters: {'send_msg':'1','msg':''.message},
+				parameters: {'send_msg':'1','msg':''.msg},
 			    onComplete: function(response){
 					try {
 						if(response && response.status && (200 === response.status) ) {
@@ -69,7 +69,7 @@ function post_message(args) {
 /* Post message to server */
 function post_message_form(button) {
 	var form = button.form;
-	post_message({'message': ''+form.message.value});
+	post_message({'msg': ''+form.message.value});
 	return false;
 }
 
