@@ -14,7 +14,7 @@ requirejs.config({
 });
 
 /* Pop error message */
-function pop_error_dialog(msg) {
+function add_error(msg) {
 	require(["bootstrap"], function() {
 		var dialog = $('#elements .error_dialog').clone().appendTo('#history');
 		var full_text = dialog.$('.full_text');
@@ -32,13 +32,13 @@ function post_message(args) {
 		    onSuccess: function(transport){
 				var response = transport.responseText || "FAIL";
 				if(response.substr(0, 2) !== "OK") {
-					pop_error_dialog(response);
+					pop_error_dialog(''+response);
 				} else {
 					alert("Success! \n\n" + response);
 				}
 		    },
 		    onFailure: function(){
-				pop_error_dialog('Something went wrong...')
+				add_error('Something went wrong...')
 			}
 		  });
 	});
