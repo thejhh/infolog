@@ -32,13 +32,13 @@ function post_message(args) {
 		    onSuccess: function(transport){
 				var response = transport.responseText || "FAIL";
 				if(response.substr(0, 2) !== "OK") {
-					alert('Something went wrong...');
+					pop_error_dialog(response);
 				} else {
 					alert("Success! \n\n" + response);
 				}
 		    },
 		    onFailure: function(){
-				alert('Something went wrong...')
+				pop_error_dialog('Something went wrong...')
 			}
 		  });
 	});
