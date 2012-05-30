@@ -15,19 +15,18 @@ requirejs.config({
 
 /* Pop error message */
 function add_error(args) {
-	var data, title, desc;
-	if(typeof args === 'object') {
-		data = args;
-	} else {
-		data = {'title':''+args};
-	}
-	title = data.title || '';
-	desc = data.desc || '';
 	require(["bootstrap", "jquery"], function(b, jquery) {
+		var data;
+		if(args && (typeof args === 'object')) {
+			data = args;
+		} else {
+			data = {'title':''+args};
+		}
 		var dialog = jquery('#elements .error_dialog').clone();
 		dialog.appendTo('#history');
-		dialog.children('.title').text(title);
-		dialog.children('.desc').text(desc);
+		dialog.children('.date').text(data.date);
+		dialog.children('.title').text(data.title);
+		dialog.children('.desc').text(data.desc);
 		dialog.alert();
 	}, function (err) {
 		alert("Error: " + err);
