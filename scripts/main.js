@@ -19,7 +19,6 @@ function add_error(msg) {
 		var dialog = jquery('#elements .error_dialog').clone().appendTo('#history');
 		dialog.alert();
 		dialog.children('.full_text').text(msg);
-		alert(msg);
 	}, function (err) {
 		alert("Error: " + err);
 	});
