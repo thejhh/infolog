@@ -9,6 +9,8 @@ requirejs.config({
 	}
 });
 
+var INFODESK_GLOBAL = {};
+
 /* Pop error message */
 function add_error(args) {
 	//alert('error: '+ JSON.stringify(args));
@@ -88,13 +90,16 @@ function post_msg_form() {
 }
 
 /* */
-function update_events(from_id) {
+function update_events() {
 	require(["jquery"], function(jquery) {
-		jquery.get('backend.php', {'msgs':'1', 'start':''+from_id}, function(data) {
+		jquery.get('backend.php', {'msgs':'1', 'start':''+INFODESK_GLOBAL.last_id}, function(data) {
 			var events = JSON.parse(data), event, div;
 			alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
+				if(event.log_id > INFODESK_GLOBAL.last_id) {
+					INFODESK_GLOBAL.last_id = event.log_id;
+				}
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
@@ -112,10 +117,15 @@ window.onload = function() {
 	// TODO: Setup simple clock on control form
 		
 	// TODO: Setup previous event history
-	update_events(0);
+	INFODESK_GLOBAL.last_id = 0;
+	update_events();
 		
 	// TODO: Start fetching new events
-	
+	function update_events_timer() {
+		update_events();
+		setTimeout(update_events_timer, 1000);
+	}
+	update_events_timer();
 };
 
 /* EOF */
