@@ -24,12 +24,11 @@ function add_error(args) {
 		}
 		if(!data.date) data.date = new Date();
 		dialog = jquery('#elements .error_dialog').clone();
+		dialog.children('.desc').text(data.desc);
 		dialog.children('.date').text(data.date);
 		dialog.children('.title').text(data.title);
-		dialog.children('.desc').text(data.desc);
 		dialog.appendTo('#history');
 		dialog.alert();
-		alert(''+data.title);
 	}, function (err) {
 		alert("Error: " + err);
 	});
