@@ -96,10 +96,11 @@ function change_to_hashtag(hashtag) {
 	if(INFODESK_GLOBAL.updating === true) { return; }
 	
 	//alert(hashtag);
+	INFODESK_GLOBAL.search_string = '#'+hashtag;
 	require(["jquery"], function(jquery) {
 		jquery('#events').empty();
+		jquery('#search_field').val(INFODESK_GLOBAL.search_string);
 	}, function(err) { add_error(JSON.stringify(err)); });
-	INFODESK_GLOBAL.hashtag = ''+hashtag;
 	INFODESK_GLOBAL.last_id = 0;
 	update_events();
 }
@@ -112,8 +113,8 @@ function update_events() {
 	next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
 		var options = {'msgs':'1', 'start':''+next_id};
-		if(INFODESK_GLOBAL.hashtag) {
-			options.q = '#'+INFODESK_GLOBAL.hashtag;
+		if(INFODESK_GLOBAL.search_string) {
+			options.q = INFODESK_GLOBAL.search_string;
 		}
 		jquery.get('backend.php', options, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
