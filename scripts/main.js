@@ -39,7 +39,7 @@ function add_error(args) {
 }
 
 /* Post message to server */
-function post_message(args) {
+function post_msg(args) {
 	var msg = args.msg || '';
 	require(["prototype"], function(Ajax) {
 		try {
@@ -67,10 +67,12 @@ function post_message(args) {
 }
 
 /* Post message to server */
-function post_message_form(button) {
-	var form = button.form;
-	post_message({'msg': ''+form.message.value});
-	return false;
+function post_msg_form(button) {
+	require(["jquery"], function($) {
+		var msg = $(button.form).find('.msg_field');
+		post_msg({'msg': ''+msg.value});
+		return false;
+	}, function(err) { add_error(err) });
 }
 
 /* Init everything at onLoad event */
