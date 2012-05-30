@@ -41,11 +41,30 @@ function add_error(args) {
 /* Post message to server */
 function post_msg(args) {
 	var msg = args.msg || '';
+	
+	require(["jquery"], function(jquery) {
+		jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg},
+		    function(response){
+				try {
+					if(response.substr(0, 2) === 'OK') {
+						jquery("#control_form .msg_field").value = '';
+						alert("Success!");
+					} else {
+						add_error({'title':'Connection failed', 'desc':response});
+					}
+				} catch(e) {
+					add_error({'title':'Connection failed: ' + e, 'desc':response});
+				}
+		    }
+		  });
+	}, function(err) { add_error(err) });
+
+	/*
 	require(["prototype"], function(Ajax) {
 		try {
 			new Ajax.Request('backend.php', {
 			    method:'post',
-				parameters: {'send_msg':'1','msg':''.msg},
+				parameters: {'send_msg':'1', 'msg':''.msg},
 			    onComplete: function(response){
 					try {
 						if(response && response.status && (200 === response.status) ) {
@@ -67,6 +86,7 @@ function post_msg(args) {
 			add_error('Connection failed: ' + e);
 		}
 	}, function(err) { add_error(err) });
+	*/
 }
 
 /* Post message to server */
