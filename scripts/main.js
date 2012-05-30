@@ -67,9 +67,9 @@ function post_msg(args) {
 }
 
 /* Post message to server */
-function post_msg_form(button) {
+function post_msg_form() {
 	require(["jquery"], function(jquery) {
-		var msg = jquery(button.form).find('.msg_field');
+		var msg = jquery('#control_form').find('.msg_field');
 		post_msg({'msg': ''+msg.value});
 	}, function(err) { add_error(err) });
 	return false;
