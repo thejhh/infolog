@@ -178,6 +178,7 @@ window.onload = function() {
 	require(['jquery'], function(jquery) {
 		jquery('.form-search').submit(function() {
 			var q = jquery('#search_field').val();
+			change_search_string(q);
 			return false;
 		});
 	});
