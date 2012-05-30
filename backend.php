@@ -15,7 +15,6 @@ try {
 		   . '@stack/['."\n"
 		   . $e->getTrace(). "\n"
 		   . ']/@stack'."\n";
-		echo "Uncaught exception: " , $exception->getMessage(), "\n";
 		exit;
 	}
 	set_exception_handler('my_exception_handler');
