@@ -123,9 +123,11 @@ function update_events() {
 				msg = jquery('<div/>').text(event.msg).html();
 				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
 					var hashtag = ''+$1;
-					return jquery('<a class="label label-info">#' + $1 + '</a>').click(function() {
+					var div = jquery('<div/>');
+					div.html('<a class="label label-info">#' + $1 + '</a>').click(function() {
 						change_to_hashtag(hashtag);
-					}).html();
+					});
+					return div.html();
 				});
 				div.find('.msg').html(msg);
 				div.prependTo('#events');
