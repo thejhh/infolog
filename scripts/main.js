@@ -68,11 +68,11 @@ function post_msg(args) {
 
 /* Post message to server */
 function post_msg_form(button) {
-	require(["jquery"], function($) {
-		var msg = $(button.form).find('.msg_field');
+	require(["jquery"], function(jquery) {
+		var msg = jquery(button.form).find('.msg_field');
 		post_msg({'msg': ''+msg.value});
-		return false;
 	}, function(err) { add_error(err) });
+	return false;
 }
 
 /* Init everything at onLoad event */
