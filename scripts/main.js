@@ -26,7 +26,11 @@ function add_error(args) {
 		dialog = jquery('#elements .error_dialog').clone();
 		dialog.find('.date').text(data.date);
 		dialog.find('.title').text(data.title);
-		dialog.find('.desc').text(data.desc);
+		if(data.desc && ((data.desc+'').length > 0) ) {
+			dialog.find('.desc').text(data.desc);
+		} else {
+			dialog.find('.desc_container').hide();
+		}
 		dialog.appendTo('#history');
 		dialog.alert();
 	}, function (err) {
