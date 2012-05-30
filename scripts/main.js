@@ -14,11 +14,18 @@ requirejs.config({
 });
 
 /* Pop error message */
-function add_error(msg) {
+function add_error(args) {
+	if(typeof args !== 'object') {
+		args = {'title':''+args};
+	}
+	var data = args || {},
+	    title = data.title || '',
+	    desc = data.desc || '';
 	require(["bootstrap", "jquery"], function(b, jquery) {
 		var dialog = jquery('#elements .error_dialog').clone();
 		dialog.appendTo('#history');
-		dialog.children('.description').text(msg);
+		dialog.children('.title').text(title);
+		dialog.children('.desc').text(desc);
 		dialog.alert();
 	}, function (err) {
 		alert("Error: " + err);
