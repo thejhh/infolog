@@ -42,6 +42,7 @@ function add_error(args) {
 function post_msg(args) {
 	var args = args || {};
 	var msg = args.msg || '';
+	alert('post_msg('+msg+')');
 	require(["jquery"], function(jquery) {
 		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg});
 		jqxhr.complete(function(response) {
@@ -95,7 +96,7 @@ function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg_field = jquery('#control_form').find('.msg_field');
 		var msg = ''+msg_field.value;
-		alert(msg);
+		alert('post_msg_form('+msg+')');
 		post_msg({'msg':msg});
 	}, function(err) { add_error(err) });
 	return false;
