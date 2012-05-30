@@ -91,13 +91,24 @@ function post_msg_form() {
 }
 
 /* */
+function change_to_hashtag(hashtag) {
+	require(["jquery"], function(jquery) {
+		jquery('#events').clear();
+	}, function(err) { add_error(JSON.stringify(err)); });
+	INFODESK_GLOBAL.hashtag = hashtag;
+	INFODESK_GLOBAL.last_id = 0;
+	update_events();
+}
+
+/* */
 function update_events() {
-	var next_id;
+	var next_id, hashtag;
 	if(INFODESK_GLOBAL.updating === true) { return; }
+	hashtag = INFODESK_GLOBAL.hashtag;
 	INFODESK_GLOBAL.updating = true;
 	next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
-		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
+		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id, 'hashtag':hashtag}, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
@@ -110,7 +121,12 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				msg = jquery('<div/>').text(event.msg).html();
-				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) { return '<a class="label label-info" href="#'+(''+$1).toLowerCase()+'">#' + $1 + '</a>' });
+				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
+					var hashtag = ''+$1;
+					return jquery('<a class="label label-info">#' + $1 + '</a>').click(function() {
+						change_to_hashtag(hashtag);
+					});
+				});
 				div.find('.msg').html(msg);
 				div.prependTo('#events');
 			}
