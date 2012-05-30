@@ -24,9 +24,9 @@ function add_error(args) {
 		}
 		if(!data.date) data.date = new Date();
 		dialog = jquery('#elements .error_dialog').clone();
-		dialog.children('.desc').text(data.desc);
-		dialog.children('.date').text(data.date);
-		dialog.children('.title').text(data.title);
+		dialog.find('.date').text(data.date);
+		dialog.find('.title').text(data.title);
+		dialog.find('.desc').text(data.desc);
 		dialog.appendTo('#history');
 		dialog.alert();
 	}, function (err) {
