@@ -94,30 +94,35 @@ function post_msg_form() {
 function update_events() {
 	var next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
-		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
-			var events = JSON.parse(data), event, div, id;
-			//alert('got events: ' + events.length);
-			for(i in events) if(events.hasOwnProperty(i)) {
-				event = events[i];
-				id = parseInt(event.log_id, 10);
-				if(id > INFODESK_GLOBAL.last_id) {
-					INFODESK_GLOBAL.last_id = id;
+		if(INFODESK_GLOBAL.updating !== true) {
+			INFODESK_GLOBAL.updating = true;
+			jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
+				var events = JSON.parse(data), event, div, id;
+				//alert('got events: ' + events.length);
+				for(i in events) if(events.hasOwnProperty(i)) {
+					event = events[i];
+					id = parseInt(event.log_id, 10);
+					if(id > INFODESK_GLOBAL.last_id) {
+						INFODESK_GLOBAL.last_id = id;
+					}
+					div = jquery('#elements .event_container').clone();
+					div.find('.log_id').text(''+event.log_id);
+					div.find('.date').text(''+event.updated);
+					div.find('.msg').text(''+event.msg);
+					div.prependTo('#events');
+					INFODESK_GLOBAL.updating = false;
 				}
-				div = jquery('#elements .event_container').clone();
-				div.find('.log_id').text(''+event.log_id);
-				div.find('.date').text(''+event.updated);
-				div.find('.msg').text(''+event.msg);
-				div.prependTo('#events');
-			}
-		});
+			});
+		}
 	}, function(err) { add_error(JSON.stringify(err)); });
 }
 
 /* */
+INFODESK_GLOBAL.updating = false;
 INFODESK_GLOBAL.last_id = 0;
 function update_events_timer() {
 	update_events();
-	setTimeout('update_events_timer()', 1000);
+	INFODESK_GLOBAL.timer = setTimeout('update_events_timer()', 1000);
 }
 
 /* Init everything at onLoad event */
@@ -128,8 +133,8 @@ window.onload = function() {
 		
 	// TODO: Setup previous event history
 	// TODO: Start fetching new events
-	update_events();
-	//update_events_timer();
+	//update_events();
+	update_events_timer();
 };
 
 /* EOF */
