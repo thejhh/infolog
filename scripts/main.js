@@ -29,6 +29,7 @@ function add_error(args) {
 		dialog.children('.desc').text(data.desc);
 		dialog.appendTo('#history');
 		dialog.alert();
+		alert(''+data.title);
 	}, function (err) {
 		alert("Error: " + err);
 	});
