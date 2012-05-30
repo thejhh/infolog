@@ -55,8 +55,7 @@ function post_msg(args) {
 				} catch(e) {
 					add_error({'title':'Connection failed: ' + e, 'desc':response});
 				}
-		    }
-		  });
+		    });
 	}, function(err) { add_error(err) });
 
 	/*
