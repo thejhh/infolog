@@ -1,6 +1,6 @@
 <?php
 try {
-	error_reporting('E_ALL|E_STRICT');
+	error_reporting(E_ALL|E_STRICT);
 
 	function myErrorHandler($errno, $errstr, $errfile, $errline) {
 		throw new Exception("$errno $errstr at $errfile:$errline");
