@@ -27,7 +27,7 @@ try {
 			header("Content-Type: application/javascript");
 			header("Status: 400 Bad Request");
 			echo json_encode($data) . "\n";
-		} catch(e2) {
+		} catch($e2) {
 			header("Status: 400 Bad Request");
 			echo '{message="Got another exception `' . $e2 . '` while handling exception `' . $e . '`"}';
 		}
