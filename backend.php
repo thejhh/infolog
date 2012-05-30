@@ -66,7 +66,7 @@ try {
 	/* get_msgs */
 	if(isset($_POST['get_msgs']) || isset($_GET['msgs']) ) {
 		$sql = SQL::init();
-		if( $result = $sql->query('SELECT FROM `' . SQL_PREFIX . 'log` ORDER BY updated, creation') ) {
+		if( $result = $sql->query('SELECT * FROM `' . SQL_PREFIX . 'log` ORDER BY updated, creation') ) {
 			$list = array();
 			while ($row = $result->fetch_object()){
 				$list[] = $row;
