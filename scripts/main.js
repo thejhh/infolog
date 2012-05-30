@@ -96,8 +96,9 @@ function update_events(from_id) {
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
 				div = jquery('#elements .event_container').clone();
-				div.find('.date').text(event.date);
-				div.find('.msg').text(event.msg);
+				div.find('.log_id').text(''+event.log_id);
+				div.find('.date').text(''+event.date);
+				div.find('.msg').text(''+event.msg);
 				div.appendTo('#events');
 			}
 		});
