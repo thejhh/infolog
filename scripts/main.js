@@ -48,7 +48,7 @@ ui.add_error = function add_error(args) {
 function post_msg(args) {
 	require(["jquery"], function(jquery) {
 		var args = args || {};
-		var msg = (args && (typeof args === 'object') && args.msg) ? ''.args.msg : '';
+		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
 		if(msg.length === 0) {
 			return;
 		}
