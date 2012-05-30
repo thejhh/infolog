@@ -130,6 +130,7 @@ function update_events() {
 					var div = jquery('<div/>');
 					div.html('<a href="#' + h + '" class="label label-info">#' + $1 + '</a>').click(function() {
 						change_to_hashtag(h);
+						return false;
 					});
 					return div.html();
 				});
