@@ -7,13 +7,13 @@ try {
 	}
 	set_error_handler("myErrorHandler");
 	function my_exception_handler($e) {
-		header("Content-Type: text/javascript");
+		header("Content-Type: application/javascript");
 		header("Status: 400 Bad Request");
 
 		$data = array(
-			'message' => $e->getMessage(),
+			'message' => ''.$e->getMessage(),
 			'code' => $e->getCode(),
-			'file' => $e->getFile(),
+			'file' => ''.$e->getFile(),
 			'line' => $e->getLine()
 		);
 
