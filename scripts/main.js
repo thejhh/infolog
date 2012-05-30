@@ -31,7 +31,7 @@ function add_error(args) {
 		} else {
 			dialog.find('.desc_container').hide();
 		}
-		dialog.appendTo('#history');
+		dialog.appendTo('#notifications');
 		dialog.alert();
 	}, function (err) {
 		alert("Error: " + err);
