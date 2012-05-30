@@ -22,6 +22,7 @@ function add_error(args) {
 		} else {
 			data = {'title':''+args};
 		}
+		if(!data.date) data.date = new Date();
 		dialog = jquery('#elements .error_dialog').clone();
 		dialog.appendTo('#history');
 		dialog.children('.date').text(data.date);
