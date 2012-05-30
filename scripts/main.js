@@ -109,7 +109,7 @@ function update_events() {
 	INFODESK_GLOBAL.updating = true;
 	next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
-		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id, 'q':hashtag}, function(data) {
+		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id, 'q':'#'+hashtag}, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
