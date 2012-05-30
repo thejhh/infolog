@@ -128,11 +128,16 @@ function update_events() {
 				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
 					var h = (''+$1).toLowerCase();
 					var div = jquery('<div/>');
-					jquery('<a href="#' + h + '" class="label label-info">#' + $1 + '</a>').click(function(item) {
+					var a = jquery('<a href="javascript:change_to_hashtag(\'' + h + '\')" class="label label-info">#' + $1 + '</a>');
+					a.appendTo(div);
+					/*
+					.click(function(item) {
 						alert('click:' + item);
 						change_to_hashtag(h);
 						return false;
 					}).appendTo(div);
+					*/
+					
 					return div.html();
 				});
 				div.find('.msg').html(msg);
