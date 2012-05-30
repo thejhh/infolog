@@ -87,15 +87,32 @@ function post_msg_form() {
 	return false;
 }
 
+/* */
+function update_events(from_id) {
+	require(["jquery"], function(jquery) {
+		jquery.get('backend.php', {'msgs':'1', 'start':''+from_id}, function(data) {
+			var events = JSON.parse(data);
+			for(i in events) if(events.hasOwnProperty(i)) {
+				dialog = jquery('#elements .event_container').clone();
+				dialog.find('.date').text(data.date);
+				dialog.find('.msg').text(data.msg);
+				dialog.appendTo('#events');
+			}
+		});
+	}, function(err) { add_error(JSON.stringify(err)); });
+}
+
 /* Init everything at onLoad event */
 window.onload = function() {
 	require(["bootstrap"], function(b) {});
-		
+	
 	// TODO: Setup simple clock on control form
 		
 	// TODO: Setup previous event history
+	update_events(0);
 		
 	// TODO: Start fetching new events
+	
 };
 
 /* EOF */
