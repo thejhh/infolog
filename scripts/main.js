@@ -40,8 +40,8 @@ function add_error(args) {
 
 /* Post message to server */
 function post_msg(args) {
+	var args = args || {};
 	var msg = args.msg || '';
-	alert(msg);
 	require(["jquery"], function(jquery) {
 		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg});
 		jqxhr.complete(function(response) {
@@ -93,8 +93,10 @@ function post_msg(args) {
 /* Post message to server */
 function post_msg_form() {
 	require(["jquery"], function(jquery) {
-		var msg = jquery('#control_form').find('.msg_field');
-		post_msg({'msg': ''+msg.value});
+		var msg_field = jquery('#control_form').find('.msg_field');
+		var msg = ''+msg_field.value;
+		alert(msg);
+		post_msg({'msg':msg});
 	}, function(err) { add_error(err) });
 	return false;
 }
