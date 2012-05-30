@@ -16,13 +16,13 @@ requirejs.config({
 /* Pop error message */
 function add_error(args) {
 	require(["bootstrap", "jquery"], function(b, jquery) {
-		var data;
+		var data, dialog;
 		if(args && (typeof args === 'object')) {
 			data = args;
 		} else {
 			data = {'title':''+args};
 		}
-		var dialog = jquery('#elements .error_dialog').clone();
+		dialog = jquery('#elements .error_dialog').clone();
 		dialog.appendTo('#history');
 		dialog.children('.date').text(data.date);
 		dialog.children('.title').text(data.title);
