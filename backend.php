@@ -57,7 +57,7 @@ try {
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
 		if( $sql->query('INSERT INTO `' . SQL_DATABASE . 'log` (msg) VALUES (' . $sql->escape_string($msg) . ')') === FALSE) {
-			throw new Exception('SQL error: ' . $sql->error());
+			throw new Exception('SQL error: ' . $sql->error);
 		}
 		echo 'OK';
 		return;
