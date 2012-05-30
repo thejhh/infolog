@@ -123,7 +123,7 @@ window.onload = function() {
 	// TODO: Start fetching new events
 	function update_events_timer() {
 		update_events();
-		setTimeout(update_events_timer, 1000);
+		setTimeout('update_events_timer()', 1000);
 	}
 	update_events_timer();
 };
