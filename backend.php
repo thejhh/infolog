@@ -19,7 +19,8 @@ try {
 	}
 	set_exception_handler('my_exception_handler');
 
-	require_once('config.php');
+	if(!file_exists('config.php')) { throw new Exception('No configuration!'); }
+	require_once(__DIR__ . '/config.php');
 
 	/* Setup MySQL */
 	class SQL {
