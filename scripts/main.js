@@ -15,6 +15,7 @@ requirejs.config({
 
 /* Pop error message */
 function add_error(args) {
+	alert('error: '+ JSON.stringify(args));
 	require(["jquery"], function(jquery) {
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
