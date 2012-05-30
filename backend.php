@@ -52,6 +52,7 @@ try {
 		}
 	}
 
+	/* send_msg */
 	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
@@ -62,7 +63,7 @@ try {
 		return;
 	}
 
-	throw new Exception('Unknown request');
+	throw new Exception('Unknown request - _GET has ' . implode(', ', array_keys($_GET)) . ', _POST has ' . implode(', ', array_keys($_POST)) );
 } catch(Exception $e) {
 	my_exception_handler($e);
 }
