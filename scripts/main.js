@@ -38,6 +38,7 @@ function post_message(args) {
 function post_message_form(button) {
 	var form = button.form;
 	post_message({'message': form.message.value});
+	return false;
 }
 
 /* Init everything at onLoad event */
