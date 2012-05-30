@@ -8,9 +8,6 @@ try {
 	set_error_handler("myErrorHandler");
 	function my_exception_handler($e) {
 		try {
-			header("Content-Type: application/javascript");
-			header("Status: 400 Bad Request");
-
 			$data = array(
 				'message' => ''.$e->getMessage(),
 				'code' => $e->getCode(),
@@ -24,6 +21,8 @@ try {
 				foreach($stack as $tmp) { $data['trace'][] = $tmp; }
 			}
 
+			header("Content-Type: application/javascript");
+			header("Status: 400 Bad Request");
 			echo json_encode($data) . "\n";
 		} catch(e2) {
 			header("Status: 400 Bad Request");
