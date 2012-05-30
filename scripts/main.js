@@ -105,11 +105,14 @@ function change_to_hashtag(hashtag) {
 function update_events() {
 	var next_id, hashtag;
 	if(INFODESK_GLOBAL.updating === true) { return; }
-	hashtag = INFODESK_GLOBAL.hashtag;
 	INFODESK_GLOBAL.updating = true;
 	next_id = INFODESK_GLOBAL.last_id+1;
 	require(["jquery"], function(jquery) {
-		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id, 'q':'#'+hashtag}, function(data) {
+		var options = {'msgs':'1', 'start':''+next_id};
+		if(INFODESK_GLOBAL.hashtag) {
+			options.q = '#'+INFODESK_GLOBAL.hashtag;
+		}
+		jquery.get('backend.php', options, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
