@@ -7,19 +7,23 @@ try {
 	}
 	set_error_handler("myErrorHandler");
 	function my_exception_handler($e) {
-		header("Content-Type: text/plain");
+		header("Content-Type: text/javascript");
 		header("Status: 400 Bad Request");
-		echo 'Exception: ' . $e->getMessage() . "\n"
-		   . '@code: ' . $e->getCode() . "\n"
-		   . '@file: ' . $e->getFile() . "\n"
-		   . '@line: ' . $e->getLine() . "\n";
+
+		$data = array(
+			'message' => $e->getMessage(),
+			'code' => $e->getCode(),
+			'file' => $e->getFile(),
+			'line' => $e->getLine()
+		);
 
 		$stack = $e->getTrace();
 		if(count($stack) !== 0) {
-			echo '@stack/['."\n"
-			   . implode("\n", $stack). "\n"
-			   . ']/@stack'."\n";
+			$data['trace'] = array();
+			foreach($stack as $tmp) { $data['trace'][] = $tmp; }
 		}
+
+		echo json_encode($data) . "\n";
 		exit;
 	}
 	set_exception_handler('my_exception_handler');
