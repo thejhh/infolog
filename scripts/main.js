@@ -46,7 +46,7 @@ function add_error(args) {
 /* Post message to server */
 function post_msg(args) {
 	require(["jquery"], function(jquery) {
-		alert('In post_msg() with args=' + JSON.stringify(msg) );
+		alert('In post_msg() with args=' + JSON.stringify(args) );
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
 		if(msg.length === 0) {
