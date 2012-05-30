@@ -16,8 +16,8 @@ requirejs.config({
 /* Pop error message */
 function pop_error_dialog(msg) {
 	require(["bootstrap"], function() {
-		var dialog = $('#error_dialog');
-		var full_text = $('#error_dialog .full_text');
+		var dialog = $('#elements .error_dialog').clone().appendTo('#history');
+		var full_text = dialog.$('.full_text');
 		full_text.text(msg);
 		dialog.alert();
 	});

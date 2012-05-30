@@ -54,32 +54,36 @@
 
     <div class="container">
 
-		<div class="hidden" id="about">
-			<h1>Vectorama Infodesk Logger</h1>
-			<p>Use this document as a way to quick start any new project.<br>
-			All you get is this message and a barebones HTML document.
-			</p>
-		</div>
-
-		<div class="hidden" id="contact">
-		</div>
-
-		<div id="main">
-
+		<div id="controls">
 			<form class="well form-inline">
 			  <input name="time" type="text" class="input-small" readonly="readonly" value="hh:mm:ss" size="8" /></span>
 			  <input name="message" type="text" class="input-xxlarge" placeholder="Write note here...">
 			  <button type="submit" class="btn" onclick="return post_message_form(this)">Send</button>
 			</form>
-
 		</div>
 
-		<div class="hidden alert alert-error" id="error_dialog">
-			<a class="close" data-dismiss="alert" href="#">&times;</a>
-			<button class="close" data-dismiss="alert">×</button>
-			<h4 class="alert-heading">Warning!</h4>
-			Full error message:<br />
-			<pre class="full_error"></pre>
+		<div id="history">
+		</div>
+
+		<div class="hidden" id="elements">
+
+			<div class="about_modal">
+				<h1>Vectorama Infodesk Logger</h1>
+				<p>Use this document as a way to quick start any new project.<br>
+				All you get is this message and a barebones HTML document.
+				</p>
+			</div>
+
+			<div class="contact_modal">
+			</div>
+
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<button class="close" data-dismiss="alert">×</button>
+				<h4 class="alert-heading">Warning!</h4>
+				Full error message:<br />
+				<pre class="full_error"></pre>
+			</div>
 		</div>
 
     </div> <!-- /container -->
