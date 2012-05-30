@@ -128,7 +128,8 @@ window.onload = function() {
 		
 	// TODO: Setup previous event history
 	// TODO: Start fetching new events
-	update_events_timer();
+	update_events();
+	//update_events_timer();
 };
 
 /* EOF */
