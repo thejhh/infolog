@@ -18,7 +18,7 @@ function add_error(args) {
 	require(["bootstrap", "jquery"], function(b, jquery) {
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
-			if(data.title || data.desc) {
+			if(args.title || args.desc) {
 				data = args;
 			} else {
 				data = {'desc': JSON.stringify(args)};
