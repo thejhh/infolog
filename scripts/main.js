@@ -32,17 +32,18 @@ function post_message(args) {
 			    method:'post',
 				parameters: {'send-msg': '1','message':message},
 			    onComplete: function(response){
-					if(response && response.status && (200 === response.status) ) {
-						alert("Success!");
-					} else if(response && (response.status !== undefined)) {
-						add_error('Connection failed with #' + response.status);
-					} else {
+					try {
+						if(response && response.status && (200 === response.status) ) {
+							alert("Success!");
+						} else if(response && (response.status !== undefined)) {
+							add_error('Connection failed with #' + response.status);
+						} else {
+							add_error('Connection failed');
+						}
+					} catch(e) {
 						add_error('Connection failed');
 					}
-			    },
-			    onFailure: function(){
-					add_error('Something went wrong...')
-				}
+			    }
 			  });
 		} catch(e) {
 			add_error('Connection failed: ' + e);
