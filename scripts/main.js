@@ -57,7 +57,7 @@ function post_msg(args) {
 				}
 		    });
 		jqxhr.error(function(response) {
-			add_error({'title':'Connection failed', 'desc':response});
+			add_error({'title':'Connection failed', 'desc':JSON.stringify(response)});
 		});
 	}, function(err) { add_error(err) });
 
