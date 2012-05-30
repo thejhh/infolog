@@ -21,6 +21,8 @@ function add_error(msg) {
 		var full_text = dialog.$('.full_text');
 		full_text.text(msg);
 		alert(msg);
+	}, function (err) {
+		alert("Error: " + err);
 	});
 }
 
