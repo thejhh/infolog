@@ -19,7 +19,7 @@ function pop_error_dialog(msg) {
 		var dialog = $('#error_dialog');
 		var full_text = $('#error_dialog .full_text');
 		full_text.text(msg);
-		dialog.popover('show');
+		dialog.alert();
 	});
 }
 
