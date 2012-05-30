@@ -124,7 +124,7 @@ INFODESK_GLOBAL.updating = false;
 INFODESK_GLOBAL.last_id = 0;
 function update_events_timer() {
 	update_events();
-	INFODESK_GLOBAL.timer = setTimeout('update_events_timer()', 1000);
+	setTimeout('update_events_timer()', 1000);
 }
 
 /* Init everything at onLoad event */
