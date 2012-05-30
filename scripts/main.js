@@ -15,13 +15,13 @@ requirejs.config({
 
 /* Pop error message */
 function add_error(msg) {
-	alert(msg);
-	//require(["bootstrap"], function() {
+	require(["bootstrap", "jquery"], function() {
 		var dialog = $('#elements .error_dialog').clone().appendTo('#history');
 		dialog.alert();
 		var full_text = dialog.$('.full_text');
 		full_text.text(msg);
-	//});
+		alert(msg);
+	});
 }
 
 /* Post message to server */
