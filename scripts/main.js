@@ -13,10 +13,8 @@ requirejs.config({
 	}
 });
 
-var ui = {};
-
 /* Pop error message */
-ui.add_error = function add_error(args) {
+function add_error(args) {
 	require(["jquery"], function(jquery) {
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
@@ -42,7 +40,7 @@ ui.add_error = function add_error(args) {
 	}, function(err) {
 		alert('Error: ' . err);
 	});
-}
+};
 
 /* Post message to server */
 function post_msg(args) {
@@ -59,29 +57,29 @@ function post_msg(args) {
 					jquery("#control_form .msg_field").val('');
 					alert("Success!");
 				} else if(response && (response.status !== undefined)) {
-					ui.add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
+					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
 				} else {
-					ui.add_error('Connection failed');
+					add_error('Connection failed');
 				}
 			} catch(e) {
-				ui.add_error('Connection failed');
+				add_error('Connection failed');
 			}
 		});
 	}, function(err) {
-		ui.add_error({'title':'Connection failed', 'desc':JSON.stringify(err)});
+		add_error({'title':'Connection failed', 'desc':JSON.stringify(err)});
 	});
 }
 
 /* Post message to server */
-ui.post_msg_form = function post_msg_form() {
+function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
 		post_msg({'msg':msg});
 	}, function(err) {
-		ui.add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
+		add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
 	});
 	return false;
-};
+}
 
 /* Init everything at onLoad event */
 require(["jquery"], function(jquery) {
@@ -96,7 +94,7 @@ require(["jquery"], function(jquery) {
 		// TODO: Start fetching new events
 	});
 }, function(err) {
-	ui.add_error({'title':'Exception at main', 'desc':JSON.stringify(err)});
+	add_error({'title':'Exception at main', 'desc':JSON.stringify(err)});
 });
 		
 /* EOF */
