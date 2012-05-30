@@ -17,13 +17,19 @@ requirejs.config({
 function post_message(args) {
 	var message = args.message || '';
 	require(["prototype"], function(Ajax) {
-		new Ajax.Request('postmsg.php', {
+		new Ajax.Request('backend.php', {
 		    method:'post',
 		    onSuccess: function(transport){
-				var response = transport.responseText || "no response text";
-				alert("Success! \n\n" + response);
+				var response = transport.responseText || "FAIL";
+				if(response.substr(0, 2) !== "OK") {
+					alert('Something went wrong...');
+				} else {
+					alert("Success! \n\n" + response);
+				}
 		    },
-		    onFailure: function(){ alert('Something went wrong...') }
+		    onFailure: function(){
+				alert('Something went wrong...')
+			}
 		  });
 	});
 }
