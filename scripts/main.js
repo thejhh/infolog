@@ -92,7 +92,10 @@ function post_msg_form() {
 
 /* */
 function change_to_hashtag(hashtag) {
-	alert(hashtag);
+	
+	if(INFODESK_GLOBAL.updating === true) { return; }
+	
+	//alert(hashtag);
 	require(["jquery"], function(jquery) {
 		jquery('#events').clear();
 	}, function(err) { add_error(JSON.stringify(err)); });
