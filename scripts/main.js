@@ -119,7 +119,6 @@ window.onload = function() {
 		
 	// TODO: Setup previous event history
 	INFODESK_GLOBAL.last_id = 0;
-	update_events();
 		
 	// TODO: Start fetching new events
 	function update_events_timer() {
