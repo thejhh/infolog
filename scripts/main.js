@@ -48,7 +48,7 @@ function post_msg(args) {
 		jqxhr.complete(function(response) {
 			try {
 				if(response && response.status && (200 === response.status) ) {
-					jquery("#control_form .msg_field").value = '';
+					jquery("#control_form .msg_field").val('');
 					alert("Success!");
 				} else if(response && (response.status !== undefined)) {
 					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
@@ -94,8 +94,7 @@ function post_msg(args) {
 /* Post message to server */
 function post_msg_form() {
 	require(["jquery"], function(jquery) {
-		var msg_field = jquery('#control_form').find('.msg_field');
-		var msg = ''+msg_field.value;
+		var msg = jquery('#control_form').find('.msg_field').val();
 		alert('post_msg_form('+msg+')');
 		post_msg({'msg':msg});
 	}, function(err) { add_error(err) });
