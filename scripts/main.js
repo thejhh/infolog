@@ -46,6 +46,7 @@ function add_error(args) {
 /* Post message to server */
 function post_msg(args) {
 	require(["jquery"], function(jquery) {
+		alert('In post_msg() with args=' + JSON.stringify(msg) );
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
 		if(msg.length === 0) {
@@ -75,7 +76,7 @@ function post_msg(args) {
 function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
-		alert('1');
+		alert('Calling post_msg() with msg=' + msg);
 		post_msg({'msg':msg});
 	}, function(err) {
 		add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
