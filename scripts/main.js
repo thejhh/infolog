@@ -111,6 +111,12 @@ function update_events() {
 	}, function(err) { add_error(JSON.stringify(err)); });
 }
 
+/* */
+function update_events_timer() {
+	update_events();
+	setTimeout('update_events_timer()', 1000);
+}
+
 /* Init everything at onLoad event */
 window.onload = function() {
 	require(["bootstrap"], function(b) {});
@@ -121,10 +127,6 @@ window.onload = function() {
 	INFODESK_GLOBAL.last_id = 0;
 		
 	// TODO: Start fetching new events
-	function update_events_timer() {
-		update_events();
-		setTimeout('update_events_timer()', 1000);
-	}
 	update_events_timer();
 };
 
