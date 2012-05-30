@@ -75,7 +75,7 @@ try {
 		$query = 'SELECT * FROM `' . SQL_PREFIX . 'log`';
 		$query .= ' WHERE log_id >= ' . $start_from;
 		if($q !== '') {
-			$query .= " AND LOCATE('". $sql->escape_string($q) ."', msg) !== 0";
+			$query .= " AND (LOCATE('". $sql->escape_string($q) ."', msg) != 0)";
 		}
 		$query .= ' ORDER BY updated, created';
 		if( $result = $sql->query($query) ) {
