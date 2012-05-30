@@ -97,7 +97,7 @@ function update_events(from_id) {
 				event = events[i];
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
-				div.find('.date').text(''+event.date);
+				div.find('.date').text(''+event.updated);
 				div.find('.msg').text(''+event.msg);
 				div.appendTo('#events');
 			}
