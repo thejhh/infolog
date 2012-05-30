@@ -16,9 +16,10 @@ requirejs.config({
 /* Pop error message */
 function add_error(msg) {
 	require(["bootstrap", "jquery"], function(b, jquery) {
-		var dialog = jquery('#elements .error_dialog').clone().appendTo('#history');
+		var dialog = jquery('#elements .error_dialog').clone();
+		dialog.appendTo('#history');
+		dialog.children('.description').text(msg);
 		dialog.alert();
-		dialog.children('.full_text').text(msg);
 	}, function (err) {
 		alert("Error: " + err);
 	});
