@@ -95,7 +95,7 @@ function update_events() {
 	require(["jquery"], function(jquery) {
 		jquery.get('backend.php', {'msgs':'1', 'start':''+INFODESK_GLOBAL.last_id}, function(data) {
 			var events = JSON.parse(data), event, div;
-			alert('got events: ' + events.length);
+			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
 				if(event.log_id > INFODESK_GLOBAL.last_id) {
