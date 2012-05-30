@@ -111,8 +111,8 @@ function update_events() {
 				div.find('.date').text(''+event.updated);
 				div.find('.msg').text(''+event.msg);
 				div.prependTo('#events');
-				INFODESK_GLOBAL.updating = false;
 			}
+			INFODESK_GLOBAL.updating = false;
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
 }
