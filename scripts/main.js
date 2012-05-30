@@ -15,6 +15,7 @@ requirejs.config({
 
 /* Pop error message */
 function add_error(msg) {
+	alert(msg);
 	//require(["bootstrap"], function() {
 		var dialog = $('#elements .error_dialog').clone().appendTo('#history');
 		dialog.alert();
@@ -30,7 +31,7 @@ function post_message(args) {
 		try {
 			new Ajax.Request('backend.php', {
 			    method:'post',
-				parameters: {'send-msg': '1','message':message},
+				parameters: {'send_msg': '1','message':message},
 			    onComplete: function(response){
 					try {
 						if(response && response.status && (200 === response.status) ) {
