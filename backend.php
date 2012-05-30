@@ -11,10 +11,14 @@ try {
 		header("Status: 400 Bad Request");
 		echo 'Exception: ' . $e->getMessage() . "\n"
 		   . '@code: ' . $e->getCode() . "\n"
-		   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
-		   . '@stack/['."\n"
-		   . implode("\n", $e->getTrace()). "\n"
-		   . ']/@stack'."\n";
+		   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n";
+
+		$stack = $e->getTrace();
+		if(count($stack) !== 0) {
+			echo '@stack/['."\n"
+			   . implode("\n", $stack). "\n"
+			   . ']/@stack'."\n";
+		}
 		exit;
 	}
 	set_exception_handler('my_exception_handler');
