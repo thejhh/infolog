@@ -13,7 +13,7 @@ try {
 		   . '@code: ' . $e->getCode() . "\n"
 		   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
 		   . '@stack/['."\n"
-		   . $e->getTrace(). "\n"
+		   . implode("\n", $e->getTrace()). "\n"
 		   . ']/@stack'."\n";
 		exit;
 	}
