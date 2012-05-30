@@ -6,10 +6,12 @@ try {
 	throw new Exception('Unknown request');
 } catch(Exception $e) {
 	header('Content-Type: text/plain');
-	echo 'FAIL: ' . $e->getMessage() . "\n"
+	echo 'Exception: ' . $e->getMessage() . "\n"
+	   . '@code: ' . $e->getCode() . "\n"
 	   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
-	   . '@stack:'."\n"
-	   . $e->getTrace();
+	   . '@stack:['."\n"
+	   . $e->getTrace(). "\n"
+	   . ']'."\n";
 }
 return;
 ?>
