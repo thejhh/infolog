@@ -52,7 +52,7 @@ function post_msg(args) {
 		if(msg.length === 0) {
 			return;
 		}
-		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg});
+		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
 		jqxhr.complete(function(response) {
 			try {
 				if(response && response.status && (200 === response.status) ) {
