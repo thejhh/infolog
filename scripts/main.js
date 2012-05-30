@@ -44,10 +44,9 @@ ui.add_error = function add_error(args) {
 	});
 }
 
-require(["bootstrap", "jquery"], function(b, jquery) {
-
-	/* Post message to server */
-	function post_msg(args) {
+/* Post message to server */
+function post_msg(args) {
+	require(["jquery"], function(jquery) {
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''.args.msg : '';
 		if(msg.length === 0) {
@@ -60,24 +59,33 @@ require(["bootstrap", "jquery"], function(b, jquery) {
 					jquery("#control_form .msg_field").val('');
 					alert("Success!");
 				} else if(response && (response.status !== undefined)) {
-					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
+					ui.add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
 				} else {
-					add_error('Connection failed');
+					ui.add_error('Connection failed');
 				}
 			} catch(e) {
-				add_error('Connection failed');
+				ui.add_error('Connection failed');
 			}
 		});
-	}
+	}, function(err) {
+		ui.add_error({'title':'Connection failed', 'desc':JSON.stringify(err)});
+	});
+}
 
-	/* Post message to server */
-	ui.post_msg_form = function post_msg_form() {
-		var msg = jquery('#control_form').find('.msg_field').val();
-		post_msg({'msg':msg});
-		return false;
-	};
+/* Post message to server */
+ui.post_msg_form = function post_msg_form() {
+	var msg;
+	require(["jquery"], function(jquery) {
+		msg = jquery('#control_form').find('.msg_field').val();
+	}, function(err) {
+		ui.add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
+	});
+	post_msg({'msg':msg});
+	return false;
+};
 
-	/* Init everything at onLoad event */
+/* Init everything at onLoad event */
+require(["jquery"], function(jquery) {
 	jquery.ready(function(){
 		// TODO: Setup simple clock on control form
 		
@@ -85,7 +93,6 @@ require(["bootstrap", "jquery"], function(b, jquery) {
 		
 		// TODO: Start fetching new events
 	});
-
 }, function(err) {
 	ui.add_error({'title':'Exception at main', 'desc':JSON.stringify(err)});
 });
