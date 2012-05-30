@@ -96,7 +96,7 @@ function change_to_hashtag(hashtag) {
 	require(["jquery"], function(jquery) {
 		jquery('#events').clear();
 	}, function(err) { add_error(JSON.stringify(err)); });
-	INFODESK_GLOBAL.hashtag = hashtag;
+	INFODESK_GLOBAL.hashtag = ''+hashtag;
 	INFODESK_GLOBAL.last_id = 0;
 	update_events();
 }
@@ -128,7 +128,7 @@ function update_events() {
 				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
 					var h = (''+$1).toLowerCase();
 					var div = jquery('<div/>');
-					div.html('<a href="#' + h + '" class="label label-info">#' + $1 + '</a>').click(function() {
+					div.html('<div href="#' + h + '" class="label label-info">#' + $1 + '</div>').click(function() {
 						change_to_hashtag(h);
 						return false;
 					});
