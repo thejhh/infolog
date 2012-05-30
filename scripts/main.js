@@ -86,6 +86,7 @@ function post_msg_form() {
 	});
 	//alert('Calling post_msg() with msg=' + msg);
 	post_msg({'msg':msg});
+	update_events();
 	return false;
 }
 
