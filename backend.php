@@ -7,23 +7,27 @@ try {
 	}
 	set_error_handler("myErrorHandler");
 	function my_exception_handler($e) {
-		header("Content-Type: application/javascript");
-		header("Status: 400 Bad Request");
+		try {
+			header("Content-Type: application/javascript");
+			header("Status: 400 Bad Request");
 
-		$data = array(
-			'message' => ''.$e->getMessage(),
-			'code' => $e->getCode(),
-			'file' => ''.$e->getFile(),
-			'line' => $e->getLine()
-		);
+			$data = array(
+				'message' => ''.$e->getMessage(),
+				'code' => $e->getCode(),
+				'file' => ''.$e->getFile(),
+				'line' => $e->getLine()
+			);
 
-		$stack = $e->getTrace();
-		if(count($stack) !== 0) {
-			$data['trace'] = array();
-			foreach($stack as $tmp) { $data['trace'][] = $tmp; }
+			$stack = $e->getTrace();
+			if(count($stack) !== 0) {
+				$data['trace'] = array();
+				foreach($stack as $tmp) { $data['trace'][] = $tmp; }
+			}
+
+			echo json_encode($data) . "\n";
+		} catch(e2) {
+			echo '{message="Got another exception `' . $e2 . '` while handling exception `' . $e . '`"}';
 		}
-
-		echo json_encode($data) . "\n";
 		exit;
 	}
 	set_exception_handler('my_exception_handler');
