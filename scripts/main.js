@@ -119,11 +119,21 @@ function update_events() {
 }
 
 /* */
+function update_clock() {
+	function f(d) { return ((''+d).length===1) ? '0'+d : ''+d; }
+	require(["jquery"], function(jquery) {
+		var now = new Date();
+		jquery('#clock').val( f(now.getHours()) + ':' + f(now.getMinutes()) + ':' + f(now.getSeconds()) );
+	});
+}
+
+/* */
 INFODESK_GLOBAL.timer = undefined;
 INFODESK_GLOBAL.updating = false;
 INFODESK_GLOBAL.last_id = 0;
 function update_events_timer() {
 	update_events();
+	update_clock();
 	setTimeout('update_events_timer()', 1000);
 }
 
