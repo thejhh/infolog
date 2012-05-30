@@ -75,7 +75,6 @@ try {
 		} else {
 			throw new Exception('SQL error: ' . $sql->error);
 		}
-		echo 'OK';
 		return;
 	}
 
