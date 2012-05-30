@@ -44,8 +44,7 @@ function add_error(args) {
 };
 
 /* Post message to server */
-function post_msg(args) {
-	require(["jquery"], function(jquery) {
+function post_msg(jquery, args) {
 		alert('In post_msg() with args=' + JSON.stringify(args) );
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
@@ -67,9 +66,12 @@ function post_msg(args) {
 				add_error('Connection failed');
 			}
 		});
+	/*
+	require(["jquery"], function(jquery) {
 	}, function(err) {
 		add_error({'title':'Connection failed', 'desc':JSON.stringify(err)});
 	});
+	*/
 }
 
 /* Post message to server */
@@ -77,7 +79,7 @@ function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
 		alert('Calling post_msg() with msg=' + msg);
-		post_msg({'msg':msg});
+		post_msg(jquery, {'msg':msg});
 	}, function(err) {
 		add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
 	});
