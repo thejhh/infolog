@@ -91,8 +91,8 @@ function post_msg_form() {
 function update_events(from_id) {
 	require(["jquery"], function(jquery) {
 		jquery.get('backend.php', {'msgs':'1', 'start':''+from_id}, function(data) {
-			alert('got data: ' + data);
 			var events = JSON.parse(data);
+			alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
 				dialog = jquery('#elements .event_container').clone();
 				dialog.find('.date').text(data.date);
