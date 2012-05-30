@@ -3,7 +3,10 @@ try {
 	error_reporting(E_ALL|E_STRICT);
 
 	function myErrorHandler($errno, $errstr, $errfile, $errline) {
-		throw new Exception("$errno $errstr at $errfile:$errline");
+		header("Content-Type: application/javascript");
+		header("Status: 400 Bad Request");
+		echo json_encode(array("message" => "$errno $errstr at $errfile:$errline"));
+		exit;
 	}
 	set_error_handler("myErrorHandler");
 	function my_exception_handler($e) {
