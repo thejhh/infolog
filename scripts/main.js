@@ -92,10 +92,11 @@ function post_msg_form() {
 
 /* */
 function update_events() {
-	var next_id = INFODESK_GLOBAL.last_id+1;
-	require(["jquery"], function(jquery) {
-		if(INFODESK_GLOBAL.updating !== true) {
-			INFODESK_GLOBAL.updating = true;
+	var next_id;
+	if(!INFODESK_GLOBAL.updating) {
+		INFODESK_GLOBAL.updating = true;
+		next_id = INFODESK_GLOBAL.last_id+1;
+		require(["jquery"], function(jquery) {
 			jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
 				var events = JSON.parse(data), event, div, id;
 				//alert('got events: ' + events.length);
@@ -113,11 +114,12 @@ function update_events() {
 					INFODESK_GLOBAL.updating = false;
 				}
 			});
-		}
-	}, function(err) { add_error(JSON.stringify(err)); });
+		}, function(err) { add_error(JSON.stringify(err)); });
+	}
 }
 
 /* */
+INFODESK_GLOBAL.timer = undefined;
 INFODESK_GLOBAL.updating = false;
 INFODESK_GLOBAL.last_id = 0;
 function update_events_timer() {
