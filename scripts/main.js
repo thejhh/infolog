@@ -43,7 +43,7 @@ function post_msg(args) {
 	var msg = args.msg || '';
 	
 	require(["jquery"], function(jquery) {
-		jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg},
+		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''.msg},
 		    function(response){
 				try {
 					if(response.substr(0, 2) === 'OK') {
@@ -56,6 +56,9 @@ function post_msg(args) {
 					add_error({'title':'Connection failed: ' + e, 'desc':response});
 				}
 		    });
+		jqxhr.error(function(response) {
+			add_error({'title':'Connection failed', 'desc':response});
+		});
 	}, function(err) { add_error(err) });
 
 	/*
