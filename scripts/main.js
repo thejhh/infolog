@@ -51,7 +51,7 @@ function post_message(args) {
 						if(response && response.status && (200 === response.status) ) {
 							alert("Success!");
 						} else if(response && (response.status !== undefined)) {
-							add_error('Connection failed with #' + response.status);
+							add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
 						} else {
 							add_error('Connection failed');
 						}
