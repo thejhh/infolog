@@ -109,7 +109,7 @@ function update_events() {
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
-				msg = jquery.text(event.msg);
+				msg = jquery('<div/>').text(event.msg).html();
 				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) { return '<a href="#'+$1+'">#' + $1 + '</a>' });
 				div.find('.msg').html(msg);
 				div.prependTo('#events');
