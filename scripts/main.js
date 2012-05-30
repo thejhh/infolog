@@ -34,7 +34,7 @@ function add_error(args) {
 		} else {
 			dialog.find('.desc_container').hide();
 		}
-		dialog.appendTo('#notifications');
+		dialog.prependTo('#notifications');
 		dialog.alert();
 	}, function(err) {
 		alert('Error: ' . err);
@@ -105,7 +105,7 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				div.find('.msg').text(''+event.msg);
-				div.appendTo('#events');
+				div.prependTo('#events');
 			}
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
