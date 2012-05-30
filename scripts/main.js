@@ -91,13 +91,14 @@ function post_msg_form() {
 function update_events(from_id) {
 	require(["jquery"], function(jquery) {
 		jquery.get('backend.php', {'msgs':'1', 'start':''+from_id}, function(data) {
-			var events = JSON.parse(data);
+			var events = JSON.parse(data), event, div;
 			alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
-				dialog = jquery('#elements .event_container').clone();
-				dialog.find('.date').text(data.date);
-				dialog.find('.msg').text(data.msg);
-				dialog.appendTo('#events');
+				event = events[i];
+				div = jquery('#elements .event_container').clone();
+				div.find('.date').text(event.date);
+				div.find('.msg').text(event.msg);
+				div.appendTo('#events');
 			}
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
