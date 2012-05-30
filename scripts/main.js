@@ -75,6 +75,7 @@ function post_msg(args) {
 function post_msg_form() {
 	require(["jquery"], function(jquery) {
 		var msg = jquery('#control_form').find('.msg_field').val();
+		alert('1');
 		post_msg({'msg':msg});
 	}, function(err) {
 		add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
