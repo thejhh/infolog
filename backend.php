@@ -56,7 +56,7 @@ try {
 	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
-		if( $sql->query('INSERT INTO `' . SQL_DATABASE . 'log` (msg) VALUES (' . $sql->escape_string($msg) . ')') === FALSE) {
+		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (msg) VALUES (' . $sql->escape_string($msg) . ')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error);
 		}
 		echo 'OK';
