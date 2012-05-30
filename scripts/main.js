@@ -93,29 +93,28 @@ function post_msg_form() {
 /* */
 function update_events() {
 	var next_id;
-	if(!INFODESK_GLOBAL.updating) {
-		INFODESK_GLOBAL.updating = true;
-		next_id = INFODESK_GLOBAL.last_id+1;
-		require(["jquery"], function(jquery) {
-			jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
-				var events = JSON.parse(data), event, div, id;
-				//alert('got events: ' + events.length);
-				for(i in events) if(events.hasOwnProperty(i)) {
-					event = events[i];
-					id = parseInt(event.log_id, 10);
-					if(id > INFODESK_GLOBAL.last_id) {
-						INFODESK_GLOBAL.last_id = id;
-					}
-					div = jquery('#elements .event_container').clone();
-					div.find('.log_id').text(''+event.log_id);
-					div.find('.date').text(''+event.updated);
-					div.find('.msg').text(''+event.msg);
-					div.prependTo('#events');
-					INFODESK_GLOBAL.updating = false;
+	if(INFODESK_GLOBAL.updating === true) { return; }
+	INFODESK_GLOBAL.updating = true;
+	next_id = INFODESK_GLOBAL.last_id+1;
+	require(["jquery"], function(jquery) {
+		jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
+			var events = JSON.parse(data), event, div, id;
+			//alert('got events: ' + events.length);
+			for(i in events) if(events.hasOwnProperty(i)) {
+				event = events[i];
+				id = parseInt(event.log_id, 10);
+				if(id > INFODESK_GLOBAL.last_id) {
+					INFODESK_GLOBAL.last_id = id;
 				}
-			});
-		}, function(err) { add_error(JSON.stringify(err)); });
-	}
+				div = jquery('#elements .event_container').clone();
+				div.find('.log_id').text(''+event.log_id);
+				div.find('.date').text(''+event.updated);
+				div.find('.msg').text(''+event.msg);
+				div.prependTo('#events');
+				INFODESK_GLOBAL.updating = false;
+			}
+		});
+	}, function(err) { add_error(JSON.stringify(err)); });
 }
 
 /* */
