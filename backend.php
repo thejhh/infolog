@@ -66,11 +66,17 @@ try {
 	/* get_msgs */
 	if(isset($_POST['msgs']) || isset($_GET['msgs']) ) {
 		$start_from = 0;
+		$q = '';
 		if(isset($_GET['start'])) $start_from = (int) ($_GET['start']);
 		if(isset($_POST['start'])) $start_from = (int) ($_POST['start']);
+		if(isset($_GET['q'])) $q = $_GET['q'];
+		if(isset($_POST['q'])) $q = $_POST['q'];
 		$sql = SQL::init();
 		$query = 'SELECT * FROM `' . SQL_PREFIX . 'log`';
 		$query .= ' WHERE log_id >= ' . $start_from;
+		if($q !== '') {
+			$query .= " AND MATCH (msg) AGAINST ('". SQL::escape_string($q) ."')";
+		}
 		$query .= ' ORDER BY updated, created';
 		if( $result = $sql->query($query) ) {
 			$list = array();
