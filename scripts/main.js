@@ -27,22 +27,26 @@ function add_error(msg) {
 function post_message(args) {
 	var message = args.message || '';
 	require(["prototype"], function(Ajax) {
-		new Ajax.Request('backend.php', {
-		    method:'post',
-			parameters: {'send-msg': '1','message':message},
-		    onComplete: function(response){
-				if(response && response.status && (200 === response.status) ) {
-					alert("Success!");
-				} else if(response && (response.status !== undefined)) {
-					add_error('Connection failed with #' + response.status);
-				} else {
-					add_error('Connection failed');
+		try {
+			new Ajax.Request('backend.php', {
+			    method:'post',
+				parameters: {'send-msg': '1','message':message},
+			    onComplete: function(response){
+					if(response && response.status && (200 === response.status) ) {
+						alert("Success!");
+					} else if(response && (response.status !== undefined)) {
+						add_error('Connection failed with #' + response.status);
+					} else {
+						add_error('Connection failed');
+					}
+			    },
+			    onFailure: function(){
+					add_error('Something went wrong...')
 				}
-		    },
-		    onFailure: function(){
-				add_error('Something went wrong...')
-			}
-		  });
+			  });
+		} catch(e) {
+			add_error('Connection failed: ' + e);
+		}
 	});
 }
 
