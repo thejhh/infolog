@@ -93,8 +93,8 @@ function post_msg_form() {
 /* */
 function update_events() {
 	var next_id;
-	if(!INFODESK_GLOBAL.updating) {
-		INFODESK_GLOBAL.updating = true;
+//	if(!INFODESK_GLOBAL.updating) {
+//		INFODESK_GLOBAL.updating = true;
 		next_id = INFODESK_GLOBAL.last_id+1;
 		require(["jquery"], function(jquery) {
 			jquery.get('backend.php', {'msgs':'1', 'start':''+next_id}, function(data) {
@@ -115,7 +115,7 @@ function update_events() {
 				}
 			});
 		}, function(err) { add_error(JSON.stringify(err)); });
-	}
+//	}
 }
 
 /* */
@@ -123,8 +123,8 @@ INFODESK_GLOBAL.timer = undefined;
 INFODESK_GLOBAL.updating = false;
 INFODESK_GLOBAL.last_id = 0;
 function update_events_timer() {
-	INFODESK_GLOBAL.timer = setTimeout('update_events_timer()', 1000);
 	update_events();
+	INFODESK_GLOBAL.timer = setTimeout('update_events_timer()', 1000);
 }
 
 /* Init everything at onLoad event */
