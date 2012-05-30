@@ -1,5 +1,23 @@
 <?php
 try {
+	error_reporting('E_ALL|E_STRICT');
+
+	function myErrorHandler($errno, $errstr, $errfile, $errline) {
+		throw new Exception("$errno $errstr at $errfile:$errline");
+	}
+	set_error_handler("myErrorHandler");
+	function my_exception_handler($exception) {
+		header("Status: 400 Bad Request");
+		echo 'Exception: ' . $e->getMessage() . "\n"
+		   . '@code: ' . $e->getCode() . "\n"
+		   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
+		   . '@stack/['."\n"
+		   . $e->getTrace(). "\n"
+		   . ']/@stack'."\n";
+		echo "Uncaught exception: " , $exception->getMessage(), "\n";
+		exit;
+	}
+	set_exception_handler('my_exception_handler');
 
 	require_once('config.php');
 
@@ -27,13 +45,7 @@ try {
 
 	throw new Exception('Unknown request');
 } catch(Exception $e) {
-	header("Status: 400 Bad Request");
-	echo 'Exception: ' . $e->getMessage() . "\n"
-	   . '@code: ' . $e->getCode() . "\n"
-	   . '@file: ' . $e->getFile() . ':' . $e->getLine() . "\n"
-	   . '@stack/['."\n"
-	   . $e->getTrace(). "\n"
-	   . ']/@stack'."\n";
+	my_exception_handler($e);
 }
 return;
 ?>
