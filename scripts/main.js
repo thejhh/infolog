@@ -29,12 +29,14 @@ function post_message(args) {
 	require(["prototype"], function(Ajax) {
 		new Ajax.Request('backend.php', {
 		    method:'post',
-		    onSuccess: function(transport){
-				var response = transport.responseText || "FAIL";
-				if(response.substr(0, 2) !== "OK") {
-					add_error(''+response);
+			parameters: {'send-msg': '1','message':message},
+		    onComplete: function(response){
+				if(response && response.status && (200 === response.status) ) {
+					alert("Success!");
+				} else if(response && (response.status !== undefined)) {
+					add_error('Connection failed with #' + response.status);
 				} else {
-					alert("Success! \n\n" + response);
+					add_error('Connection failed');
 				}
 		    },
 		    onFailure: function(){
@@ -47,7 +49,7 @@ function post_message(args) {
 /* Post message to server */
 function post_message_form(button) {
 	var form = button.form;
-	post_message({'message': form.message.value});
+	post_message({'message': ''+form.message.value});
 	return false;
 }
 
