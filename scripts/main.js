@@ -74,19 +74,21 @@ function post_msg(args) {
 
 /* Post message to server */
 ui.post_msg_form = function post_msg_form() {
-	var msg;
 	require(["jquery"], function(jquery) {
-		msg = jquery('#control_form').find('.msg_field').val();
+		var msg = jquery('#control_form').find('.msg_field').val();
+		post_msg({'msg':msg});
 	}, function(err) {
 		ui.add_error({'title':'Clearing form failed', 'desc':JSON.stringify(err)});
 	});
-	post_msg({'msg':msg});
 	return false;
 };
 
 /* Init everything at onLoad event */
 require(["jquery"], function(jquery) {
 	jquery.ready(function(){
+		
+		require(["bootstrap"], function(b) {});
+		
 		// TODO: Setup simple clock on control form
 		
 		// TODO: Setup previous event history
