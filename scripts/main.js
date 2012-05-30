@@ -110,7 +110,7 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				msg = ''+event.msg;
-				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($1) { return '<a href="#'+$1+'">#' + $1 + '</a>' });
+				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) { return '<a href="#'+$1+'">#' + $1 + '</a>' });
 				div.find('.msg').text(msg);
 				div.prependTo('#events');
 			}
