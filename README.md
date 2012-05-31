@@ -23,6 +23,7 @@ TODO
 ----
 
 Priority:
+
 - Option to delete newest events
 - Add REMOTE_ADDR into each event
 - Automatic hostname based "room creation"
@@ -31,6 +32,7 @@ Priority:
 - Automatically add labels based on search to new messages?
 
 Wish list:
+
 * Support for exporting by RSS/Atom feed
 * Format links from messages into HTML links
 * When element is foo#bar -- should it convert it as hashtag or not?
