@@ -32,4 +32,4 @@ TODO
 Known bugs
 ----------
 
-* IE reported to miss events from client when written random#paskaa
+* IE is reported to miss events from client when written random#paskaa
