@@ -142,7 +142,7 @@ function update_events() {
 					return div.html();
 				});
 				div.find('.msg').html(msg);
-				div.prependTo('#events');
+				div.prependTo('#events .events-body');
 			}
 			INFODESK_GLOBAL.updating = false;
 		});
