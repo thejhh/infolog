@@ -8,3 +8,4 @@ TODO
 
 * Support for exporting by RSS/Atom feed
 * Option to delete newest events
+* Format links from messages into HTML links
