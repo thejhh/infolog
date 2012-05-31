@@ -31,6 +31,7 @@ Priority:
 5. Support for adding labels to old events
 6. Automatically add labels based on search to new messages?
 7. HTML anchors to label search
+8. Select box for predefined labels
 
 Wish list:
 
