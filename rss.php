@@ -27,10 +27,10 @@ try {
 	if( $result = $sql->query($query) ) {
 		$list = array();
 		while ($row = $result->fetch_object()){
-			if(strlen($row['msg']) <= 160) {
-				$title = $row['msg'];
+			if(strlen(''.$row['msg']) <= 160) {
+				$title = ''.$row['msg'];
 			} else {
-				$title = substr($row['msg'], 0, 160) . '...';
+				$title = substr(''.$row['msg'], 0, 160) . '...';
 			}
 	        $rssfeed .= '<item>';
 	        $rssfeed .= '<title>' . htmlspecialchars($title) . '</title>';
