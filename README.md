@@ -42,6 +42,7 @@ Wish list:
 * Options to customize clock and other stuff
 * CLI utility to post messages
 * Clean up scripts/main.js
+* Change title based on domain in use
 
 Done items:
 
