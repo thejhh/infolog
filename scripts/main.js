@@ -196,6 +196,9 @@ window.onload = function() {
 	// 
 	require(['jquery'], function(jquery) {
 		
+		// Setup ajax calls
+		jquery.ajaxSetup({cache:false});
+		
 		// Setup search form
 		jquery('.form-search').submit(function() {
 			var q = jquery('#search_field').val();
