@@ -168,7 +168,7 @@ function update_clock() {
 	function f(d) { return ((''+d).length===1) ? '0'+d : ''+d; }
 	require(["jquery"], function(jquery) {
 		var now = new Date();
-		jquery('#clock').val( f(now.getHours()) + ':' + f(now.getMinutes()) + ':' + f(now.getSeconds()) );
+		jquery('#clock').val( f(now.getHours()) + ':' + f(now.getMinutes()) );
 	});
 }
 
