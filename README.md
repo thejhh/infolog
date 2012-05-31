@@ -32,7 +32,7 @@ TODO
 * Syncronize clock to SQL server's time
 * Add REMOTE_ADDR into each event
 * Setup program
-* Focus automatically in to the message box
+* <del>Focus automatically in to the message box</del>
 * Options to customize clock and other stuff
 * Automatic hostname based "room creation"
 * CLI utility to post messages

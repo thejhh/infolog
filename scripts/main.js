@@ -212,7 +212,7 @@ window.onload = function() {
 		});
 		
 		// Focus on message field
-		jquery('#control_form .msg').focus();
+		jquery('#control_form .msg_field').focus();
 
 	});
 };
