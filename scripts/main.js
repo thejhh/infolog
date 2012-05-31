@@ -102,12 +102,28 @@ function change_search_string(q) {
 	//alert(hashtag);
 	INFODESK_GLOBAL.search_string = ''+q;
 	require(["jquery"], function(jquery) {
-		jquery('#events .events-header').html( jquery('<h3 />').text('Results for ' + q) );
+		jquery('#events .events-header').html( jquery('<h3 />').text('Results for '+format_msg(jquery, ''+q)) );
 		jquery('#events .events-body').empty();
 		jquery('#search_field').val(INFODESK_GLOBAL.search_string);
 	}, function(err) { add_error(JSON.stringify(err)); });
 	INFODESK_GLOBAL.last_id = 0;
 	update_events();
+}
+
+/* */
+function format_msg(jquery, msg) {
+	msg = jquery('<div/>').text(msg).html();
+	
+	// Format hashtags
+	msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
+		var h = (''+$1).toLowerCase();
+		var div = jquery('<div/>');
+		var a = jquery('<a href="javascript:change_search_string(\'#' + escape(h) + '\')" class="label label-info"></a>').text('#'+$1);
+		a.appendTo(div);
+		return div.html();
+	});
+	
+	return msg;
 }
 
 /* */
@@ -133,15 +149,7 @@ function update_events() {
 				div = jquery('#elements .event_container').clone();
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
-				msg = jquery('<div/>').text(event.msg).html();
-				msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
-					var h = (''+$1).toLowerCase();
-					var div = jquery('<div/>');
-					var a = jquery('<a href="javascript:change_search_string(\'#' + escape(h) + '\')" class="label label-info"></a>').text('#'+$1);
-					a.appendTo(div);
-					return div.html();
-				});
-				div.find('.msg').html(msg);
+				div.find('.msg').html( format_msg(jquery, event.msg) );
 				div.prependTo('#events .events-body');
 			}
 			INFODESK_GLOBAL.updating = false;
