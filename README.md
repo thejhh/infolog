@@ -37,6 +37,7 @@ TODO
 * Automatic hostname based "room creation"
 * CLI utility to post messages
 * Support to add labels to old events
+* Automatically add labels based on search to new messages?
 
 Known bugs
 ----------
