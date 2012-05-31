@@ -9,7 +9,7 @@ try {
 	$rssfeed .= '<rss version="2.0">';
 	$rssfeed .= '<channel>';
 	$rssfeed .= '<title>'. htmlspecialchars($domain) .'</title>';
-	$rssfeed .= '<link>http://'.htmlspecialchars($domain']).'</link>';
+	$rssfeed .= '<link>http://'.htmlspecialchars($domain).'</link>';
 	$rssfeed .= '<description>Latest notes from '.htmlspecialchars($domain).'</description>';
 	$rssfeed .= '<language>en-us</language>';
 	$rssfeed .= '<copyright>Copyright (C) 2012 Jaakko-Heikki Heusala</copyright>';
