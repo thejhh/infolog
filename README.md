@@ -24,12 +24,12 @@ TODO
 
 Priority:
 
-- Option to delete newest events
-- Add REMOTE_ADDR into each event
-- Automatic hostname based "room creation"
-- Support for nicks/usernames (maybe by color)
-- Support for adding labels to old events
-- Automatically add labels based on search to new messages?
+1. Option to delete newest events
+2. Add REMOTE_ADDR into each event
+3. Automatic hostname based "room creation"
+4. Support for nicks/usernames (maybe by color)
+5. Support for adding labels to old events
+6. Automatically add labels based on search to new messages?
 
 Wish list:
 
