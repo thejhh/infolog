@@ -176,11 +176,16 @@ window.onload = function() {
 	
 	// 
 	require(['jquery'], function(jquery) {
+		
+		// Setup search form
 		jquery('.form-search').submit(function() {
 			var q = jquery('#search_field').val();
 			change_search_string(q);
 			return false;
 		});
+		
+		// Setup about modal's body
+		jquery('#about .modal-body').html(jquery.get('README.md'));
 	});
 };
 
