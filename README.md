@@ -5,6 +5,8 @@ This is a simple event logger designed for [Vectorama's](http://www.vectorama.in
 
 At the moment this app is only intended for Google Chrome browser and use on any other browser might have some bugs lurking around.
 
+See also [live demo](http://dev.jhh.me/infolog/).
+
 Licence
 -------
 
