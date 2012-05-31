@@ -7,7 +7,8 @@ requirejs.config({
 			deps: ['jquery']
 		},
 		'showdown':{
-			deps: []
+			deps: [],
+			exports: 'Showdown'
 		}
 	}
 });
@@ -188,10 +189,9 @@ window.onload = function() {
 		});
 		
 		// Setup about modal's body
-		require(['showdown'], function(sd) {
+		require(['showdown'], function(Showdown) {
 			jquery.get('README.md', function(data) {
-				var Showdown = sd.Showdown;
-				var converter = new Showdown().converter();
+				var converter = new Showdown.converter();
 				jquery('#about .modal-body').html(converter.makeHtml(data));
 			});
 		});
