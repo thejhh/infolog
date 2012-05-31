@@ -27,14 +27,15 @@ try {
 	if( $result = $sql->query($query) ) {
 		$list = array();
 		while ($row = $result->fetch_object()){
-			if(strlen(''.$row['msg']) <= 160) {
-				$title = ''.$row['msg'];
+			$msg = ''.$row['msg'];
+			if(strlen($msg) <= 160) {
+				$title = $msg;
 			} else {
-				$title = substr(''.$row['msg'], 0, 160) . '...';
+				$title = substr($msg, 0, 160) . '...';
 			}
 	        $rssfeed .= '<item>';
 	        $rssfeed .= '<title>' . htmlspecialchars($title) . '</title>';
-	        $rssfeed .= '<description>' . htmlspecialchars($row['msg']) . '</description>';
+	        $rssfeed .= '<description>' . htmlspecialchars($msg) . '</description>';
 	        //$rssfeed .= '<link>http://' . htmlspecialchars($domain) . '</link>';
 	        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($row['updated'])) . '</pubDate>';
 	        $rssfeed .= '</item>';
