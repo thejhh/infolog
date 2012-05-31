@@ -5,6 +5,10 @@ requirejs.config({
 	shim: {
 		'bootstrap':{
 			deps: ['jquery']
+		},
+		'showdown':{
+			deps: [],
+			exports: 'Showdown'
 		}
 	}
 });
@@ -185,8 +189,11 @@ window.onload = function() {
 		});
 		
 		// Setup about modal's body
-		jquery.get('README.md', function(data) {
-			jquery('#about .modal-body').html(data);
+		require(['showdown'], function(Showdown) {
+			jquery.get('README.md', function(data) {
+				var converter = new Showdown().converter();
+				jquery('#about .modal-body').html(converter.makeHtml(data));
+			});
 		});
 	});
 };
