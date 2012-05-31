@@ -129,10 +129,10 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				msg = jquery('<div/>').text(event.msg).html();
-				msg = msg.replace(/#([a-zA-Z0-9]+)/, function($0, $1) {
+				msg = msg.replace(/#([a-zA-Z0-9\>\<\.]+)/g, function($0, $1) {
 					var h = (''+$1).toLowerCase();
 					var div = jquery('<div/>');
-					var a = jquery('<a href="javascript:change_search_string(\'#' + h + '\')" class="label label-info">#' + $1 + '</a>');
+					var a = jquery('<a href="javascript:change_search_string(\'#' + escape(h) + '\')" class="label label-info"></a>').text('#'+$1);
 					a.appendTo(div);
 					return div.html();
 				});
