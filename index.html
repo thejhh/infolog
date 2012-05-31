@@ -44,8 +44,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a data-toggle="modal" href="#about">About</a></li>
+              <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>
 
 			<form class="form-search">
@@ -77,14 +77,13 @@
 
 		<div class="hidden" id="elements">
 
-			<div class="about_modal">
+			<div class="about_modal modal" id="about">
 				<h1>Vectorama Infodesk Logger</h1>
-				<p>Use this document as a way to quick start any new project.<br>
-				All you get is this message and a barebones HTML document.
-				</p>
 			</div>
 
-			<div class="contact_modal">
+			<div class="contact_modal modal" id="contact">
+				<h1>Contact author</h1>
+				<p>Jaakko-Heikki Heusala &lt;jheusala@iki.fi&gt;</p>
 			</div>
 
 			<div class="error_dialog alert alert-error">
