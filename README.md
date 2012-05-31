@@ -36,6 +36,7 @@ TODO
 * Options to customize clock and other stuff
 * Automatic hostname based "room creation"
 * CLI utility to post messages
+* Support to add labels to old events
 
 Known bugs
 ----------
