@@ -27,7 +27,7 @@ TODO
 * Format links from messages into HTML links
 * When element is foo#bar -- should it convert it as hashtag or not?
 * Support for nicks/usernames (maybe by color)
-* ~~Reset search form field after use + add better notification when events are filtered by search~~
+* <del>Reset search form field after use + add better notification when events are filtered by search</del>
 * Better search engine (maybe using [Apache Solr](http://lucene.apache.org/solr/))
 * Syncronize clock to SQL server's time
 * Add REMOTE_ADDR into each event
