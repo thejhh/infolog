@@ -210,6 +210,10 @@ window.onload = function() {
 				jquery('#about .modal-body').html(converter.makeHtml(data));
 			});
 		});
+		
+		// Focus on message field
+		jquery('#control_form .msg').focus();
+
 	});
 };
 
