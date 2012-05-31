@@ -185,7 +185,9 @@ window.onload = function() {
 		});
 		
 		// Setup about modal's body
-		jquery('#about .modal-body').html(jquery.get('README.md'));
+		jquery.get('README.md', function(data) {
+			jquery('#about .modal-body').html(data);
+		});
 	});
 };
 
