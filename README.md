@@ -1,7 +1,7 @@
 infolog
 =======
 
-Simple event logger for (Vectorama's)[http://www.vectorama.info] Infodesk.
+Simple event logger for [Vectorama's](http://www.vectorama.info) Infodesk.
 
 At the moment this app is only designed for Google Chrome browser and use on any other browser is at your own risk.
 
