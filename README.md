@@ -1,11 +1,14 @@
 infolog
 =======
 
-This is a simple event logger designed for [Vectorama's](http://www.vectorama.info) Infodesk.
+A simple event/issue logger for a happening.
 
-At the moment this app is only intended for Google Chrome browser and use on any other browser might have some bugs lurking around.
+The intended use case for the app is to write down history what happens in a happening -- like in a conference or meetup or LAN party. It's designed 
+originally for [Vectorama 2012](http://www.vectorama.info) infodesk's internal use. It's open source and you can setup your own secure private server.
 
 See also [live demo at infolog.in](http://infolog.in/). You can use any address *.infolog.in and it's new domain-based stream.
+
+It's implemented for Google Chrome browser, so other browsers might have some bugs lurking around. However I'm happy to fix any problems.
 
 Licence
 -------
