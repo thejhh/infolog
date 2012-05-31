@@ -28,6 +28,7 @@ TODO
 * Reset search form field after use + add better notification when events are filtered by search
 * Better search engine
 * Syncronize clock to SQL server's time
+* Add REMOTE_ADDR into each event
 
 Known bugs
 ----------
