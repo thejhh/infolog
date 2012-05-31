@@ -102,7 +102,8 @@ function change_search_string(q) {
 	//alert(hashtag);
 	INFODESK_GLOBAL.search_string = ''+q;
 	require(["jquery"], function(jquery) {
-		jquery('#events').empty();
+		jquery('#events .events-header').html('<h3 />').text('Results for ' + q);
+		jquery('#events .events-body').empty();
 		jquery('#search_field').val(INFODESK_GLOBAL.search_string);
 	}, function(err) { add_error(JSON.stringify(err)); });
 	INFODESK_GLOBAL.last_id = 0;

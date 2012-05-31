@@ -38,6 +38,7 @@ TODO
 * CLI utility to post messages
 * Support to add labels to old events
 * Automatically add labels based on search to new messages?
+* Clean up scripts/main.js
 
 Known bugs
 ----------
