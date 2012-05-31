@@ -3,7 +3,7 @@ try {
 	require_once(dirname(__FILE__) . '/main.php');
 	header("Content-Type: application/rss+xml; charset=UTF-8");
 
-	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'infolog.in';
+	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
 
 	$rssfeed = '<?xml version="1.0" encoding="UTF-8"?>';
 	$rssfeed .= '<rss version="2.0">';
