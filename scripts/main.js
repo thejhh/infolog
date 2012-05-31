@@ -102,12 +102,14 @@ function change_search_string(q) {
 	//alert(hashtag);
 	INFODESK_GLOBAL.search_string = ''+q;
 	require(["jquery"], function(jquery) {
-		var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) );
-		var link = jquery('<a class="btn"/>').text("Close &times;").click(function(){ change_search_string(''); });
-		link.appendTo(header);
 		jquery('#events .events-header').empty();
 		jquery('#events .events-body').empty();
-		header.appendTo('#events .events-header');
+		if(q !== '') {
+			var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) );
+			var link = jquery('<a class="btn"/>').text("Close &times;").click(function(){ change_search_string(''); });
+			link.appendTo(header);
+			header.appendTo('#events .events-header');
+		}
 		jquery('#search_field').val(INFODESK_GLOBAL.search_string);
 	}, function(err) { add_error(JSON.stringify(err)); });
 	INFODESK_GLOBAL.last_id = 0;
