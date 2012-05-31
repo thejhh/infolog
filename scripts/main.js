@@ -110,7 +110,7 @@ function change_search_string(q) {
 			link.appendTo(header);
 			header.appendTo('#events .events-header');
 		}
-		jquery('#search_field').val(INFODESK_GLOBAL.search_string);
+		jquery('#search_field').val('');
 	}, function(err) { add_error(JSON.stringify(err)); });
 	INFODESK_GLOBAL.last_id = 0;
 	update_events();
