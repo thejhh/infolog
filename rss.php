@@ -27,7 +27,7 @@ try {
 	if( $result = $sql->query($query) ) {
 		$list = array();
 		while ($row = $result->fetch_object()){
-			$msg = (string)$row['msg'];
+			$msg = (string)$row->msg;
 			if(strlen($msg) <= 160) {
 				$title = $msg;
 			} else {
@@ -37,7 +37,7 @@ try {
 	        $rssfeed .= '<title>' . htmlspecialchars($title) . '</title>';
 	        $rssfeed .= '<description>' . htmlspecialchars($msg) . '</description>';
 	        //$rssfeed .= '<link>http://' . htmlspecialchars($domain) . '</link>';
-	        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($row['updated'])) . '</pubDate>';
+	        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($row->updated)) . '</pubDate>';
 	        $rssfeed .= '</item>';
 		}
 	} else {
