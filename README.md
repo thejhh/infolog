@@ -5,7 +5,7 @@ This is a simple event logger designed for [Vectorama's](http://www.vectorama.in
 
 At the moment this app is only intended for Google Chrome browser and use on any other browser might have some bugs lurking around.
 
-See also [live demo](http://dev.jhh.me/infolog/).
+See also [live demo at infolog.in](http://infolog.in/). You can use any address *.infolog.in and it's new domain-based stream.
 
 Licence
 -------
@@ -43,6 +43,8 @@ Wish list:
 * CLI utility to post messages
 * Clean up scripts/main.js
 * Change title based on domain in use
+* List public streams at http://infolog.in
+* UI to "create" new domains
 
 Done items:
 
