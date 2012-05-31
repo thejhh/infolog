@@ -1,8 +1,11 @@
+<?php
+	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Infolog - Infodesk Event Logger</title>
+    <title><?php echo htmlspecialchars($domain); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Infodesk event logger" />
     <meta name="author" content="Jaakko-Heikki Heusala <jhh@sendanor.com>" />
@@ -13,6 +16,8 @@
 	<meta name="description" content="Simple event journal." />
 	<meta name="googlebot" content="noarchive" />
 	<meta name="robots" content="noindex,nofollow" />
+
+    <link rel="alternate" type="application/rss+xml" title="infolog.in" href="http://<?php echo htmlspecialchars($domain); ?>/feed.rss" />
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
