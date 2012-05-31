@@ -52,4 +52,4 @@ Done items:
 Known bugs
 ----------
 
-* IE is reported to miss events from client when written random#paskaa
+* <del>IE had cache problem.</del> Fixed now.
