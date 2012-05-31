@@ -56,7 +56,12 @@ try {
 	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
-		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,msg) VALUES (NOW(), NOW(), \'' . $sql->escape_string($msg) . '\')') === FALSE) {
+		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,msg)'
+				.' VALUES (NOW(), NOW()'
+				.', \'' . $sql->escape_string($_SERVER['SERVER_NAME']) . '\''
+				.', \'' . $sql->escape_string($_SERVER['REMOTE_ADDR']) . '\''
+				.', \'' . $sql->escape_string($msg) . '\''
+				.')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error);
 		}
 		echo 'OK';
