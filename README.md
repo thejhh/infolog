@@ -22,23 +22,29 @@ The project uses and includes some external 3rd party libraries:
 TODO
 ----
 
+Priority:
+- Option to delete newest events
+- Add REMOTE_ADDR into each event
+- Automatic hostname based "room creation"
+- Support for nicks/usernames (maybe by color)
+- Support for adding labels to old events
+- Automatically add labels based on search to new messages?
+
+Wish list:
 * Support for exporting by RSS/Atom feed
-* Option to delete newest events
 * Format links from messages into HTML links
 * When element is foo#bar -- should it convert it as hashtag or not?
-* Support for nicks/usernames (maybe by color)
-* <del>Reset search form field after use + add better notification when events are filtered by search</del>
 * Better search engine (maybe using [Apache Solr](http://lucene.apache.org/solr/))
 * Syncronize clock to SQL server's time
-* Add REMOTE_ADDR into each event
 * Setup program
-* <del>Focus automatically in to the message box</del>
 * Options to customize clock and other stuff
-* Automatic hostname based "room creation"
 * CLI utility to post messages
-* Support to add labels to old events
-* Automatically add labels based on search to new messages?
 * Clean up scripts/main.js
+
+Done items:
+
+* <del>Reset search form field after use + add better notification when events are filtered by search</del>
+* <del>Focus automatically in to the message box</del>
 
 Known bugs
 ----------
