@@ -103,7 +103,7 @@ function change_search_string(q) {
 	INFODESK_GLOBAL.search_string = ''+q;
 	require(["jquery"], function(jquery) {
 		var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) );
-		var link = jquery('<a class="btn"/>').text("Close").click(function(){ change_search_string(''); });
+		var link = jquery('<a class="btn"/>').text("Close &times;").click(function(){ change_search_string(''); });
 		link.appendTo(header);
 		jquery('#events .events-header').empty();
 		jquery('#events .events-body').empty();
