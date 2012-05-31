@@ -34,8 +34,9 @@ Priority:
 2. Support for nicks/usernames (maybe by color)
 3. Support for adding labels to old events
 4. Automatically add labels based on search to new messages?
-5. HTML anchors to label search
-6. Select box for predefined labels
+5. Link for specific message
+6. Link for specific search
+7. Select box for predefined labels
 
 Wish list:
 
