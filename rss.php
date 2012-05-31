@@ -46,7 +46,7 @@ try {
     $rssfeed .= '</channel>';
     $rssfeed .= '</rss>';
 
-    echo $rssfeed;
+    echo $rssfeed . "\n";
 
 } catch(Exception $e) {
 	my_exception_handler($e);
