@@ -35,6 +35,7 @@ TODO
 * Focus automatically in to the message box
 * Options to customize clock and other stuff
 * Automatic hostname based "room creation"
+* CLI utility to post messages
 
 Known bugs
 ----------
