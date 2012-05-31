@@ -40,7 +40,6 @@ Priority:
 
 Wish list:
 
-* Support for exporting by RSS/Atom feed
 * Format links from messages into HTML links
 * When element is foo#bar -- should it convert it as hashtag or not?
 * Better search engine (maybe using [Apache Solr](http://lucene.apache.org/solr/))
@@ -49,16 +48,17 @@ Wish list:
 * Options to customize clock and other stuff
 * CLI utility to post messages
 * Clean up scripts/main.js
-* Change title based on domain in use
 * List public streams at http://infolog.in
 * UI to "create" new domains
 
 Done items:
 
+* <del>Support for exporting by RSS/Atom feed</del>
 * <del>Reset search form field after use + add better notification when events are filtered by search</del>
 * <del>Focus automatically in to the message box</del>
 * <del>Add REMOTE_ADDR into each event</del>
 * <del>Automatic hostname based "room creation"</del>
+* <del>Change title based on domain in use</del>
 
 Known bugs
 ----------

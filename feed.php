@@ -23,7 +23,8 @@ try {
 	if($q !== '') {
 		$query .= " AND (LOCATE('". $sql->escape_string($q) ."', msg) != 0)";
 	}
-	$query .= ' ORDER BY updated, created';
+	$query .= " AND UNIX_TIMESTAMP(SUBDATE(NOW(), INTERVAL 24 HOUR)) <= UNIX_TIMESTAMP(created)';
+	$query .= ' ORDER BY updated DESC';
 	if( $result = $sql->query($query) ) {
 		$list = array();
 		while ($row = $result->fetch_object()){
