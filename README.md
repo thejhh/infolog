@@ -25,13 +25,11 @@ TODO
 Priority:
 
 1. Option to delete newest events
-2. Add REMOTE_ADDR into each event
-3. Automatic hostname based "room creation"
-4. Support for nicks/usernames (maybe by color)
-5. Support for adding labels to old events
-6. Automatically add labels based on search to new messages?
-7. HTML anchors to label search
-8. Select box for predefined labels
+2. Support for nicks/usernames (maybe by color)
+3. Support for adding labels to old events
+4. Automatically add labels based on search to new messages?
+5. HTML anchors to label search
+6. Select box for predefined labels
 
 Wish list:
 
@@ -49,6 +47,8 @@ Done items:
 
 * <del>Reset search form field after use + add better notification when events are filtered by search</del>
 * <del>Focus automatically in to the message box</del>
+* <del>Add REMOTE_ADDR into each event</del>
+* <del>Automatic hostname based "room creation"</del>
 
 Known bugs
 ----------
