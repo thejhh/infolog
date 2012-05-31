@@ -27,7 +27,7 @@ try {
 	if( $result = $sql->query($query) ) {
 		$list = array();
 		while ($row = $result->fetch_object()){
-			$msg = clone $row['msg'];
+			$msg = (string)$row['msg'];
 			if(strlen($msg) <= 160) {
 				$title = $msg;
 			} else {
