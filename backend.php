@@ -79,6 +79,7 @@ try {
 		$sql = SQL::init();
 		$query = 'SELECT * FROM `' . SQL_PREFIX . 'log`';
 		$query .= ' WHERE log_id >= ' . $start_from;
+		$query .= ' AND domain=\'' . $_SERVER['SERVER_NAME'] . '\'';
 		if($q !== '') {
 			$query .= " AND (LOCATE('". $sql->escape_string($q) ."', msg) != 0)";
 		}
