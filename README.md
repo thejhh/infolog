@@ -32,6 +32,9 @@ TODO
 * Syncronize clock to SQL server's time
 * Add REMOTE_ADDR into each event
 * Setup program
+* Focus automatically in to the message box
+* Options to customize clock and other stuff
+* Automatic hostname based "room creation"
 
 Known bugs
 ----------
