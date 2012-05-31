@@ -5,14 +5,14 @@ try {
 
 	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
 
-	$rssfeed = '<?xml version="1.0" encoding="UTF-8"?>';
-	$rssfeed .= '<rss version="2.0">';
-	$rssfeed .= '<channel>';
-	$rssfeed .= '<title>'. htmlspecialchars($domain) .'</title>';
-	$rssfeed .= '<link>http://'.htmlspecialchars($domain).'</link>';
-	$rssfeed .= '<description>Latest notes from '.htmlspecialchars($domain).'</description>';
-	$rssfeed .= '<language>en-us</language>';
-	$rssfeed .= '<copyright>Copyright (C) 2012 Jaakko-Heikki Heusala</copyright>';
+	$rssfeed = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+	$rssfeed .= '<rss version="2.0">'."\n";
+	$rssfeed .= '<channel>'."\n";
+	$rssfeed .= '<title>'. htmlspecialchars($domain) .'</title>'."\n";
+	$rssfeed .= '<link>http://'.htmlspecialchars($domain).'</link>'."\n";
+	$rssfeed .= '<description>Latest notes from '.htmlspecialchars($domain).'</description>'."\n";
+	$rssfeed .= '<language>en-us</language>'."\n";
+	$rssfeed .= '<copyright>Copyright (C) 2012 Jaakko-Heikki Heusala</copyright>'."\n";
 
 	$q = '';
 	if(isset($_GET['q'])) $q = $_GET['q'];
@@ -33,19 +33,19 @@ try {
 			} else {
 				$title = substr($msg, 0, 160) . '...';
 			}
-	        $rssfeed .= '<item>';
-	        $rssfeed .= '<title>' . htmlspecialchars($title) . '</title>';
-	        $rssfeed .= '<description>' . htmlspecialchars($msg) . '</description>';
-	        //$rssfeed .= '<link>http://' . htmlspecialchars($domain) . '</link>';
-	        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($row->updated)) . '</pubDate>';
-	        $rssfeed .= '</item>';
+	        $rssfeed .= '<item>'."\n";
+	        $rssfeed .= '<title>' . htmlspecialchars($title) . '</title>'."\n";
+	        $rssfeed .= '<description>' . htmlspecialchars($msg) . '</description>'."\n";
+	        //$rssfeed .= '<link>http://' . htmlspecialchars($domain) . '</link>'."\n";
+	        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($row->updated)) . '</pubDate>'."\n";
+	        $rssfeed .= '</item>'."\n";
 		}
 	} else {
 		throw new Exception('SQL error: ' . $sql->error);
 	}
 
-    $rssfeed .= '</channel>';
-    $rssfeed .= '</rss>';
+    $rssfeed .= '</channel>'."\n";
+    $rssfeed .= '</rss>'."\n";
 
     echo $rssfeed . "\n";
 
