@@ -61,7 +61,7 @@ function post_msg(args) {
 		//alert('In post_msg() with args=' + JSON.stringify(args) );
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
-		if(msg.length === 0) {
+		if( (msg.length === 0) || (msg.length >= 1024) ) {
 			return;
 		}
 		var jqxhr;
