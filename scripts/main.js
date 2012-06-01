@@ -154,7 +154,7 @@ function update_events() {
 			var events = JSON.parse(data), event, div, id, msg;
 			
 			if(events && events.error) {
-				add_error(''.events.error, jquery);
+				add_error(''+events.error, jquery);
 				return;
 			}
 			
