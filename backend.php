@@ -64,6 +64,7 @@ try {
 			$query .= " AND (LOCATE('". $sql->escape_string($q) ."', msg) != 0)";
 		}
 		$query .= ' ORDER BY updated, created';
+		$server_time = time();
 		if( $result = $sql->query($query) ) {
 			$list = array();
 			while ($row = $result->fetch_object()){
@@ -82,7 +83,7 @@ try {
 				}
 				$list[] = $data;
 			}
-			echo json_encode(array('time'=>time(), 'events'=>$list));
+			echo json_encode(array('time'=>$server_time, 'events'=>$list));
 		} else {
 			throw new Exception('SQL error: ' . $sql->error);
 		}
