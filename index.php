@@ -1,5 +1,6 @@
 <?php
 	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
+	$domain_tag = preg_replace('/\.infolog\.in$/i', '', $domain);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +57,7 @@
           <a class="brand" href="http://infolog.in">infolog.in</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/"><?php echo htmlspecialchars(preg_replace('/\.infolog\.in$/i', '', $domain)); ?></a></li>
+              <li class="active"><a href="/"><?php echo htmlspecialchars($domain_tag); ?></a></li>
               <li><a data-toggle="modal" href="#about">About</a></li>
               <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>
