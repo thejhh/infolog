@@ -175,7 +175,7 @@ function update_events() {
 
 					var div = jquery('#elements .event_container').clone();
 					div.find('.log_id').text(''+event.log_id);
-					div.find('.date').text( updated.getHours() + ':' + updated.getMinutes() );
+					div.find('.date').text( '' + updated.getHours() + ':' + updated.getMinutes() );
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
 					if( (seconds_since > 0) && (seconds_since < 5*60) ) {
