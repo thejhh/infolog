@@ -255,7 +255,7 @@ window.onload = function() {
 		var form = jquery('#control_form');
 		var field = form.find('.msg_field');
 		var field_help = form.find('.msg_field_help');
-		field.keyup(function() {
+		field.keydown(function() {
 			var len = field.val().length,
 			    max = parseInt(field.attr("maxlength"), 10);
 			if(len < 1024) {
