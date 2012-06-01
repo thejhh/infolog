@@ -90,7 +90,7 @@
 
 	/* Setup cookies */
 	class Cookie {
-		static private $random_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-/%=';
+		static private $random_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		static private $user_ident_tag = null;
 
 		/* */
