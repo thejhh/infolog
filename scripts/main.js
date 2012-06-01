@@ -57,6 +57,27 @@ function add_error(args, jquery) {
 };
 
 /* Post message to server */
+function remove_msg(log_id, success_fn) {
+		var jqxhr;
+		require(["jquery"], function(jquery) {
+			jqxhr = jquery.post('backend.php', {'remove_msg':log_id});
+		}, function(err) { add_error(JSON.stringify(err)); });
+		jqxhr.complete(function(response) {
+			try {
+				if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
+					success_fn();
+				} else if(response && (response.status !== undefined)) {
+					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
+				} else {
+					add_error('Connection failed');
+				}
+			} catch(e) {
+				add_error('Connection failed');
+			}
+		});
+}
+
+/* Post message to server */
 function post_msg(args) {
 		//alert('In post_msg() with args=' + JSON.stringify(args) );
 		var args = args || {};
@@ -178,16 +199,24 @@ function update_events() {
 					div.find('.date').text( moment(updated).format("HH:mm:ss") );
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
+					var close = div.find('.close');
 					if(seconds_since < 5*60) {
 						//alert("seconds_since = " + seconds_since);
-						div.find('.close').show();
+						close.show();
 						setTimeout(function() {
-							div.find('.close').hide();
+							close.hide();
 						}, (5*60 - seconds_since)*1000);
 					} else {
-						div.find('.close').hide();
+						close.hide();
 					}
-	
+
+					close.click(function() {
+						remove_msg(event.log_id, function() {
+							div.remove();
+						});
+						return false;
+					});
+
 					div.prependTo('#events .events-body');
 				}());
 			}
