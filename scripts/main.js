@@ -164,7 +164,7 @@ function update_events() {
 				(function() {
 					var event = events[i],
 					    id = parseInt(event.log_id, 10),
-					    seconds_since = server_time - events.updated,
+					    seconds_since = server_time - event.updated,
 					    updated = new Date();
 
 					updated.setTime( updated.getTime() + seconds_since*1000);
