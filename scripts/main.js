@@ -178,7 +178,7 @@ function update_events() {
 					div.find('.date').text( moment(updated).format("HH:mm:ss") );
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
-					if( (seconds_since >= 0) && (seconds_since < 5*60) ) {
+					if(seconds_since < 5*60) {
 						div.find('.close').delay(seconds_since*1000).hide();
 					} else {
 						div.find('.close').hide();
