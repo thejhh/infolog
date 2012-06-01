@@ -77,7 +77,7 @@
 		<noscript>
 			<div class="alert">
 				<button class="close" data-dismiss="modal">&times;</button>
-				<strong>Warning!</strong> This site requires JavaScript support enabled.
+				<strong>Warning!</strong> This site requires JavaScript support.
 			</div>
 		</noscript>
 
