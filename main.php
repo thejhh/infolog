@@ -90,13 +90,14 @@
 
 	/* Setup cookies */
 	class Cookie {
-		static private $random_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		static private $key_len = 64;
+		static private $key_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		static private $user_ident_tag = null;
 
 		/* */
 		static public function isValid($tag) {
-			if(strlen($tag) !== 128) return false;
-			if(preg_match('/^[' .preg_quote(self::$random_chars) .']{128}$/', $tag) !== 1) return false;
+			if(strlen($tag) !== self::$key_len) return false;
+			if(preg_match('/^[' .preg_quote(self::$key_chars) .']+$/', $tag) !== 1) return false;
 			return true;
 		}
 
@@ -106,7 +107,7 @@
 				if(isset($_COOKIE[USER_COOKIE_NAME]) && self::isValid($_COOKIE[USER_COOKIE_NAME]) ) {
 					self::$user_ident_tag = $_COOKIE[USER_COOKIE_NAME];
 				} else {
-					self::$user_ident_tag = self::generateRandom(128);
+					self::$user_ident_tag = self::generateRandom(self::$key_len);
 					setcookie(USER_COOKIE_NAME,
 						self::$user_ident_tag,
 						time()+60*60*24*365*10,
@@ -123,7 +124,7 @@
 		static private function generateRandom($len) {
 			$key = '';
 			for($i = 0; $i<$len; $i++) {
-				$key .= self::$random_chars[ rand(0, strlen(self::$random_chars)-1 ) ];
+				$key .= self::$key_chars[ rand(0, strlen(self::$key_chars)-1 ) ];
 			}
 			return $key;
 		}
