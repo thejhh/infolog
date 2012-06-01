@@ -153,6 +153,7 @@ function update_events() {
 		jquery.get('backend.php', options, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
 			
+			alert(data);
 			if(events && events.error) {
 				add_error(''+events.error, jquery);
 				return;
