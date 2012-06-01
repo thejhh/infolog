@@ -77,6 +77,9 @@ try {
 				if(defined('REMOTE_ADDR_SALT')) {
 					$data['remote_addr'] = sha1(REMOTE_ADDR_SALT . $row->remote_addr);
 				}
+				if(defined('USER_TAG_SALT')) {
+					$data['user_tag'] = sha1(USER_TAG_SALT . $row->user_tag);
+				}
 				$list[] = $data;
 			}
 			echo json_encode($list);
