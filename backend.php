@@ -25,6 +25,12 @@ try {
 			throw new Exception('PHP extension is not loaded: intl');
 		}
 
+		/*
+		if( phpversion() < '5.3' ) {
+			throw new Exception('Invalid PHP version: ' . phpversion());
+		}
+		*/
+
 		$start_from = 0;
 		$q = '';
 		if(isset($_GET['start'])) $start_from = (int) ($_GET['start']);
