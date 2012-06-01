@@ -150,10 +150,9 @@ function update_events() {
 		if(INFODESK_GLOBAL.search_string && (INFODESK_GLOBAL.search_string !== '')) {
 			options.q = INFODESK_GLOBAL.search_string;
 		}
-		jquery.get('backend.php', options, function(data) {
+		var jqxhr = jquery.get('backend.php', options, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
 			
-			alert(data);
 			if(events && events.error) {
 				add_error(''+events.error, jquery);
 				return;
@@ -173,6 +172,14 @@ function update_events() {
 				div.prependTo('#events .events-body');
 			}
 			INFODESK_GLOBAL.updating = false;
+		});
+		jqxhr.error(function(data) {
+			var obj = JSON.parse(data);
+			if(events && events.error) {
+				add_error(''+events.error, jquery);
+				return;
+			}
+			add_error(data);
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
 }
