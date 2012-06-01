@@ -17,7 +17,7 @@ try {
 		$sql = SQL::init();
 		$res = $sql->query(sprintf('DELETE FROM `' . SQL_PREFIX . 'log` WHERE log_id=\'%s\' AND user_id=\'%s\' LIMIT 1', $log_id, $user_id));
 		if($res === FALSE) { throw new Exception('SQL error: ' . $sql->error); }
-		if($sql->affected_rows !== 1) { throw new Exception('Could not find specified message.'); }
+		if($sql->affected_rows !== 1) { throw new Exception(sprintf('Could not find specified message with log_id="%s" and user_id="%s"', log_id, user_id)); }
 		echo 'OK';
 		return;
 	}
