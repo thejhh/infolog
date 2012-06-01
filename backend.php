@@ -2,15 +2,27 @@
 try {
 	require_once(dirname(__FILE__) . '/main.php');
 
+	/* Test server environment */
+	if(isset($_POST['test'])) {
+		if(!extension_loaded('intl')) {
+			throw new Exception('PHP extension is not loaded: intl');
+		}
+		return;
+	}
+
 	/* send_msg */
 	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
+		if(!extension_loaded('intl')) {
+			throw new Exception('PHP extension is not loaded: intl');
+		}
+
 		$msg = $_POST['msg'];
 		$sql = SQL::init();
 		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,msg)'
 				.' VALUES (NOW(), NOW()'
 				.', \'' . $sql->escape_string($_SERVER['SERVER_NAME']) . '\''
 				.', \'' . $sql->escape_string($_SERVER['REMOTE_ADDR']) . '\''
-				.', \'' . $sql->escape_string($msg) . '\''
+				.', \'' . $sql->escape_string(Normalizer::normalize($msg)) . '\''
 				.')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error);
 		}

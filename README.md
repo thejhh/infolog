@@ -63,4 +63,5 @@ Done items:
 Known bugs
 ----------
 
-* <del>IE had cache problem.</del> Fixed now.
+* <del>IE had cache problem</del>, fixed.
+* <del>Problem with illegal UTF-8 characters</del>, fixed.
