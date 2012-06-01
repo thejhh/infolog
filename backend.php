@@ -10,6 +10,18 @@ try {
 		return;
 	}
 
+	/* remove_msg */
+	if(isset($_POST['remove_msg'])) {
+		$log_id = $_POST['remove_msg'];
+		$user_id = Cookie::getUserId();
+		$sql = SQL::init();
+		if( $sql->query(sprintf('DELETE FROM `' . SQL_PREFIX . 'log` WHERE log_id=\'%s\' AND user_id=\'%s\' LIMIT 1', $log_id, $user_id)) === FALSE) {
+			throw new Exception('SQL error: ' . $sql->error);
+		}
+		echo 'OK';
+		return;
+	}
+
 	/* send_msg */
 	if(isset($_POST['send_msg']) && isset($_POST['msg'])) {
 		if(!extension_loaded('intl')) {
