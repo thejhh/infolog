@@ -257,7 +257,7 @@ window.onload = function() {
 		var field_help = form.find('.msg_field_help');
 		var field_max = parseInt(field.attr("maxlength"), 10);
 		field.removeAttr("maxlength");
-		field.keydown(function() {
+		function field_update() {
 			var len = field.val().length;
 			if(len < field_max) {
 				// Success
@@ -272,8 +272,9 @@ window.onload = function() {
 				if(!form.hasClass('error')) form.toggleClass('error');
 				field_help.text('' + (field_max-len));
 			}
-		});
-
+		}
+		field.keydown(field_update);
+		field.change(field_update);
 	});
 };
 
