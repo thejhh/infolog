@@ -179,8 +179,8 @@ function update_events() {
 		});
 		jqxhr.error(function(data) {
 			var obj = JSON.parse(data);
-			if(events && events.error) {
-				add_error(''+events.error, jquery);
+			if(obj && obj.error) {
+				add_error(obj.error, jquery);
 				return;
 			}
 			add_error(data);
