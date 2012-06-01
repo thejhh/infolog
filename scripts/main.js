@@ -179,17 +179,19 @@ function update_events() {
 		});
 		jqxhr.complete(function(data, status) {
 			if(status === "success") return;
-			add_error(data.responseText);
-			return;
-			try {
-				var obj = JSON.parse(data);
-				if(obj && obj.error) {
-					add_error(obj.error, jquery);
-					return;
+			if(data && data.responseText) {
+				try {
+					var obj = JSON.parse(data.responseText);
+					if(obj && obj.error) {
+						add_error(obj.error, jquery);
+						return;
+					}
+					add_error(obj);
+				} catch(e) {
+					add_error(data);
 				}
-				add_error(obj);
-			} catch(e) {
-				add_error(data);
+			} else {
+				add_error(status + ' with ' + data);
 			}
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
