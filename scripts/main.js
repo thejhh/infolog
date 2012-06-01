@@ -179,6 +179,8 @@ function update_events() {
 		});
 		jqxhr.complete(function(data, status) {
 			if(status === "success") return;
+			add_error(data);
+			return;
 			try {
 				var obj = JSON.parse(data);
 				if(obj && obj.error) {
