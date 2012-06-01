@@ -127,7 +127,7 @@
 		static private function generateRandom($len) {
 			$key = '';
 			for($i = 0; $i<$len; $i++) {
-				$key .= self::$random_chars[ rand(0, strlen(self::$random_chars) ) ];
+				$key .= self::$random_chars[ rand(0, strlen(self::$random_chars)-1 ) ];
 			}
 			return $key;
 		}
