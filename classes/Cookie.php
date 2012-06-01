@@ -57,7 +57,7 @@
 						self::$user_tag,
 						time()+60*60*24*365*10,
 						'/',
-						'infolog.in',
+						COOKIE_DOMAIN,
 						(isset($_SERVER['HTTPS']) ? true : false)
 					);
 					self::$user_id = self::insert(self::$user_tag);

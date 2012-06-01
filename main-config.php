@@ -23,5 +23,9 @@
 		}
 	}
 
+	if(!defined('COOKIE_DOMAIN')) {
+		define('COOKIE_DOMAIN', TOP_DOMAIN);
+	}
+
 return;
 ?>
