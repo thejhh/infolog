@@ -251,6 +251,24 @@ window.onload = function() {
 		// Focus on message field
 		jquery('#control_form .msg_field').focus();
 
+		// Update form message size
+		var form = jquery('#control_form');
+		var field = form.find('.msg_field');
+		var field_help = form.find('.msg_field_help');
+		field.change(function() {
+			var len = field.val().length;
+			if(len < 1024) {
+				field_help.show();
+				form.toggleClass('success'),
+				field_help.text('Left ' + (1024-len) + ' chars');
+			} else {
+				field_help.show();
+				form.toggleClass('success'),
+				form.toggleClass('error'),
+				field_help.text('Left ' + (1024-len) + ' chars');
+			}
+		});
+
 	});
 };
 
