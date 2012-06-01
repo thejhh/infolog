@@ -92,6 +92,7 @@
 	class Cookie {
 		static private $key_len = 64;
 		static private $key_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		static private $user_id = null;
 		static private $user_tag = null;
 
 		/* */
@@ -114,6 +115,15 @@
 		}
 
 		/* */
+		static public function getUser($tag) {
+			$sql = SQL::init();
+			$res = $sql->query(sprintf('SELECT * FROM `' . SQL_PREFIX . 'user` WHERE tag=\'%s\' LIMIT 1', $sql->escape_string($tag) ));
+			if($res === FALSE) throw new Exception('MySQL error: ' . $sql->error);
+			$row = $res->fetch_array();
+			return $row;
+		}
+
+		/* */
 		static public function insert($tag) {
 			$sql = SQL::init();
 			$res = $sql->query(sprintf('INSERT INTO `' . SQL_PREFIX . 'user` (key) VALUES (\'%s\')', $sql->escape_string($tag) ));
@@ -122,11 +132,14 @@
 		}
 
 		/* */
-		static public function getUserTag() {
-			if(is_null(self::$user_tag)) {
+		static private function init() {
+			if( is_null(self::$user_tag) || is_null(self::$user_id) ) {
 				$cookie = isset($_COOKIE[USER_COOKIE_NAME]) ? $_COOKIE[USER_COOKIE_NAME] : null;
 				if( self::isValid($cookie) && self::exists($cookie) ) {
 					self::$user_tag = $cookie;
+					$row = self::getUser($cookie);
+					if(is_null($row)) throw new Exception('Unespected null row!');
+					self::$user_id = $row['user_id'];
 				} else {
 					self::$user_tag = self::generateRandom(self::$key_len);
 					setcookie(USER_COOKIE_NAME,
@@ -139,7 +152,18 @@
 					self::$user_id = self::insert(self::$user_tag);
 				}
 			}
+		}
+
+		/* */
+		static public function getUserTag() {
+			self::init();
 			return self::$user_tag;
+		}
+
+		/* */
+		static public function getUserId() {
+			self::init();
+			return self::$user_id;
 		}
 
 		/* */
