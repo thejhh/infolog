@@ -174,6 +174,7 @@ function update_events() {
 				div.find('.date').text(''+event.updated);
 				div.find('.msg').html( format_msg(jquery, event.msg) );
 				div.prependTo('#events .events-body');
+				div.find('.close').delay(5*60*1000).hide();
 			}
 			INFODESK_GLOBAL.updating = false;
 		});

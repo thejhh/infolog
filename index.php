@@ -138,10 +138,8 @@
 			</div>
 
 			<div class="event_container">
-				<p>
-				<i class="small date"></i> - 
-				<span class="msg"></span>
-				</p>
+				<i class="small date"></i> - <span class="msg"></span>
+				<a href="#" class="close">&times;</a>
 			</div>
 		</div>
 
