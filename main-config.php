@@ -16,7 +16,7 @@
 
 	if(!defined('TOP_DOMAIN')) {
 		$matches = array();
-		if(preg_match('/\.([a-z0-9\-_]+\.[a-z0-9\-_]+)$/i', CURRENT_DOMAIN, $matches) !== FALSE ) {
+		if(preg_match('/\.([a-z0-9\-_]+\.[a-z0-9\-_]+)$/i', CURRENT_DOMAIN, $matches) === 1) {
 			define('TOP_DOMAIN', $matches[1]);
 		} else {
 			define('TOP_DOMAIN', 'infolog.in');
