@@ -16,7 +16,7 @@ requirejs.config({
 var INFODESK_GLOBAL = {};
 
 /* Pop error message */
-function add_error(args) {
+function add_error(args, jquery) {
 	//alert('error: '+ JSON.stringify(args));
 	var data, dialog;
 	if(args && (typeof args === 'object')) {
@@ -29,7 +29,7 @@ function add_error(args) {
 		data = {'title':''+args};
 	}
 	if(!data.date) data.date = new Date();
-	require(["jquery"], function(jquery) {
+	function do_jquery(jquery) {
 		dialog = jquery('#elements .error_dialog').clone();
 		dialog.find('.date').text(data.date);
 		dialog.find('.title').text(data.title);
@@ -40,9 +40,16 @@ function add_error(args) {
 		}
 		dialog.prependTo('#notifications');
 		dialog.alert();
-	}, function(err) {
-		alert('Error: ' . err);
-	});
+	}
+	if(jquery) {
+		do_jquery(jquery);
+	} else {
+		require(["jquery"], function(jquery) {
+			do_jquery(jquery);
+		}, function(err) {
+			alert('Error: ' . err);
+		});
+	}
 };
 
 /* Post message to server */
@@ -147,7 +154,7 @@ function update_events() {
 			var events = JSON.parse(data), event, div, id, msg;
 			
 			if(events && events.error) {
-				add_error(events.error);
+				add_error(''.events.error, jquery);
 				return;
 			}
 			
