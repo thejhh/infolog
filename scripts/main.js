@@ -149,7 +149,7 @@ function update_events() {
 	if(INFODESK_GLOBAL.updating === true) { return; }
 	INFODESK_GLOBAL.updating = true;
 	next_id = INFODESK_GLOBAL.last_id+1;
-	require(["jquery"], function(jquery) {
+	require(["jquery", "moment"], function(jquery, moment) {
 		var options = {'msgs':'1', 'start':''+next_id};
 		if(INFODESK_GLOBAL.search_string && (INFODESK_GLOBAL.search_string !== '')) {
 			options.q = INFODESK_GLOBAL.search_string;
@@ -175,7 +175,7 @@ function update_events() {
 
 					var div = jquery('#elements .event_container').clone();
 					div.find('.log_id').text(''+event.log_id);
-					div.find('.date').text( '' + updated.getHours() + ':' + updated.getMinutes() );
+					div.find('.date').text( moment(updated).format("HH.mm.ss") );
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
 					if( (seconds_since >= 0) && (seconds_since < 5*60) ) {

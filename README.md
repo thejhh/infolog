@@ -24,6 +24,7 @@ The project uses and includes some external 3rd party libraries:
 * [jquery](http://jquery.com/) under MIT, BSD or GPL licence
 * [bootstrap](http://twitter.github.com/bootstrap/) under the Apache License, Version 2.0
 * [showdown.js](https://github.com/coreyti/showdown) under BSD-style licence
+* [moment.js](http://momentjs.com/) under MIT license
 
 TODO
 ----
