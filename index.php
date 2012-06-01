@@ -53,10 +53,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/"><?php echo htmlspecialchars($domain); ?></a>
+          <a class="brand" href="http://infolog.in">infolog.in</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
+              <li class="active"><a href="/"><?php echo htmlspecialchars(preg_replace('/\.infolog\.in$/i', '', $domain)); ?></a></li>
               <li><a data-toggle="modal" href="#about">About</a></li>
               <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>
