@@ -77,6 +77,7 @@ try {
 		}
 		$query .= ' ORDER BY updated, created';
 		$server_time = time();
+		$user_id = Cookie::getUserId();
 		//writeln_stderr("server_time = " . $server_time);
 		if( $result = $sql->query($query) ) {
 			$list = array();
@@ -99,7 +100,7 @@ try {
 				}
 				$list[] = $data;
 			}
-			echo json_encode(array('time'=>$server_time, 'events'=>$list));
+			echo json_encode(array('time'=>$server_time, 'user_id'=>sha1(USER_ID_SALT . $user_id), 'events'=>$list));
 		} else {
 			throw new Exception('SQL error: ' . $sql->error);
 		}
