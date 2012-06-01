@@ -167,7 +167,7 @@ function update_events() {
 					    seconds_since = server_time - event.updated,
 					    updated = new Date();
 
-					updated.setTime( updated.getTime() + seconds_since*1000 );
+					updated.setTime( (server_time - seconds_since)*1000 );
 
 					if(id > INFODESK_GLOBAL.last_id) {
 						INFODESK_GLOBAL.last_id = id;
