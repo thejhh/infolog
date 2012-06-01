@@ -1,12 +1,11 @@
 <?php
-	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
-	$domain_tag = preg_replace('/\.infolog\.in$/i', '', $domain);
+	require_once('main-config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title><?php echo htmlspecialchars($domain); ?></title>
+    <title><?php echo htmlspecialchars(CURRENT_DOMAIN); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Infodesk event logger" />
     <meta name="author" content="Jaakko-Heikki Heusala <jhh@sendanor.com>" />
@@ -18,7 +17,7 @@
 	<meta name="googlebot" content="noarchive" />
 	<meta name="robots" content="noindex,nofollow" />
 
-    <link rel="alternate" type="application/rss+xml" title="infolog.in" href="http://<?php echo htmlspecialchars($domain); ?>/feed.rss" />
+    <link rel="alternate" type="application/rss+xml" title="infolog.in" href="http://<?php echo htmlspecialchars(CURRENT_DOMAIN); ?>/feed.rss" />
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -57,7 +56,7 @@
           <a class="brand" href="http://infolog.in">infolog.in</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/">@<?php echo htmlspecialchars($domain_tag); ?></a></li>
+              <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
               <li><a data-toggle="modal" href="#about">About</a></li>
               <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>

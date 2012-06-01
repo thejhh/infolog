@@ -72,11 +72,7 @@
 	set_exception_handler('my_exception_handler');
 
 	// Read config
-	if(!file_exists(dirname(__FILE__) . '/config.php')) { throw new Exception('No configuration!'); }
-	require_once(dirname(__FILE__) . '/config.php');
-
-	if(!defined('MAX_MSG_LENGTH')) { define('MAX_MSG_LENGTH', 1024); }
-	if(!defined('USER_COOKIE_NAME')) { define('USER_COOKIE_NAME', 'InInfologCookie'); }
+	require_once(dirname(__FILE__) . '/main-config.php');
 
 	/* Setup JIT MySQL */
 	class SQL {
@@ -115,7 +111,7 @@
 						self::$user_ident_tag,
 						time()+60*60*24*365*10,
 						'/',
-						$domain,
+						CURRENT_DOMAIN,
 						(isset($_SERVER['HTTPS']) ? true : false)
 					);
 				}
