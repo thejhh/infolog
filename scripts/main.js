@@ -156,7 +156,7 @@ function update_events() {
 		}
 		var jqxhr = jquery.get('backend.php', options, function(data) {
 			var response = JSON.parse(data),
-			    event, div, id, msg, updated, 
+			    event, div, id, msg, updated, seconds_since,
 			    events = response.events,
 			    server_time = response.time;
 			
@@ -164,8 +164,9 @@ function update_events() {
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
 				id = parseInt(event.log_id, 10);
+				seconds_since = server_time - events.updated;
 				updated = new Date();
-				updated.setTime(events.updated * 1000);
+				updated.setTime( updated.getTime() + seconds_since * 1000);
 				if(id > INFODESK_GLOBAL.last_id) {
 					INFODESK_GLOBAL.last_id = id;
 				}
@@ -174,8 +175,8 @@ function update_events() {
 				div.find('.date').text( updated.getHours() + ':' + updated.getMinutes() );
 				div.find('.msg').html( format_msg(jquery, event.msg) );
 
-				if( (server_time - event.updated) < 5*60) {
-					div.find('.close').delay((server_time - event.updated) *1000).hide();
+				if( (seconds_since > 0) && (seconds_since < 5*60) ) {
+					div.find('.close').delay(seconds_since *1000).hide();
 				} else {
 					div.find('.close').hide();
 				}
