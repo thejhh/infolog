@@ -256,19 +256,20 @@ window.onload = function() {
 		var field = form.find('.msg_field');
 		var field_help = form.find('.msg_field_help');
 		field.keyup(function() {
-			var len = field.val().length;
+			var len = field.val().length,
+			    max = parseInt(field.maxlength, 10);
 			if(len < 1024) {
 				// Success
 				field_help.show();
 				if(!form.hasClass('success')) form.toggleClass('success');
 				if(form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (1024-len));
+				field_help.text('' + (max-len));
 			} else {
 				// Error
 				field_help.show();
 				if(form.hasClass('success')) form.toggleClass('success');
 				if(!form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (1024-len));
+				field_help.text('' + (max-len));
 			}
 		});
 
