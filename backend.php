@@ -69,8 +69,8 @@ try {
 			while ($row = $result->fetch_object()){
 				$data = array(
 					'log_id' => $row->log_id,
-					'updated' => $row->updated,
-					'created' => $row->created,
+					'updated' => strtotime($row->updated),
+					'created' => strtotime($row->created),
 					'domain' => Normalizer::normalize($row->domain),
 					'msg' => Normalizer::normalize($row->msg)
 				);
@@ -82,7 +82,7 @@ try {
 				}
 				$list[] = $data;
 			}
-			echo json_encode($list);
+			echo json_encode(array('time'=>time(), 'events'=>$list));
 		} else {
 			throw new Exception('SQL error: ' . $sql->error);
 		}

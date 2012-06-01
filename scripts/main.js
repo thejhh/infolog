@@ -155,12 +155,10 @@ function update_events() {
 			options.q = INFODESK_GLOBAL.search_string;
 		}
 		var jqxhr = jquery.get('backend.php', options, function(data) {
-			var events = JSON.parse(data), event, div, id, msg;
-			
-			if(events && events.error) {
-				add_error(''+events.error, jquery);
-				return;
-			}
+			var response = JSON.parse(data),
+			    event, div, id, msg, 
+			    events = response.events,
+			    server_time = response.time;
 			
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
@@ -173,7 +171,13 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				div.find('.msg').html( format_msg(jquery, event.msg) );
-				div.find('.close').delay(5*60*1000).hide();
+
+				if( (server_time - event.updated) < 5*60) {
+					div.find('.close').delay((server_time - event.updated) *1000).hide();
+				} else {
+					div.find('.close').hide();
+				}
+
 				div.prependTo('#events .events-body');
 			}
 			INFODESK_GLOBAL.updating = false;
