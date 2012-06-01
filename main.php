@@ -5,7 +5,7 @@
 	/* */
 	class ErrorIdentifier {
 		static private $id = 0;
-		static public function create($data) {
+		static public function get($data) {
 			$key = '';
 			if(isset($data['error'])) {
 				$key .= $data['error'];
