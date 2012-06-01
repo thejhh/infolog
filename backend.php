@@ -18,7 +18,7 @@ try {
 
 		$msg = Normalizer::normalize($_POST['msg']);
 		$msg_len = strlen($msg);
-		if($msg_len > MAX_MSG_LENGTH) {
+		if($msg_len >= MAX_MSG_LENGTH) {
 			throw new Exception(sprintf('Message is too long (%d bytes).', $msg_len));
 		}
 		$sql = SQL::init();
