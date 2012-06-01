@@ -264,13 +264,13 @@ window.onload = function() {
 				field_help.show();
 				if(!form.hasClass('success')) form.toggleClass('success');
 				if(form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (max-len));
+				field_help.text('' + (field_max-len));
 			} else {
 				// Error
 				field_help.show();
 				if(form.hasClass('success')) form.toggleClass('success');
 				if(!form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (max-len));
+				field_help.text('' + (field_max-len));
 			}
 		});
 
