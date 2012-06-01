@@ -156,32 +156,35 @@ function update_events() {
 		}
 		var jqxhr = jquery.get('backend.php', options, function(data) {
 			var response = JSON.parse(data),
-			    event, div, id, msg, updated, seconds_since,
 			    events = response.events,
 			    server_time = response.time;
 			
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
-				event = events[i];
-				id = parseInt(event.log_id, 10);
-				seconds_since = server_time - events.updated;
-				updated = new Date();
-				updated.setTime( updated.getTime() + seconds_since * 1000);
-				if(id > INFODESK_GLOBAL.last_id) {
-					INFODESK_GLOBAL.last_id = id;
-				}
-				div = jquery('#elements .event_container').clone();
-				div.find('.log_id').text(''+event.log_id);
-				div.find('.date').text( updated.getHours() + ':' + updated.getMinutes() );
-				div.find('.msg').html( format_msg(jquery, event.msg) );
+				(function() {
+					var event = events[i],
+					    id = parseInt(event.log_id, 10),
+					    seconds_since = server_time - events.updated,
+					    updated = new Date(),
+					    updated.setTime( updated.getTime() + seconds_since*1000);
 
-				if( (seconds_since > 0) && (seconds_since < 5*60) ) {
-					div.find('.close').delay(seconds_since *1000).hide();
-				} else {
-					div.find('.close').hide();
-				}
+					if(id > INFODESK_GLOBAL.last_id) {
+						INFODESK_GLOBAL.last_id = id;
+					}
 
-				div.prependTo('#events .events-body');
+					var div = jquery('#elements .event_container').clone();
+					div.find('.log_id').text(''+event.log_id);
+					div.find('.date').text( updated.getHours() + ':' + updated.getMinutes() );
+					div.find('.msg').html( format_msg(jquery, event.msg) );
+
+					if( (seconds_since > 0) && (seconds_since < 5*60) ) {
+						div.find('.close').delay(seconds_since*1000).hide();
+					} else {
+						div.find('.close').hide();
+					}
+	
+					div.prependTo('#events .events-body');
+				}());
 			}
 			INFODESK_GLOBAL.updating = false;
 		});
