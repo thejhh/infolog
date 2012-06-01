@@ -9,7 +9,7 @@ define('SQL_DATABASE', 'infodesk');
 define('SQL_PREFIX', 'infodesk_');
 
 //define('REMOTE_ADDR_SALT', 'YOUR SECRET SALT');
-//define('USER_TAG_SALT', 'YOUR SECRET SALT');
+//define('USER_ID_SALT', 'YOUR SECRET SALT');
 //define('MAX_MSG_LENGTH', 1024);
 
 return;
