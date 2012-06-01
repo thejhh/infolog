@@ -1,6 +1,6 @@
 <?php
 	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
-	$domain_tag = ucfirst(preg_replace('/\.infolog\.in$/i', '', $domain));
+	$domain_tag = preg_replace('/\.infolog\.in$/i', '', $domain);
 ?>
 <!DOCTYPE html>
 <html lang="en">
