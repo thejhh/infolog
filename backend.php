@@ -17,8 +17,9 @@ try {
 		}
 
 		$msg = Normalizer::normalize($_POST['msg']);
-		if(strlen($msg) > 1024) {
-			throw new Exception(sprintf('Message too long (%d bytes/limit is 1024 bytes).', strlen($msg)));
+		$msg_len = strlen($msg);
+		if($msg_len > MAX_MSG_LENGTH) {
+			throw new Exception(sprintf('Message is too long (%d bytes).', $msg_len));
 		}
 		$sql = SQL::init();
 		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,msg)'

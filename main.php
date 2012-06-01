@@ -75,6 +75,8 @@
 	if(!file_exists(dirname(__FILE__) . '/config.php')) { throw new Exception('No configuration!'); }
 	require_once(dirname(__FILE__) . '/config.php');
 
+	if(!defined('MAX_MSG_LENGTH')) { define('MAX_MSG_LENGTH', 1024); }
+
 	/* Setup JIT MySQL */
 	class SQL {
 		static private $mysqli = null;
