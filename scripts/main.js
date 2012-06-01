@@ -186,7 +186,7 @@ function update_events() {
 				}
 				add_error(obj);
 			} catch(e) {
-				add_error(e);
+				add_error(data);
 			}
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
