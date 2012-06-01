@@ -65,13 +65,13 @@ try {
 		}
 		$query .= ' ORDER BY updated, created';
 		$server_time = time();
-		writeln_strerr("server_time = " . $server_time);
+		writeln_stderr("server_time = " . $server_time);
 		if( $result = $sql->query($query) ) {
 			$list = array();
 			while ($row = $result->fetch_object()){
-				writeln_strerr("event_id = " . $row->log_id);
-				writeln_strerr("event_updated_str = " . $row->updated);
-				writeln_strerr("event_updated = " . strtotime($row->updated));
+				writeln_stderr("event_id = " . $row->log_id);
+				writeln_stderr("event_updated_str = " . $row->updated);
+				writeln_stderr("event_updated = " . strtotime($row->updated));
 				$data = array(
 					'log_id' => $row->log_id,
 					'updated' => strtotime($row->updated),
