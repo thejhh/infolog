@@ -37,7 +37,7 @@
 		/* */
 		static public function insert($tag) {
 			$sql = SQL::init();
-			$res = $sql->query(sprintf('INSERT INTO `' . SQL_PREFIX . 'user` (tag) VALUES (\'%s\')', $sql->escape_string($tag) ));
+			$res = $sql->query(sprintf('INSERT INTO `' . SQL_PREFIX . 'user` (updated,created,tag) VALUES (NOW(), NOW(), \'%s\')', $sql->escape_string($tag) ));
 			if($res === FALSE) throw new Exception('MySQL error: ' . $sql->error);
 			return $sql->insert_id;
 		}
