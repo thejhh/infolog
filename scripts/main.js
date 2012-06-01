@@ -179,8 +179,10 @@ function update_events() {
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
 					if(seconds_since < 5*60) {
-						alert("seconds_since = " + seconds_since);
-						div.find('.close').delay(seconds_since*1000).hide();
+						//alert("seconds_since = " + seconds_since);
+						setTimeout(function() {
+							div.find('.close').hide();
+						}, seconds_since*1000);
 					} else {
 						div.find('.close').hide();
 					}
