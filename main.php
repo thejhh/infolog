@@ -88,36 +88,58 @@
 		}
 	}
 
-	/* Setup cookies */
+	/* Setup cookie based users */
 	class Cookie {
 		static private $key_len = 64;
 		static private $key_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-		static private $user_ident_tag = null;
+		static private $user_tag = null;
 
 		/* */
 		static public function isValid($tag) {
+			if(is_null($tag)) return false;
 			if(strlen($tag) !== self::$key_len) return false;
 			if(preg_match('/^[' .preg_quote(self::$key_chars) .']+$/', $tag) !== 1) return false;
 			return true;
 		}
 
 		/* */
-		static public function getUserIdentTag() {
-			if(is_null(self::$user_ident_tag)) {
-				if(isset($_COOKIE[USER_COOKIE_NAME]) && self::isValid($_COOKIE[USER_COOKIE_NAME]) ) {
-					self::$user_ident_tag = $_COOKIE[USER_COOKIE_NAME];
+		static public function exists($tag) {
+			$sql = SQL::init();
+			$res = $sql->query(sprintf('SELECT COUNT(*) AS count FROM `' . SQL_PREFIX . 'user` WHERE tag=\'%s\'', $sql->escape_string($tag) ));
+			if($res === FALSE) throw new Exception('MySQL error: ' . $sql->error);
+			$row = $res->fetch_array();
+			if(is_null($row)) throw new Exception('Unespected missing row from MySQL!');
+			if($row['count'] == 1) return true;
+			return false;
+		}
+
+		/* */
+		static public function insert($tag) {
+			$sql = SQL::init();
+			$res = $sql->query(sprintf('INSERT INTO `' . SQL_PREFIX . 'user` (key) VALUES (\'%s\')', $sql->escape_string($tag) ));
+			if($res === FALSE) throw new Exception('MySQL error: ' . $sql->error);
+			return $sql->insert_id;
+		}
+
+		/* */
+		static public function getCurrentTag() {
+			if(is_null(self::$user_tag)) {
+				$cookie = isset($_COOKIE[USER_COOKIE_NAME]) ? $_COOKIE[USER_COOKIE_NAME] : null;
+				if( self::isValid($cookie) && self::exists($cookie) ) {
+					self::$user_tag = $cookie;
 				} else {
-					self::$user_ident_tag = self::generateRandom(self::$key_len);
+					self::$user_tag = self::generateRandom(self::$key_len);
 					setcookie(USER_COOKIE_NAME,
-						self::$user_ident_tag,
+						self::$user_tag,
 						time()+60*60*24*365*10,
 						'/',
 						CURRENT_DOMAIN,
 						(isset($_SERVER['HTTPS']) ? true : false)
 					);
+					self::$user_id = self::insert(self::$user_tag);
 				}
 			}
-			return self::$user_ident_tag;
+			return self::$user_tag;
 		}
 
 		/* */
