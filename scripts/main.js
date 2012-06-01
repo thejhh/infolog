@@ -178,12 +178,16 @@ function update_events() {
 			INFODESK_GLOBAL.updating = false;
 		});
 		jqxhr.error(function(data) {
-			var obj = JSON.parse(data);
-			if(obj && obj.error) {
-				add_error(obj.error, jquery);
-				return;
+			try {
+				var obj = JSON.parse(data);
+				if(obj && obj.error) {
+					add_error(obj.error, jquery);
+					return;
+				}
+				add_error(obj);
+			} catch(e) {
+				add_error(e);
 			}
-			add_error(data);
 		});
 	}, function(err) { add_error(JSON.stringify(err)); });
 }
