@@ -3,7 +3,7 @@ try {
 	require_once(dirname(__FILE__) . '/main.php');
 
 	/* Test server environment */
-	if(isset($_POST['test'])) {
+	if(isset($_POST['test']) || isset($_GET['test'])) {
 		if(!extension_loaded('intl')) {
 			throw new Exception('PHP extension is not loaded: intl');
 		}
@@ -16,16 +16,19 @@ try {
 			throw new Exception('PHP extension is not loaded: intl');
 		}
 
+		$user_tag = Cookie::getUserIdentTag();
+
 		$msg = Normalizer::normalize($_POST['msg']);
 		$msg_len = strlen($msg);
 		if($msg_len >= MAX_MSG_LENGTH) {
 			throw new Exception(sprintf('Message is too long (%d bytes).', $msg_len));
 		}
 		$sql = SQL::init();
-		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,msg)'
+		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,user_tag,msg)'
 				.' VALUES (NOW(), NOW()'
 				.', \'' . $sql->escape_string($_SERVER['SERVER_NAME']) . '\''
 				.', \'' . $sql->escape_string($_SERVER['REMOTE_ADDR']) . '\''
+				.', \'' . $sql->escape_string($user_tag) . '\''
 				.', \'' . $sql->escape_string($msg) . '\''
 				.')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error);

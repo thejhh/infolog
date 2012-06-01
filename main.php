@@ -76,6 +76,7 @@
 	require_once(dirname(__FILE__) . '/config.php');
 
 	if(!defined('MAX_MSG_LENGTH')) { define('MAX_MSG_LENGTH', 1024); }
+	if(!defined('USER_COOKIE_NAME')) { define('USER_COOKIE_NAME', 'InInfologCookie'); }
 
 	/* Setup JIT MySQL */
 	class SQL {
@@ -89,6 +90,48 @@
 			}
 			return self::$mysqli;
 		}
+	}
+
+	/* Setup cookies */
+	class Cookie {
+		static private $random_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-/%=';
+		static private $user_ident_tag = null;
+
+		/* */
+		static public function isValid($tag) {
+			if(strlen($tag) !== 128) return false;
+			if(preg_match('/^[' .preg_quote(self::$random_chars) .']{128}$/', $tag) !== 1) return false;
+			return true;
+		}
+
+		/* */
+		static public function getUserIdentTag() {
+			if(is_null(self::$user_ident_tag)) {
+				if(isset($_COOKIE[USER_COOKIE_NAME]) && self::isValid($_COOKIE[USER_COOKIE_NAME]) ) {
+					self::$user_ident_tag = $_COOKIE[USER_COOKIE_NAME];
+				} else {
+					self::$user_ident_tag = self::generateRandom(128);
+					setcookie(USER_COOKIE_NAME,
+						self::$user_ident_tag,
+						time()+60*60*24*365*10,
+						'/',
+						$domain,
+						(isset($_SERVER['HTTPS']) ? true : false)
+					);
+				}
+			}
+			return self::$user_ident_tag;
+		}
+
+		/* */
+		static private function generateRandom($len) {
+			$key = '';
+			for($i = 0; $i<$len; $i++) {
+				$key .= self::$random_chars[ rand(0, strlen(self::$random_chars) ) ];
+			}
+			return $key;
+		}
+
 	}
 
 return;

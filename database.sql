@@ -4,6 +4,7 @@ CREATE TABLE `infodesk_log` (
     created          TIMESTAMP NOT NULL DEFAULT 0,
     domain           VARCHAR(255) NOT NULL DEFAULT '',
     remote_addr      VARCHAR(255) NOT NULL DEFAULT '',
+    user_tag      VARCHAR(255) NOT NULL DEFAULT '',
     msg              TEXT NOT NULL DEFAULT '',
     PRIMARY KEY(log_id)) CHARACTER SET utf8 ENGINE=InnoDB;
 
@@ -11,4 +12,5 @@ CREATE TABLE `infodesk_log` (
 /*
 ALTER TABLE `infodesk_log` ADD remote_addr      VARCHAR(255) NOT NULL DEFAULT '' AFTER created;
 ALTER TABLE `infodesk_log` ADD domain VARCHAR(255) NOT NULL DEFAULT '' AFTER created;
+ALTER TABLE `infodesk_log` ADD user_tag      VARCHAR(255) NOT NULL DEFAULT '' AFTER remote_addr;
 */
