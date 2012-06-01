@@ -178,7 +178,8 @@ function update_events() {
 		var jqxhr = jquery.get('backend.php', options, function(data) {
 			var response = JSON.parse(data),
 			    events = response.events,
-			    server_time = response.time;
+			    server_time = response.time,
+			    our_user_id = response.user_id;
 			
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
@@ -200,7 +201,7 @@ function update_events() {
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
 					var close = div.find('.close');
-					if(seconds_since < 5*60) {
+					if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
 						//alert("seconds_since = " + seconds_since);
 						close.show();
 						setTimeout(function() {
