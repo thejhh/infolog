@@ -257,7 +257,7 @@ window.onload = function() {
 		var field_help = form.find('.msg_field_help');
 		field.keyup(function() {
 			var len = field.val().length,
-			    max = parseInt(field.maxlength, 10);
+			    max = parseInt(field.attr("maxlength"), 10);
 			if(len < 1024) {
 				// Success
 				field_help.show();
