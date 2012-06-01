@@ -1,6 +1,6 @@
 <?php
 	$domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'default.infolog.in';
-	$domain_tag = preg_replace('/\.infolog\.in$/i', '', $domain);
+	$domain_tag = ucfirst(preg_replace('/\.infolog\.in$/i', '', $domain));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,8 +58,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/"><?php echo htmlspecialchars($domain_tag); ?></a></li>
-              <li><a data-toggle="modal" href="#about">about</a></li>
-              <li><a data-toggle="modal" href="#contact">contact</a></li>
+              <li><a data-toggle="modal" href="#about">About</a></li>
+              <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>
 
 			<form class="form-search">
