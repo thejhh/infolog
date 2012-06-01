@@ -20,6 +20,10 @@ function add_error(args, jquery) {
 	//alert('error: '+ JSON.stringify(args));
 	var data, dialog;
 	if(args && (typeof args === 'object')) {
+		if(args.error) {
+			args.title = args.error;
+			delete args.error;
+		}
 		if(args.title || args.desc) {
 			data = args;
 		} else {
