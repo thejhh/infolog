@@ -177,7 +177,8 @@ function update_events() {
 			}
 			INFODESK_GLOBAL.updating = false;
 		});
-		jqxhr.error(function(data) {
+		jqxhr.complete(function(data, status) {
+			if(status === "success") return;
 			try {
 				var obj = JSON.parse(data);
 				if(obj && obj.error) {
