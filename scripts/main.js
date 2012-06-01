@@ -145,6 +145,12 @@ function update_events() {
 		}
 		jquery.get('backend.php', options, function(data) {
 			var events = JSON.parse(data), event, div, id, msg;
+			
+			if(events && events.error) {
+				add_error(events.error);
+				return;
+			}
+			
 			//alert('got events: ' + events.length);
 			for(i in events) if(events.hasOwnProperty(i)) {
 				event = events[i];
