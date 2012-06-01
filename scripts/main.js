@@ -165,8 +165,9 @@ function update_events() {
 					var event = events[i],
 					    id = parseInt(event.log_id, 10),
 					    seconds_since = server_time - events.updated,
-					    updated = new Date(),
-					    updated.setTime( updated.getTime() + seconds_since*1000);
+					    updated = new Date();
+
+					updated.setTime( updated.getTime() + seconds_since*1000);
 
 					if(id > INFODESK_GLOBAL.last_id) {
 						INFODESK_GLOBAL.last_id = id;
