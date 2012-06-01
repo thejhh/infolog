@@ -58,8 +58,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/"><?php echo htmlspecialchars($domain_tag); ?></a></li>
-              <li><a data-toggle="modal" href="#about">About</a></li>
-              <li><a data-toggle="modal" href="#contact">Contact</a></li>
+              <li><a data-toggle="modal" href="#about">about</a></li>
+              <li><a data-toggle="modal" href="#contact">contact</a></li>
             </ul>
 
 			<form class="form-search">
