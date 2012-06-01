@@ -113,7 +113,7 @@
 			<div class="about_modal modal hide" id="about">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal">&times;</button>
-					<h3>Vectorama Infodesk Logger</h3>
+					<h3>README</h3>
 				</div>
 				<div class="modal-body">
 					<p></p>
