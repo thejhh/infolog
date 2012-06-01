@@ -258,13 +258,16 @@ window.onload = function() {
 		field.keyup(function() {
 			var len = field.val().length;
 			if(len < 1024) {
+				// Success
 				field_help.show();
-				form.toggleClass('success'),
+				if(!form.hasClass('success')) form.toggleClass('success');
+				if(form.hasClass('error')) form.toggleClass('error');
 				field_help.text('Left ' + (1024-len) + ' chars');
 			} else {
+				// Error
 				field_help.show();
-				form.toggleClass('success'),
-				form.toggleClass('error'),
+				if(form.hasClass('success')) form.toggleClass('success');
+				if(!form.hasClass('error')) form.toggleClass('error');
 				field_help.text('Left ' + (1024-len) + ' chars');
 			}
 		});
