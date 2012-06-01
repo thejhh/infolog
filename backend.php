@@ -16,13 +16,16 @@ try {
 			throw new Exception('PHP extension is not loaded: intl');
 		}
 
-		$msg = $_POST['msg'];
+		$msg = Normalizer::normalize($_POST['msg']);
+		if(strlen($msg) > 1024) {
+			throw new Exception(sprintf('Message too long (%d bytes/limit is 1024 bytes).', strlen($msg)));
+		}
 		$sql = SQL::init();
 		if( $sql->query('INSERT INTO `' . SQL_PREFIX . 'log` (created,updated,domain,remote_addr,msg)'
 				.' VALUES (NOW(), NOW()'
 				.', \'' . $sql->escape_string($_SERVER['SERVER_NAME']) . '\''
 				.', \'' . $sql->escape_string($_SERVER['REMOTE_ADDR']) . '\''
-				.', \'' . $sql->escape_string(Normalizer::normalize($msg)) . '\''
+				.', \'' . $sql->escape_string($msg) . '\''
 				.')') === FALSE) {
 			throw new Exception('SQL error: ' . $sql->error);
 		}

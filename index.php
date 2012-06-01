@@ -77,7 +77,7 @@
 
 		<div id="controls">
 			<form class="well form-inline" id="control_form">
-			  <input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What's happening?">
+			  <input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What's happening?" size="1024">
 			  <button type="submit" class="btn" onclick="return post_msg_form(this)">Send</button>
 			</form>
 		</div>
