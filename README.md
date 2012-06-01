@@ -32,7 +32,6 @@ TODO
 Priority:
 
 1. Paging support
-2. Option to delete newest events
 3. Support for nicks/usernames (maybe by color)
 4. Support for adding labels to old events
 5. Automatically add labels based on search to new messages?
@@ -52,6 +51,7 @@ Wish list:
 * Clean up scripts/main.js
 * List public streams at http://infolog.in
 * UI to "create" new domains
+* Remove deleted messages from browsers cache that didn't submit delete request
 
 Done items:
 
@@ -61,6 +61,8 @@ Done items:
 * <del>Add REMOTE_ADDR into each event</del>
 * <del>Automatic hostname based "room creation"</del>
 * <del>Change title based on domain in use</del>
+* <del>Option to delete newest events</del>
+** Users can now delete their own messages 5 minutes after submit
 
 Known bugs
 ----------
