@@ -16,7 +16,7 @@ try {
 			throw new Exception('PHP extension is not loaded: intl');
 		}
 
-		$user_tag = Cookie::getUserIdentTag();
+		$user_tag = Cookie::getUserTag();
 
 		$msg = Normalizer::normalize($_POST['msg']);
 		$msg_len = strlen($msg);

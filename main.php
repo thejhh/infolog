@@ -122,7 +122,7 @@
 		}
 
 		/* */
-		static public function getCurrentTag() {
+		static public function getUserTag() {
 			if(is_null(self::$user_tag)) {
 				$cookie = isset($_COOKIE[USER_COOKIE_NAME]) ? $_COOKIE[USER_COOKIE_NAME] : null;
 				if( self::isValid($cookie) && self::exists($cookie) ) {
