@@ -8,5 +8,7 @@ CREATE TABLE `infodesk_log` (
     PRIMARY KEY(log_id)) CHARACTER SET utf8 ENGINE=InnoDB;
 
 
+/*
 ALTER TABLE `infodesk_log` ADD remote_addr      VARCHAR(255) NOT NULL DEFAULT '' AFTER created;
 ALTER TABLE `infodesk_log` ADD domain VARCHAR(255) NOT NULL DEFAULT '' AFTER created;
+*/

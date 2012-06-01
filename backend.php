@@ -37,7 +37,17 @@ try {
 		if( $result = $sql->query($query) ) {
 			$list = array();
 			while ($row = $result->fetch_object()){
-				$list[] = $row;
+				$data = array(
+					'log_id' => $row['log_id'],
+					'updated' => $row['updated'],
+					'created' => $row['created'],
+					'domain' => Normalizer::normalize($row['domain']),
+					'msg' => Normalizer::normalize($row['msg'])
+				);
+				if(defined('REMOTE_ADDR_SALT')) {
+					$data['remote_addr'] = sha1(REMOTE_ADDR_SALT . $row['remote_addr']);
+				}
+				$list[] = $data;
 			}
 			echo json_encode($list);
 		} else {
