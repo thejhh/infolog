@@ -167,7 +167,7 @@ function update_events() {
 					    seconds_since = server_time - event.updated,
 					    updated = new Date();
 
-					updated.setTime( updated.getTime() + seconds_since*1000);
+					updated.setTime( updated.getTime() + seconds_since*1000 );
 
 					if(id > INFODESK_GLOBAL.last_id) {
 						INFODESK_GLOBAL.last_id = id;
@@ -178,7 +178,7 @@ function update_events() {
 					div.find('.date').text( '' + updated.getHours() + ':' + updated.getMinutes() );
 					div.find('.msg').html( format_msg(jquery, event.msg) );
 
-					if( (seconds_since > 0) && (seconds_since < 5*60) ) {
+					if( (seconds_since >= 0) && (seconds_since < 5*60) ) {
 						div.find('.close').delay(seconds_since*1000).hide();
 					} else {
 						div.find('.close').hide();
