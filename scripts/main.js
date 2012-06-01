@@ -180,9 +180,10 @@ function update_events() {
 
 					if(seconds_since < 5*60) {
 						//alert("seconds_since = " + seconds_since);
+						div.find('.close').show();
 						setTimeout(function() {
 							div.find('.close').hide();
-						}, seconds_since*1000);
+						}, (5*60 - seconds_since)*1000);
 					} else {
 						div.find('.close').hide();
 					}
