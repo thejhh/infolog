@@ -274,6 +274,7 @@ window.onload = function() {
 			}
 		}
 		field.keydown(field_update);
+		field.keyup(field_update);
 		field.change(field_update);
 	});
 };
