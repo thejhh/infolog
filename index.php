@@ -74,6 +74,13 @@
 
     <div class="container">
 
+		<noscript>
+			<div class="alert">
+				<button class="close" data-dismiss="modal">&times;</button>
+				<strong>Warning!</strong> This site requires JavaScript support enabled.
+			</div>
+		</noscript>
+
 		<div id="controls">
 			<form class="well form-inline control-group success" id="control_form">
 				<div class="controls">
