@@ -179,7 +179,7 @@ function update_events() {
 		});
 		jqxhr.complete(function(data, status) {
 			if(status === "success") return;
-			add_error(data);
+			add_error(data.responseText);
 			return;
 			try {
 				var obj = JSON.parse(data);
