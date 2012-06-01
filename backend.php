@@ -15,7 +15,7 @@ try {
 		$log_id = $_POST['remove_msg'];
 		$user_id = Cookie::getUserId();
 		$sql = SQL::init();
-		$res = $sql->query(sprintf('DELETE FROM `' . SQL_PREFIX . 'log` WHERE log_id=\'%s\' AND user_id=\'%s\' LIMIT 1', $log_id, $user_id);
+		$res = $sql->query(sprintf('DELETE FROM `' . SQL_PREFIX . 'log` WHERE log_id=\'%s\' AND user_id=\'%s\' LIMIT 1', $log_id, $user_id));
 		if($res === FALSE) { throw new Exception('SQL error: ' . $sql->error); }
 		if($sql->affected_rows !== 1) { throw new Exception('Could not find specified message.'); }
 		echo 'OK';
