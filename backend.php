@@ -38,14 +38,14 @@ try {
 			$list = array();
 			while ($row = $result->fetch_object()){
 				$data = array(
-					'log_id' => $row['log_id'],
-					'updated' => $row['updated'],
-					'created' => $row['created'],
-					'domain' => Normalizer::normalize($row['domain']),
-					'msg' => Normalizer::normalize($row['msg'])
+					'log_id' => $row->log_id,
+					'updated' => $row->updated,
+					'created' => $row->created,
+					'domain' => Normalizer::normalize($row->domain),
+					'msg' => Normalizer::normalize($row->msg)
 				);
 				if(defined('REMOTE_ADDR_SALT')) {
-					$data['remote_addr'] = sha1(REMOTE_ADDR_SALT . $row['remote_addr']);
+					$data['remote_addr'] = sha1(REMOTE_ADDR_SALT . $row->remote_addr);
 				}
 				$list[] = $data;
 			}
