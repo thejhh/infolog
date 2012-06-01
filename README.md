@@ -30,13 +30,14 @@ TODO
 
 Priority:
 
-1. Option to delete newest events
-2. Support for nicks/usernames (maybe by color)
-3. Support for adding labels to old events
-4. Automatically add labels based on search to new messages?
-5. Link for specific message
-6. Link for specific search
-7. Select box for predefined labels
+1. Paging support
+2. Option to delete newest events
+3. Support for nicks/usernames (maybe by color)
+4. Support for adding labels to old events
+5. Automatically add labels based on search to new messages?
+6. Link for specific message
+7. Link for specific search
+8. Select box for predefined labels
 
 Wish list:
 
