@@ -15,7 +15,7 @@
 				$key = json_encode($data);
 			}
 			self::$id++;
-			return sha1($key) . '-' . self::$id;
+			return sprintf('%s-%08d', sha1($key), self::$id);
 		}
 	}
 
