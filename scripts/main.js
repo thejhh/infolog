@@ -259,7 +259,7 @@ window.onload = function() {
 		field.removeAttr("maxlength");
 		field.keydown(function() {
 			var len = field.val().length;
-			if(len < 1024) {
+			if(len < field_max) {
 				// Success
 				field_help.show();
 				if(!form.hasClass('success')) form.toggleClass('success');
