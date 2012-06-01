@@ -26,11 +26,12 @@
 
 	/* Write to stderr */
 	function output_error_object(array $data) {
+		$ident = ErrorIdentifier::get($data);
 		$json = json_encode($data);
-		writeln_stderr($json);
+		writeln_stderr($ident . ' = ' . $json);
 		header("Content-Type: application/javascript");
 		header("Status: 400 Bad Request");
-		echo json_encode(array('error' => 'Internal error with identifier ' . ErrorIdentifier::get($data))) . "\n";
+		echo json_encode(array('error' => 'Internal error with identifier ' . $ident)) . "\n";
 		exit;
 	}
 
