@@ -173,8 +173,8 @@ function update_events() {
 				div.find('.log_id').text(''+event.log_id);
 				div.find('.date').text(''+event.updated);
 				div.find('.msg').html( format_msg(jquery, event.msg) );
-				div.prependTo('#events .events-body');
 				div.find('.close').delay(5*60*1000).hide();
+				div.prependTo('#events .events-body');
 			}
 			INFODESK_GLOBAL.updating = false;
 		});
