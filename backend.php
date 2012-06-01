@@ -20,6 +20,11 @@ try {
 
 	/* get_msgs */
 	if(isset($_POST['msgs']) || isset($_GET['msgs']) ) {
+
+		if(!extension_loaded('intl')) {
+			throw new Exception('PHP extension is not loaded: intl');
+		}
+
 		$start_from = 0;
 		$q = '';
 		if(isset($_GET['start'])) $start_from = (int) ($_GET['start']);
