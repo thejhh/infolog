@@ -4,7 +4,7 @@
 
 	/* */
 	class ErrorIdentifier {
-		static private $id = 0;
+		static private $id_cache = array();
 		static public function get($data) {
 			$key = '';
 			if(isset($data['error'])) {
@@ -14,8 +14,12 @@
 			} else {
 				$key = json_encode($data);
 			}
-			self::$id++;
-			return sprintf('%s-%08d', sha1($key), self::$id);
+			if(isset(self::$id_cache[$key])) {
+				self::$id_cache[$key]++;
+			} else {
+				self::$id_cache[$key] = 1;
+			}
+			return sprintf('%s-%08d', sha1($key), self::$id_cache[$key]);
 		}
 	}
 
