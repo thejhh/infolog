@@ -108,7 +108,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		jquery('#events .events-header').empty();
 		jquery('#events .events-body').empty();
 		if(q !== '') {
-			var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) + ' ' );
+			var header = jquery('<h3 />').html( 'Results for '+format_msg(''+q) + ' ' );
 			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(event){
 				event.preventDefault();
 				change_search_string('');
@@ -123,7 +123,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 	}
 
 	/* */
-	function format_msg(jquery, msg) {
+	function format_msg(msg) {
 		msg = jquery('<div/>').text(msg).html();
 		
 		// Format hashtags
@@ -135,11 +135,13 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			return div.html();
 		});
 		
+		/*
 		msg.find('a.hashtag').click(function(e) {
 			e.preventDefault();
 			change_search_string('fixme!');
 			return false;
 		});
+		*/
 		
 		return msg;
 	}
@@ -177,7 +179,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 					var div = jquery('#elements .event_container').clone();
 					div.find('.log_id').text(''+event.log_id);
 					div.find('.date').text( moment(updated).format("HH:mm:ss") );
-					div.find('.msg').html( format_msg(jquery, event.msg) );	
+					div.find('.msg').html( format_msg(event.msg) );	
 					
 					var close = div.find('.close');
 					if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
