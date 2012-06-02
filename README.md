@@ -9,7 +9,7 @@ It's designed originally for [Vectorama 2012](http://www.vectorama.info) infodes
 
 It's open source and you can setup your own secure private server.
 
-See also [live demo at infolog.in](http://demo.infolog.in/). You can use any address *.infolog.in and it's new domain-based stream.
+See also [live demo at infolog.in](http://demo.infolog.in/). You can use any address *.infolog.in and it's new domain-based channel.
 
 It's implemented for Google Chrome browser, so other browsers might have some bugs lurking around. However I'm happy to fix any problems.
 
@@ -49,7 +49,7 @@ Wish list:
 * Options to customize clock and other stuff
 * CLI utility to post messages
 * Clean up scripts/main.js
-* List public streams at http://infolog.in
+* List public channels at http://infolog.in
 * UI to "create" new domains
 * Remove deleted messages from browsers cache that didn't submit delete request
 * Support for Visiblity API
