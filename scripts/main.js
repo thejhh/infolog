@@ -130,13 +130,13 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a href="#" class="hashtag label label-info" />').text('#'+$1);
+			var a = jquery('<a href="#" class="hashtag_link label label-info" />').text('#'+$1);
 			a.appendTo(div);
 			return div.html();
 		});
 		
 		var elem = jquery(msg);
-		elem.find('a.hashtag').click(function(e) {
+		elem.find('.hashtag_link').click(function(e) {
 			e.preventDefault();
 			change_search_string('fixme');
 			return false;
