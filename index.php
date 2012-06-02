@@ -63,7 +63,7 @@
 
 			<form class="form-search">
 			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
-			  <button type="submit" class="btn">Search</button>
+			  <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
 			</form>
 
           </div><!--/.nav-collapse -->
