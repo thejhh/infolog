@@ -67,7 +67,7 @@
 			  <button type="submit" class="btn"><i class="icon-search"></i></button>
 			</form>
 
-<ul class="nav nav-pills">
+<ul class="nav nav-pills pull-right">
   <li class="dropdown" id="menu1">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
       <i class="icon-th icon-white"></i>
