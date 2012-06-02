@@ -163,7 +163,7 @@
 			</div>
 		</div>
 
-		<a target="_blank" href="https://github.com/jheusala/infolog"><img style="position: absolute; z-index: 9999; top: 60px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+		<a target="_blank" href="https://github.com/jheusala/infolog"><img style="position: absolute; top: 60px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
     </div> <!-- /container -->
 
