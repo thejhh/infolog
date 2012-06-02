@@ -141,7 +141,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			change_search_string('fixme');
 			return false;
 		});
-		return elem.children();
+		return elem.contents();
 	}
 
 	/* */
