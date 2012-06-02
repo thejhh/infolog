@@ -18,7 +18,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 	var INFODESK_GLOBAL = {};
 
 	/* Pop error message */
-	function add_error(args, jquery) {
+	function add_error(args) {
 		//alert('error: '+ JSON.stringify(args));
 		var data, dialog;
 		if(args && (typeof args === 'object')) {
@@ -46,7 +46,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		dialog.prependTo('#notifications');
 		dialog.alert();
 	};
-
+	
 	/* Post message to server */
 	function remove_msg(log_id, success_fn) {
 		var jqxhr = jquery.post('backend.php', {'remove_msg':log_id});
@@ -105,16 +105,15 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 	
 		//alert(hashtag);
 		INFODESK_GLOBAL.search_string = ''+q;
-			jquery('#events .events-header').empty();
-			jquery('#events .events-body').empty();
-			if(q !== '') {
-				var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) + ' ' );
-				var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(){ change_search_string(''); });
-				link.appendTo(header);
-				header.appendTo('#events .events-header');
-			}
-			jquery('#search_field').val('');
-		}, function(err) { add_error(JSON.stringify(err)); });
+		jquery('#events .events-header').empty();
+		jquery('#events .events-body').empty();
+		if(q !== '') {
+			var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) + ' ' );
+			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(){ change_search_string(''); });
+			link.appendTo(header);
+			header.appendTo('#events .events-header');
+		}
+		jquery('#search_field').val('');
 		INFODESK_GLOBAL.last_id = 0;
 		update_events();
 	}
@@ -145,76 +144,76 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		if(INFODESK_GLOBAL.updating === true) { return; }
 		INFODESK_GLOBAL.updating = true;
 		next_id = INFODESK_GLOBAL.last_id+1;
-			var options = {'msgs':'1', 'start':''+next_id};
-			if(INFODESK_GLOBAL.search_string && (INFODESK_GLOBAL.search_string !== '')) {
-				options.q = INFODESK_GLOBAL.search_string;
-			}
-			var jqxhr = jquery.get('backend.php', options, function(data) {
-				var response = JSON.parse(data),
-				    events = response.events,
-				    server_time = response.time,
-				    our_user_id = response.user_id;
-			
-				//alert('got events: ' + events.length);
-				for(i in events) if(events.hasOwnProperty(i)) {
-					(function() {
-						var event = events[i],
-						    id = parseInt(event.log_id, 10),
-						    seconds_since = server_time - event.updated,
-						    updated = new Date();
-
+		var options = {'msgs':'1', 'start':''+next_id};
+		if(INFODESK_GLOBAL.search_string && (INFODESK_GLOBAL.search_string !== '')) {
+			options.q = INFODESK_GLOBAL.search_string;
+		}
+		var jqxhr = jquery.get('backend.php', options, function(data) {
+			var response = JSON.parse(data),
+			    events = response.events,
+			    server_time = response.time,
+			    our_user_id = response.user_id;
+		
+			//alert('got events: ' + events.length);
+			for(i in events) if(events.hasOwnProperty(i)) {
+				(function() {
+					var event = events[i],
+					    id = parseInt(event.log_id, 10),
+					    seconds_since = server_time - event.updated,
+					    updated = new Date();
+						
 						updated.setTime( event.updated*1000 );
-	
-						if(id > INFODESK_GLOBAL.last_id) {
-							INFODESK_GLOBAL.last_id = id;
-						}
 
-						var div = jquery('#elements .event_container').clone();
-						div.find('.log_id').text(''+event.log_id);
-						div.find('.date').text( moment(updated).format("HH:mm:ss") );
-						div.find('.msg').html( format_msg(jquery, event.msg) );	
-
-						var close = div.find('.close');
-						if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
-							//alert("seconds_since = " + seconds_since);
-							close.show();
-							setTimeout(function() {
-								close.hide();
-							}, (5*60 - seconds_since)*1000);
-						} else {
-							close.hide();
-						}
-
-						close.click(function() {
-							remove_msg(event.log_id, function() {
-								div.remove();
-							});
-							return false;
-						});
-
-						div.prependTo('#events .events-body');
-					}());
-				}
-				INFODESK_GLOBAL.updating = false;
-			});
-			jqxhr.complete(function(data, status) {
-				if(status === "success") return;
-				if(data && data.responseText) {
-					try {
-						var obj = JSON.parse(data.responseText);
-						if(obj && obj.error) {
-							add_error(obj.error, jquery);
-							return;
-						}
-						add_error(obj);
-					} catch(e) {
-						add_error(data);
+					if(id > INFODESK_GLOBAL.last_id) {
+						INFODESK_GLOBAL.last_id = id;
 					}
-				} else {
-					add_error(status + ' with ' + data);
+					
+					var div = jquery('#elements .event_container').clone();
+					div.find('.log_id').text(''+event.log_id);
+					div.find('.date').text( moment(updated).format("HH:mm:ss") );
+					div.find('.msg').html( format_msg(jquery, event.msg) );	
+					
+					var close = div.find('.close');
+					if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
+						//alert("seconds_since = " + seconds_since);
+						close.show();
+						setTimeout(function() {
+							close.hide();
+						}, (5*60 - seconds_since)*1000);
+					} else {
+						close.hide();
+					}
+					
+					close.click(function() {
+						remove_msg(event.log_id, function() {
+							div.remove();
+						});
+						return false;
+					});
+					
+					div.prependTo('#events .events-body');
+				}());
+			}
+			INFODESK_GLOBAL.updating = false;
+		});
+
+		jqxhr.complete(function(data, status) {
+			if(status === "success") return;
+			if(data && data.responseText) {
+				try {
+					var obj = JSON.parse(data.responseText);
+					if(obj && obj.error) {
+						add_error(obj.error, jquery);
+						return;
+					}
+					add_error(obj);
+				} catch(e) {
+					add_error(data);
 				}
-			});
-		}, function(err) { add_error(JSON.stringify(err)); });
+			} else {
+				add_error(status + ' with ' + data);
+			}
+		});
 	}
 
 	/* */
