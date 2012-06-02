@@ -2,3 +2,7 @@
 #events .events-header {
 	margin-bottom: 20px;
 }
+
+#events .events-body .msg {
+	word-wrap: break-word;
+}

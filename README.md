@@ -33,7 +33,6 @@ Priority:
 
 1. Paging support
 3. Support for nicks/usernames (maybe by color)
-4. Support for adding labels to old events
 5. Automatically add labels based on search to new messages?
 6. Link for specific message
 7. Link for specific search
@@ -41,6 +40,7 @@ Priority:
 
 Wish list:
 
+* Support for adding labels to old events
 * Format links from messages into HTML links
 * When element is foo#bar -- should it convert it as hashtag or not?
 * Better search engine (maybe using [Apache Solr](http://lucene.apache.org/solr/))
