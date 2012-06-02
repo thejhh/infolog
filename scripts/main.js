@@ -130,7 +130,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = msg.replace(/(https?|ftp):\/\/([^\s]+)/g, function($0, $1, $2) {
 			var link = ''+$1+'://'+$2;
 			var div = jquery('<div/>');
-			var a = jquery('<a class="label" />').attr('href', link).text($2);
+			var a = jquery('<a class="label" target="_blank" />').attr('href', link).text($2);
 			a.appendTo(div);
 			return div.html();
 		});
