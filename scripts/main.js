@@ -135,9 +135,9 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			return div.html();
 		});
 		
-		msg.find('a.hashtag').click(function(event) {
-			event.preventDefault();
-			change_search_string();
+		msg.find('a.hashtag').click(function(e) {
+			e.preventDefault();
+			change_search_string('fixme!');
 			return false;
 		});
 		
