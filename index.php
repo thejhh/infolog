@@ -66,6 +66,20 @@
 			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
 			  <button type="submit" class="btn"><i class="icon-search"></i></button>
 			</form>
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Actions</a></li>
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+      Dropdown
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Open channel</a></li>
+    </ul>
+  </li>
+</ul>
+
           </div><!--/.nav-collapse -->
 
         </div>
