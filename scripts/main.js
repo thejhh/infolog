@@ -145,10 +145,10 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		});
 
 		// Format normal links
-		msg = msg.replace(/((https?|ftp):\/\/[^\s]+)/g, function($0, $1) {
-			var link = ''+$1;
+		msg = msg.replace(/(https?|ftp):\/\/([^\s]+)/g, function($0, $1, $2) {
+			var link = ''+$1+'://'+$2;
 			var div = jquery('<div/>');
-			var a = jquery('<a class="label label-success" />').attr('href', link).text($1);
+			var a = jquery('<a class="label" />').attr('href', link).text($2);
 			a.appendTo(div);
 			return div.html();
 		});
