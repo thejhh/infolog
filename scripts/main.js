@@ -126,6 +126,15 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 	function format_msg(msg) {
 		msg = jquery('<div/>').text(msg).html();
 		
+		// Format normal links
+		msg = msg.replace(/(https?|ftp):\/\/([^\s]+)/g, function($0, $1, $2) {
+			var link = ''+$1+'://'+$2;
+			var div = jquery('<div/>');
+			var a = jquery('<a class="label" />').attr('href', link).text($2);
+			a.appendTo(div);
+			return div.html();
+		});
+
 		// Format hashtags
 		msg = msg.replace(/#([a-zA-Z0-9\._]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
@@ -140,15 +149,6 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
 			var a = jquery('<a href="http://'+h+'.infolog.in" class="label label-success" />').text('@'+$1);
-			a.appendTo(div);
-			return div.html();
-		});
-
-		// Format normal links
-		msg = msg.replace(/(https?|ftp):\/\/([^\s]+)/g, function($0, $1, $2) {
-			var link = ''+$1+'://'+$2;
-			var div = jquery('<div/>');
-			var a = jquery('<a class="label" />').attr('href', link).text($2);
 			a.appendTo(div);
 			return div.html();
 		});
