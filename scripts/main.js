@@ -136,11 +136,13 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		});
 		
 		var elem = jquery(msg);
+		/*
 		elem.find('.hashtag_link').click(function(e) {
 			e.preventDefault();
 			change_search_string('fixme');
 			return false;
 		});
+		*/
 		return elem;
 	}
 
