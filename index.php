@@ -58,8 +58,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
-              <li><a data-toggle="modal" href="#about">About</a></li>
-              <li><a data-toggle="modal" href="#contact">Contact</a></li>
+              <li><a data-toggle="modal" href="#about"><i class="icon-info-sign"></i> About</a></li>
+              <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign"></i> Contact</a></li>
             </ul>
 
 			<form class="form-search navbar-search pull-left">
@@ -68,14 +68,13 @@
 			</form>
 
 <ul class="nav nav-pills">
-  <li class="active"><a href="#">Actions</a></li>
   <li class="dropdown" id="menu1">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-      Dropdown
+      <i class="icon-th"></i>
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#">Open channel</a></li>
+      <li><a href="#"><i class="icon-edit"></i> Open Channel</a></li>
     </ul>
   </li>
 </ul>
@@ -91,7 +90,7 @@
 		<noscript>
 			<div class="alert">
 				<button class="close" data-dismiss="modal">&times;</button>
-				<strong>Warning!</strong> This site requires JavaScript support.
+				<strong><i class="icon-warning-sign"></i> Warning!</strong> This site requires JavaScript support.
 			</div>
 		</noscript>
 
@@ -99,7 +98,7 @@
 			<form class="well form-inline control-group success" id="control_form">
 				<div class="controls">
 					<input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What happened?" maxlength="1024" />
-					<button type="submit" class="btn submit-btn" disabled="disabled"><i class="icon-share-alt"></i> Send</button>
+					<button type="submit" class="btn submit-btn" disabled="disabled"><i class="icon-comment"></i> Send</button>
 					<span class="msg_field_help help-inline hide"></span>
 				</div>
 			</form>
