@@ -130,7 +130,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a href="#" class="label label-info" />').text('#'+$1).click(function(event) {
+			var a = jquery('<a class="label label-info" />').text('#'+$1).click(function(event) {
 				event.preventDefault();
 				change_search_string('#' + h);
 				return false;
