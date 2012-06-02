@@ -135,17 +135,13 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			return div.html();
 		});
 
-		return msg;
-		
-		/*
-		var elem = jquery(msg);
+		var elem = jquery('<div/>').html(msg);
 		elem.find('.hashtag_link').click(function(e) {
 			e.preventDefault();
 			change_search_string('fixme');
 			return false;
 		});
-		return elem;
-		*/
+		return elem.get();
 	}
 
 	/* */
