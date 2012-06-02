@@ -128,7 +128,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			var div = jquery('<div/>');
 			var a = jquery('<a href="#" class="label label-info"></a>');
 			a.click(function() {
-				change_search_string('#' + escape(h));
+				change_search_string('#' + h);
 				return false;
 			});
 			a.text('#'+$1);
