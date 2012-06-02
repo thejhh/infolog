@@ -61,7 +61,7 @@
               <li><a data-toggle="modal" href="#contact">Contact</a></li>
             </ul>
 
-			<form class="form-search">
+			<form class="form-search navbar-search pull-left">
 			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
 			  <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
 			</form>
