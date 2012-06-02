@@ -138,7 +138,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		var elem = jquery('<span/>').html(msg);
 		elem.find('.hashtag_link').click(function(e) {
 			e.preventDefault();
-			change_search_string('fixme');
+			change_search_string( jquery(this).contents() );
 			return false;
 		});
 		return elem.contents();
