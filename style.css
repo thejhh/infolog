@@ -6,3 +6,7 @@
 #events .events-body .msg {
 	word-wrap: break-word;
 }
+
+#events {
+	margin-bottom: 30px;
+}
