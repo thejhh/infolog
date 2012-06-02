@@ -127,7 +127,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = jquery('<div/>').text(msg).html();
 		
 		// Format hashtags
-		msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
+		msg = msg.replace(/#([a-zA-Z0-9\._]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
 			var a = jquery('<a href="#" class="hashtag_link label label-info" />').text('#'+$1);
