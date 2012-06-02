@@ -53,6 +53,7 @@ Wish list:
 * UI to "create" new domains
 * Remove deleted messages from browsers cache that didn't submit delete request
 * Support for Visiblity API
+* Trim message fields
 
 Done items:
 

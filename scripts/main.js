@@ -144,6 +144,15 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			return div.html();
 		});
 
+		// Format normal links
+		msg = msg.replace(/((https?|ftp):\/\/[^\s]+)/g, function($0, $1) {
+			var link = ''+$1;
+			var div = jquery('<div/>');
+			var a = jquery('<a class="label label-success" />').attr('href', link).text($1);
+			a.appendTo(div);
+			return div.html();
+		});
+
 		var elem = jquery('<span/>').html(msg);
 		
 		// Hashtag click events
