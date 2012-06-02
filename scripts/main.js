@@ -130,7 +130,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a class="hashtag label label-info" />').text('#'+$1);
+			var a = jquery('<a href="#" class="hashtag label label-info" />').text('#'+$1);
 			a.appendTo(div);
 			return div.html();
 		});
@@ -138,7 +138,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		var elem = jquery(msg);
 		elem.find('a.hashtag').click(function(e) {
 			e.preventDefault();
-			change_search_string('fixme!');
+			change_search_string('fixme');
 			return false;
 		});
 		return elem;
@@ -177,7 +177,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 					var div = jquery('#elements .event_container').clone();
 					div.find('.log_id').text(''+event.log_id);
 					div.find('.date').text( moment(updated).format("HH:mm:ss") );
-					div.find('.msg').empty().append( format_msg(event.msg) );
+					div.find('.msg').append( format_msg(event.msg) );
 					
 					var close = div.find('.close');
 					if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
