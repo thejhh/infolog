@@ -67,9 +67,10 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
+      <li><a href="#"><i class="icon-edit"></i> New Channel</a></li>
+      <li class="divider"></li>
       <li><a data-toggle="modal" href="#about"><i class="icon-info-sign icon-white"></i> About</a></li>
       <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign icon-white"></i> Contact</a></li>
-      <li><a href="#"><i class="icon-edit"></i> Open Channel</a></li>
     </ul>
   </li>
 </ul>
