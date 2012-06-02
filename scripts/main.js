@@ -108,7 +108,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		jquery('#events .events-header').empty();
 		jquery('#events .events-body').empty();
 		if(q !== '') {
-			var header = jquery('<h3 />').html( 'Results for '+format_msg(''+q) + ' ' );
+			var header = jquery('<h3 />').append('Results for ').append(format_msg(''+q)).append(' ');
 			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(event){
 				event.preventDefault();
 				change_search_string('');
@@ -179,7 +179,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 					var div = jquery('#elements .event_container').clone();
 					div.find('.log_id').text(''+event.log_id);
 					div.find('.date').text( moment(updated).format("HH:mm:ss") );
-					div.find('.msg').html( format_msg(event.msg) );	
+					div.find('.msg').empty().append( format_msg(event.msg) );
 					
 					var close = div.find('.close');
 					if ( (our_user_id === event.user_id) && (seconds_since < 5*60) ) {
