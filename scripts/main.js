@@ -289,6 +289,9 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		field.keydown(field_update);
 		field.keyup(field_update);
 		field.change(field_update);
+		
+		// Setup send message button
+		jquery("#controls .submit-btn").removeAttr('disabled').click(post_msg_form);
 	};
 
 // End of require
