@@ -109,7 +109,10 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		jquery('#events .events-body').empty();
 		if(q !== '') {
 			var header = jquery('<h3 />').html( 'Results for '+format_msg(jquery, ''+q) + ' ' );
-			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(){ change_search_string(''); });
+			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(event){
+				event.preventDefault();
+				change_search_string('');
+			});
 			link.appendTo(header);
 			header.appendTo('#events .events-header');
 		}
@@ -127,7 +130,8 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
 			var a = jquery('<a href="#" class="label label-info"></a>');
-			a.click(function() {
+			a.click(function(event) {
+				event.preventDefault();
 				change_search_string('#' + h);
 				return false;
 			});
@@ -185,7 +189,8 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 						close.hide();
 					}
 					
-					close.click(function() {
+					close.click(function(event) {
+						event.preventDefault();
 						remove_msg(event.log_id, function() {
 							div.remove();
 						});
@@ -292,7 +297,11 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		field.change(field_update);
 		
 		// Setup send message button
-		jquery("#controls .submit-btn").removeAttr('disabled').click(post_msg_form);
+		jquery("#controls .submit-btn").removeAttr('disabled').click(function(event){
+			event.preventDefault();
+			post_msg_form();
+			return false;
+		});
 	};
 
 // End of require
