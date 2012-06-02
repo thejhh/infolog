@@ -54,18 +54,18 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="http://infolog.in">infolog.in</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
-              <li><a data-toggle="modal" href="#about">About</a></li>
-              <li><a data-toggle="modal" href="#contact">Contact</a></li>
-            </ul>
 
+          <ul class="nav">
+            <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
+            <li><a data-toggle="modal" href="#about">About</a></li>
+            <li><a data-toggle="modal" href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="nav-collapse">
 			<form class="form-search navbar-search pull-left">
 			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
 			  <button type="submit" class="btn"><i class="icon-search"></i></button>
 			</form>
-
           </div><!--/.nav-collapse -->
 
         </div>
