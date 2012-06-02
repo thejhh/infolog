@@ -62,11 +62,6 @@
               <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign icon-white"></i> Contact</a></li>
             </ul>
 
-			<form class="form-search navbar-search pull-right">
-			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
-			  <button type="submit" class="btn"><i class="icon-search"></i></button>
-			</form>
-
 <ul class="nav nav-pills pull-right">
   <li class="dropdown" id="menu1">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
@@ -78,6 +73,10 @@
     </ul>
   </li>
 </ul>
+			<form class="form-search navbar-search pull-right">
+			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
+			  <button type="submit" class="btn"><i class="icon-search"></i></button>
+			</form>
 
           </div><!--/.nav-collapse -->
 
