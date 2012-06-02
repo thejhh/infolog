@@ -84,7 +84,7 @@
 		<div id="controls">
 			<form class="well form-inline control-group success" id="control_form">
 				<div class="controls">
-					<input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What's happening?" maxlength="1024" />
+					<input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What happened?" maxlength="1024" />
 					<button type="submit" class="btn" onclick="return post_msg_form(this)">Send</button>
 					<span class="msg_field_help help-inline hide"></span>
 				</div>
