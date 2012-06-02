@@ -62,7 +62,7 @@
               <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign icon-white"></i> Contact</a></li>
             </ul>
 
-			<form class="form-search navbar-search pull-left">
+			<form class="form-search navbar-search pull-right">
 			  <input type="text" class="input-medium search-query" id="search_field"  placeholder="Search..." />
 			  <button type="submit" class="btn"><i class="icon-search"></i></button>
 			</form>
