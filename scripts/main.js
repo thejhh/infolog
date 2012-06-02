@@ -135,12 +135,24 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			return div.html();
 		});
 
+		// Format @-links
+		msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
+			var h = (''+$1).toLowerCase();
+			var div = jquery('<div/>');
+			var a = jquery('<a href="http://'+h+'.infolog.in" class="label label-success" />').text('@'+$1);
+			a.appendTo(div);
+			return div.html();
+		});
+
 		var elem = jquery('<span/>').html(msg);
+		
+		// Hashtag click events
 		elem.find('.hashtag_link').click(function(e) {
 			e.preventDefault();
 			change_search_string( jquery(this).text() );
 			return false;
 		});
+
 		return elem.contents();
 	}
 
