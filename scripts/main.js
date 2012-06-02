@@ -130,13 +130,15 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		msg = msg.replace(/#([a-zA-Z0-9\.]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a class="label label-info" />').text('#'+$1).click(function(event) {
-				event.preventDefault();
-				change_search_string('#' + h);
-				return false;
-			});
+			var a = jquery('<a class="hashtag label label-info" />').text('#'+$1);
 			a.appendTo(div);
 			return div.html();
+		});
+		
+		msg.find('a.hashtag').click(function(event) {
+			event.preventDefault();
+			change_search_string();
+			return false;
 		});
 		
 		return msg;
@@ -188,8 +190,8 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 						close.hide();
 					}
 					
-					close.click(function(event) {
-						event.preventDefault();
+					close.click(function(e) {
+						e.preventDefault();
 						remove_msg(event.log_id, function() {
 							div.remove();
 						});
