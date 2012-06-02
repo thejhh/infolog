@@ -230,7 +230,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 	function update_events_timer() {
 		update_events();
 		//update_clock();
-		setTimeout('update_events_timer()', 1000);
+		setTimeout(update_events_timer, 1000);
 	}
 
 	/* Init everything at onLoad event */
