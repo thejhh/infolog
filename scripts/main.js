@@ -112,6 +112,7 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			var link = jquery('<a class="btn small"/>').html("Close &times;").click(function(event){
 				event.preventDefault();
 				change_search_string('');
+				return false;
 			});
 			link.appendTo(header);
 			header.appendTo('#events .events-header');
