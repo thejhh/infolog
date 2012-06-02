@@ -58,8 +58,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
-              <li><a data-toggle="modal" href="#about"><i class="icon-info-sign"></i> About</a></li>
-              <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign"></i> Contact</a></li>
+              <li><a data-toggle="modal" href="#about"><i class="icon-info-sign icon-white"></i> About</a></li>
+              <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign icon-white"></i> Contact</a></li>
             </ul>
 
 			<form class="form-search navbar-search pull-left">
@@ -70,7 +70,7 @@
 <ul class="nav nav-pills">
   <li class="dropdown" id="menu1">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-      <i class="icon-th"></i>
+      <i class="icon-th icon-white"></i>
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
