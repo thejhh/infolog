@@ -68,7 +68,7 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><a data-toggle="modal" href="#new_channel"><i class="icon-edit"></i> New Channel</a></li>
+      <li><a data-toggle="modal" href="#join_channel"><i class="icon-edit"></i> Join Channel</a></li>
       <li class="divider"></li>
       <li><a data-toggle="modal" href="#about"><i class="icon-info-sign"></i> About</a></li>
       <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign"></i> Contact</a></li>
@@ -115,24 +115,24 @@
 			</div>
 		</div>
 
-			<div class="contact_modal modal hide" id="new_channel">
+			<div class="contact_modal modal hide" id="join_channel">
 				<form class="form-horizontal">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal">&times;</button>
-					<h3>New Channel</h3>
+					<h3>Join to a channel</h3>
 				</div>
 				<div class="modal-body">
 					    <div class="control-group">
 					      <label class="control-label" for="input01">Channel Name</label>
 					      <div class="controls">
 					        <input type="text" class="input-xlarge channel_field" />
-					        <p class="help-block">Channel named <i>foo</i> will be at address <i>foo</i>.infolog.in.</p>
+					        <p class="help-block">Channel named <i>foo</i> will be at address <i>foo</i>.infolog.in. New channels are created when first user joins them.</p>
 					      </div>
 					    </div>
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> Close</a>
-					<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save changes</button>
+					<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Go</button>
 				</div>
 				</form>
 			</div>
