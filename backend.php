@@ -14,6 +14,7 @@ try {
 	if(isset($_GET['config'])) {
 		$server_time = time();
 		// Please note: Export only public information!
+		header("Content-Type: application/json");
 		echo json_encode(array(
 			'time'           => $server_time,
 			'MAX_MSG_LENGTH' => MAX_MSG_LENGTH,

@@ -274,7 +274,9 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 
 		// Setup SERVER_CONFIG
 		jquery.getJSON('/api/config.json', function(data){
-			SERVER_CONFIG = data;
+			jquery.each(data, function(key, val) {
+				SERVER_CONFIG[key] = val;
+			});
 			return fn(SERVER_CONFIG);
 		}).error(function() {
 			add_error("Failed to load server config");

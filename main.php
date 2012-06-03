@@ -16,7 +16,7 @@
 		$ident = ErrorIdentifier::get($data);
 		$json = json_encode($data);
 		writeln_stderr($ident . ' = ' . $json);
-		header("Content-Type: application/javascript");
+		header("Content-Type: application/json");
 		header("Status: 400 Bad Request");
 		echo json_encode(array('error' => 'Internal error with identifier ' . $ident)) . "\n";
 		exit;
