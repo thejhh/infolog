@@ -149,7 +149,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a href="http://'+h+'."'+SERVER_CONFIG.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
+			var a = jquery('<a href="http://'+h+'.'+SERVER_CONFIG.TOP_DOMAIN+'" class="label label-success" />').text('@'+$1);
 			a.appendTo(div);
 			return div.html();
 		});
