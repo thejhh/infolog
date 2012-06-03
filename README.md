@@ -54,6 +54,9 @@ Wish list:
 * Remove deleted messages from browsers cache that didn't submit delete request
 * Support for Visiblity API
 * Trim message fields
+* Join channel -form
+** Focus on text field at the start
+** Submit the form by enter
 
 Done items:
 
