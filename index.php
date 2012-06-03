@@ -58,7 +58,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">@<?php echo htmlspecialchars(CURRENT_DOMAIN_TAG); ?></a></li>
-              <li><a data-toggle="modal" href="#about"><i class="icon-info-sign icon-white"></i> About</a></li>
+              <li><a data-toggle="modal" href="#about"><i class="icon-info-sign icon-white"></i> README</a></li>
             </ul>
 
 <ul class="nav nav-pills pull-right">
