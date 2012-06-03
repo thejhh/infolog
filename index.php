@@ -126,7 +126,9 @@
 					      <label class="control-label" for="input01">Channel Name</label>
 					      <div class="controls">
 					        <input type="text" class="input-xlarge channel_field" />
-					        <p class="help-block">Channel named <i>foo</i> will be at address <i>foo</i>.infolog.in. New channels are created when first user joins them.</p>
+					        <p class="help-block">Channel named <i>foo</i> will be at address <i>foo</i>.infolog.in.<br />
+									<br />
+									New channels are created when first user joins them.</p>
 					      </div>
 					    </div>
 				</div>
