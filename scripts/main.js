@@ -68,28 +68,26 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 
 	/* Post message to server */
 	function post_msg(args) {
-		get_config(function(config) {
-			//alert('In post_msg() with args=' + JSON.stringify(args) );
-			var args = args || {};
-			var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
-			if( (msg.length === 0) || (msg.length >= config.MAX_MSG_LENGTH) ) {
-				return;
-			}
-			var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
-			jqxhr.complete(function(response) {
-				try {
-					if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
-						jquery("#control_form .msg_field").val('');
-						update_events();
-					} else if(response && (response.status !== undefined)) {
-						add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
-					} else {
-						add_error('Connection failed');
-					}
-				} catch(e) {
+		//alert('In post_msg() with args=' + JSON.stringify(args) );
+		var args = args || {};
+		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
+		if( (msg.length === 0) || (msg.length >= SERVER_CONFIG.MAX_MSG_LENGTH) ) {
+			return;
+		}
+		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
+		jqxhr.complete(function(response) {
+			try {
+				if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
+					jquery("#control_form .msg_field").val('');
+					update_events();
+				} else if(response && (response.status !== undefined)) {
+					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
+				} else {
 					add_error('Connection failed');
 				}
-			});
+			} catch(e) {
+				add_error('Connection failed');
+			}
 		});
 	}
 
@@ -349,9 +347,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 			jquery("#join_channel").submit(function(event) {
 				var channel = jquery(this).find('.channel_field').val();
 				if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
-					get_config(function(config) {
-						window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
-					});
+					window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
 				} else {
 					add_error("Channel name invalid: " + channel);
 				}
