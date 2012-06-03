@@ -71,7 +71,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		//alert('In post_msg() with args=' + JSON.stringify(args) );
 		var args = args || {};
 		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
-		if( (msg.length === 0) || (msg.length >= 1024) ) {
+		if( (msg.length === 0) || (msg.length >= SERVER_CONFIG.MAX_MSG_LENGTH) ) {
 			return;
 		}
 		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
@@ -149,7 +149,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
 			var div = jquery('<div/>');
-			var a = jquery('<a href="http://'+h+'.infolog.in" class="label label-success" />').text('@'+$1);
+			var a = jquery('<a href="http://'+h+'."'+SERVER_CONFIG.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
 			a.appendTo(div);
 			return div.html();
 		});
@@ -335,7 +335,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		jquery("#join_channel").submit(function(event) {
 			var channel = jquery(this).find('.channel_field').val();
 			if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
-				window.location = 'http://' + channel + '.infolog.in';
+				window.location = 'http://' + channel + '.' + SERVER_CONFIG.TOP_DOMAIN;
 			} else {
 				add_error("Channel name invalid: " + channel);
 			}

@@ -98,7 +98,7 @@
 		<div id="controls">
 			<form class="well form-inline control-group success" id="control_form">
 				<div class="controls">
-					<input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What happened?" maxlength="1024" />
+					<input name="msg" autocomplete="off" type="text" class="msg_field input-xxlarge" placeholder="What happened?" maxlength="<?php echo MAX_MSG_LENGTH; ?>" />
 					<button type="submit" class="btn submit-btn" disabled="disabled"><i class="icon-comment"></i> Send</button>
 					<span class="msg_field_help help-inline hide"></span>
 				</div>
