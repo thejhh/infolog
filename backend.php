@@ -10,6 +10,21 @@ try {
 		return;
 	}
 
+	/* Get server configurations */
+	if(isset($_GET['config'])) {
+		// Please note: Export only public information!
+		echo json_encode(array(
+			'time'           => $server_time,
+			'MAX_MSG_LENGTH' => MAX_MSG_LENGTH,
+			'TOP_DOMAIN' => TOP_DOMAIN,
+			'USER_COOKIE_NAME' => USER_COOKIE_NAME,
+			'COOKIE_DOMAIN' => COOKIE_DOMAIN,
+			'CURRENT_DOMAIN' => CURRENT_DOMAIN,
+			'CURRENT_DOMAIN_TAG' => CURRENT_DOMAIN_TAG
+		));
+		return;
+	}
+
 	/* remove_msg */
 	if(isset($_POST['remove_msg'])) {
 		$log_id = $_POST['remove_msg'];
