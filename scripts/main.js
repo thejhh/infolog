@@ -15,6 +15,7 @@ requirejs.config({
 
 require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, bootstrap, Showdown) {
 
+	var SERVER_CONFIG = {};
 	var INFODESK_GLOBAL = {};
 
 	/* Pop error message */
@@ -264,6 +265,10 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 	/* Init everything at onLoad event */
 	window.onload = function() {
 	
+		// Setup SERVER_CONFIG
+		jquery.getJSON('backend/config.json', function(data){
+		});
+		
 		// TODO: Setup simple clock on control form
 			
 		// TODO: Setup previous event history
