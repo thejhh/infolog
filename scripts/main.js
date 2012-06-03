@@ -347,7 +347,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 			jquery("#join_channel").submit(function(event) {
 				var channel = jquery(this).find('.channel_field').val();
 				if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
-					window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
+					window.location = 'http://' + channel + '.' + SERVER_CONFIG.TOP_DOMAIN;
 				} else {
 					add_error("Channel name invalid: " + channel);
 				}
