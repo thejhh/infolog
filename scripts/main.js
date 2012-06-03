@@ -137,7 +137,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 			a.appendTo(div);
 			return div.html();
 		});
-
+	
 		// Format hashtags
 		msg = msg.replace(/#([a-zA-Z0-9\._]+)/g, function($0, $1) {
 			var h = (''+$1).toLowerCase();
@@ -148,14 +148,12 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		});
 
 		// Format @-links
-		get_config(function(config) {
-			msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
-				var h = (''+$1).toLowerCase();
-				var div = jquery('<div/>');
-				var a = jquery('<a href="http://'+h+'."'+config.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
-				a.appendTo(div);
-				return div.html();
-			});
+		msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
+			var h = (''+$1).toLowerCase();
+			var div = jquery('<div/>');
+			var a = jquery('<a href="http://'+h+'."'+SERVER_CONFIG.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
+			a.appendTo(div);
+			return div.html();
 		});
 
 		var elem = jquery('<span/>').html(msg);
@@ -286,79 +284,81 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 	/* Init everything at onLoad event */
 	window.onload = function() {
 	
-		// TODO: Setup simple clock on control form
-			
-		// TODO: Setup previous event history
-		// TODO: Start fetching new events
-		//update_events();
-		update_events_timer();
-	
 		// Setup ajax calls
 		jquery.ajaxSetup({cache:false});
 		
-		// Setup search form
-		jquery('.form-search').submit(function() {
-			var q = jquery('#search_field').val();
-			change_search_string(q);
-			return false;
-		});
-	
-		// Setup about modal's body
-		jquery.get('README.md', function(data) {
-			var converter = new Showdown.converter();
-			jquery('#about .modal-body').html(converter.makeHtml(data));
-		});
-	
-		// Focus on message field
-		jquery('#control_form .msg_field').focus();
+		get_config(function(config) {
 
-		// Update form message size
-		var form = jquery('#control_form');
-		var field = form.find('.msg_field');
-		var field_help = form.find('.msg_field_help');
-		var field_max = parseInt(field.attr("maxlength"), 10);
-		field.removeAttr("maxlength");
-		function field_update() {
-			var len = field.val().length;
-			if(len < field_max) {
-				// Success
-				field_help.show();
-				if(!form.hasClass('success')) form.toggleClass('success');
-				if(form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (field_max-len));
-			} else {
-				// Error
-				field_help.show();
-				if(form.hasClass('success')) form.toggleClass('success');
-				if(!form.hasClass('error')) form.toggleClass('error');
-				field_help.text('' + (field_max-len));
+			// TODO: Setup simple clock on control form
+			
+			// TODO: Setup previous event history
+			// TODO: Start fetching new events
+			//update_events();
+			update_events_timer();
+		
+			// Setup search form
+			jquery('.form-search').submit(function() {
+				var q = jquery('#search_field').val();
+				change_search_string(q);
+				return false;
+			});
+		
+			// Setup about modal's body
+			jquery.get('README.md', function(data) {
+				var converter = new Showdown.converter();
+				jquery('#about .modal-body').html(converter.makeHtml(data));
+			});
+		
+			// Focus on message field
+			jquery('#control_form .msg_field').focus();
+	
+			// Update form message size
+			var form = jquery('#control_form');
+			var field = form.find('.msg_field');
+			var field_help = form.find('.msg_field_help');
+			var field_max = parseInt(field.attr("maxlength"), 10);
+			field.removeAttr("maxlength");
+			function field_update() {
+				var len = field.val().length;
+				if(len < field_max) {
+					// Success
+					field_help.show();
+					if(!form.hasClass('success')) form.toggleClass('success');
+					if(form.hasClass('error')) form.toggleClass('error');
+					field_help.text('' + (field_max-len));
+				} else {
+					// Error
+					field_help.show();
+					if(form.hasClass('success')) form.toggleClass('success');
+					if(!form.hasClass('error')) form.toggleClass('error');
+					field_help.text('' + (field_max-len));
+				}
 			}
-		}
-		field.keydown(field_update);
-		field.keyup(field_update);
-		field.change(field_update);
-		
-		// Setup send message button
-		jquery("#controls .submit-btn").removeAttr('disabled').click(function(event){
-			event.preventDefault();
-			post_msg_form();
-			return false;
-		});
-		
-		// Setup new channel form
-		jquery("#join_channel").submit(function(event) {
-			var channel = jquery(this).find('.channel_field').val();
-			if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
-				get_config(function(config) {
-					window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
-				});
-			} else {
-				add_error("Channel name invalid: " + channel);
-			}
-			return false;
-		});
-		
+			field.keydown(field_update);
+			field.keyup(field_update);
+			field.change(field_update);
+			
+			// Setup send message button
+			jquery("#controls .submit-btn").removeAttr('disabled').click(function(event){
+				event.preventDefault();
+				post_msg_form();
+				return false;
+			});
+			
+			// Setup new channel form
+			jquery("#join_channel").submit(function(event) {
+				var channel = jquery(this).find('.channel_field').val();
+				if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
+					get_config(function(config) {
+						window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
+					});
+				} else {
+					add_error("Channel name invalid: " + channel);
+				}
+				return false;
+			});
 
+		});
 	};
 
 // End of require
