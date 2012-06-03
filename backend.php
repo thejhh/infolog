@@ -12,6 +12,7 @@ try {
 
 	/* Get server configurations */
 	if(isset($_GET['config'])) {
+		$server_time = time();
 		// Please note: Export only public information!
 		echo json_encode(array(
 			'time'           => $server_time,
