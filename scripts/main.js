@@ -326,7 +326,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		// Setup new channel form
 		jquery("#new_channel").submit(function(event) {
 			var channel = jquery(this).find('.channel_field').val();
-			if(channel.match(/^([a-zA-Z0-9\._]+)$/)) {
+			if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
 				window.location = 'http://' + channel + '.infolog.in';
 			}
 			return false;
