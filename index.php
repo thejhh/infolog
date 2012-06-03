@@ -17,7 +17,7 @@
 	<meta name="googlebot" content="noarchive" />
 	<meta name="robots" content="noindex,nofollow" />
 
-    <link rel="alternate" type="application/rss+xml" title="infolog.in" href="http://<?php echo htmlspecialchars(CURRENT_DOMAIN); ?>/feed.rss" />
+    <link rel="alternate" type="application/rss+xml" title="<?php echo htmlspecialchars(CURRENT_DOMAIN); ?>" href="http://<?php echo htmlspecialchars(CURRENT_DOMAIN); ?>/feed.rss" />
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -53,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="http://infolog.in">infolog.in</a>
+          <a class="brand" href="http://<?php echo htmlspecialchars(TOP_DOMAIN); ?>"><?php echo htmlspecialchars(TOP_DOMAIN); ?></a>
 
           <div class="nav-collapse">
             <ul class="nav">
@@ -186,6 +186,10 @@
 				<i class="small date"></i> - <span class="msg"></span>
 				<a href="#" class="close">&times;</a>
 			</div>
+		</div>
+
+		<div id="site-generator">
+			Proudly powered by <a href="https://github.com/jheusala/infolog#infolog" title="Infolog.in" rel="generator">Infolog.in</a>.
 		</div>
 
 		<a target="_blank" href="https://github.com/jheusala/infolog"><img style="position: absolute; top: 60px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
