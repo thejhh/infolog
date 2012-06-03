@@ -132,7 +132,7 @@
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> Close</a>
-					<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Go</button>
+					<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Join</button>
 				</div>
 				</form>
 			</div>
