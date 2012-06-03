@@ -13,7 +13,7 @@ requirejs.config({
 	}
 });
 
-require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
+require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, bootstrap, Showdown) {
 
 	var INFODESK_GLOBAL = {};
 
@@ -282,11 +282,9 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 		});
 	
 		// Setup about modal's body
-		require(['showdown'], function(Showdown) {
-			jquery.get('README.md', function(data) {
-				var converter = new Showdown.converter();
-				jquery('#about .modal-body').html(converter.makeHtml(data));
-			});
+		jquery.get('README.md', function(data) {
+			var converter = new Showdown.converter();
+			jquery('#about .modal-body').html(converter.makeHtml(data));
 		});
 	
 		// Focus on message field
@@ -324,6 +322,17 @@ require(["jquery", "moment", "bootstrap"], function(jquery, moment, bootstrap) {
 			post_msg_form();
 			return false;
 		});
+		
+		// Setup new channel form
+		jquery("#new_channel").submit(function(event) {
+			var channel = jquery(this).find('.channel_field').val();
+			if(channel.match(/^([a-zA-Z0-9\._]+)$/)) {
+				location.replace('http://' + channel + '.infolog.in');
+			}
+			return false;
+		});
+		
+
 	};
 
 // End of require

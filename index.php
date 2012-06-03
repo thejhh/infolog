@@ -116,12 +116,12 @@
 		</div>
 
 			<div class="contact_modal modal hide" id="new_channel">
+				<form class="form-horizontal">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal">&times;</button>
 					<h3>New Channel</h3>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal">
 					    <div class="control-group">
 					      <label class="control-label" for="input01">Channel Name</label>
 					      <div class="controls">
@@ -129,12 +129,12 @@
 					        <p class="help-block">Channel named <i>foo</i> will be at address <i>foo</i>.infolog.in.</p>
 					      </div>
 					    </div>
-					</form>
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> Close</a>
-					<a href="#" class="btn btn-primary"><i class="icon-ok"></i> Save changes</a>
+					<button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Save changes</button>
 				</div>
+				</form>
 			</div>
 
 			<div class="contact_modal modal hide" id="contact">
