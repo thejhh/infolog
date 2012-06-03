@@ -68,7 +68,7 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><a data-toggle="modal" href="#join_channel"><i class="icon-edit"></i> Join Channel</a></li>
+      <li><a data-toggle="modal" href="#join_channel"><i class="icon-edit"></i> Join/Create Channel</a></li>
       <li class="divider"></li>
       <li><a data-toggle="modal" href="#about"><i class="icon-info-sign"></i> About</a></li>
       <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign"></i> Contact</a></li>
@@ -119,7 +119,7 @@
 				<form class="form-horizontal">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal">&times;</button>
-					<h3>Join to a channel</h3>
+					<h3>Join/create a channel</h3>
 				</div>
 				<div class="modal-body">
 					    <div class="control-group">
