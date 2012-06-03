@@ -328,6 +328,8 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 			var channel = jquery(this).find('.channel_field').val();
 			if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
 				window.location = 'http://' + channel + '.infolog.in';
+			} else {
+				add_error("Channel name invalid: " + channel);
 			}
 			return false;
 		});
