@@ -115,6 +115,31 @@
 			</div>
 		</div>
 
+			<div class="contact_modal modal hide" id="new_channel">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h3>New Channel</h3>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+					  <fieldset>
+					    <legend>Legend text</legend>
+					    <div class="control-group">
+					      <label class="control-label" for="input01">Channel Name</label>
+					      <div class="controls">
+					        <input type="text" class="input-xlarge channel_field" />
+					        <p class="help-block">Channel named <i>example</i> will be at address <i>example</i>.infolog.in.</p>
+					      </div>
+					    </div>
+					  </fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Close</a>
+					<a href="#" class="btn btn-primary">Save changes</a>
+				</div>
+			</div>
+
 			<div class="contact_modal modal hide" id="contact">
 				<div class="modal-header">
 					<button class="close" data-dismiss="modal">&times;</button>
