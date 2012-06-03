@@ -267,6 +267,9 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 	
 		// Setup SERVER_CONFIG
 		jquery.getJSON('/api/config.json', function(data){
+			SERVER_CONFIG = data;
+		}).error(function() {
+			add_error("Failed to load server config");
 		});
 		
 		// TODO: Setup simple clock on control form
