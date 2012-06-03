@@ -273,7 +273,7 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		}
 
 		// Setup SERVER_CONFIG
-		jquery.getJSON('/api/config.json', function(data){
+		jquery.getJSON('api/config.json', function(data){
 			jquery.each(data, function(key, val) {
 				SERVER_CONFIG[key] = val;
 			});
