@@ -68,26 +68,28 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 
 	/* Post message to server */
 	function post_msg(args) {
-		//alert('In post_msg() with args=' + JSON.stringify(args) );
-		var args = args || {};
-		var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
-		if( (msg.length === 0) || (msg.length >= SERVER_CONFIG.MAX_MSG_LENGTH) ) {
-			return;
-		}
-		var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
-		jqxhr.complete(function(response) {
-			try {
-				if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
-					jquery("#control_form .msg_field").val('');
-					update_events();
-				} else if(response && (response.status !== undefined)) {
-					add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
-				} else {
+		get_config(function(config) {
+			//alert('In post_msg() with args=' + JSON.stringify(args) );
+			var args = args || {};
+			var msg = (args && (typeof args === 'object') && args.msg) ? ''+args.msg : '';
+			if( (msg.length === 0) || (msg.length >= config.MAX_MSG_LENGTH) ) {
+				return;
+			}
+			var jqxhr = jquery.post('backend.php', {'send_msg':'1', 'msg':''+msg});
+			jqxhr.complete(function(response) {
+				try {
+					if(response && response.status && (200 === response.status) && (response.responseText.substr(0, 2) === 'OK') ) {
+						jquery("#control_form .msg_field").val('');
+						update_events();
+					} else if(response && (response.status !== undefined)) {
+						add_error({'title':'Connection failed with #' + response.status, 'desc':response.responseText});
+					} else {
+						add_error('Connection failed');
+					}
+				} catch(e) {
 					add_error('Connection failed');
 				}
-			} catch(e) {
-				add_error('Connection failed');
-			}
+			});
 		});
 	}
 
@@ -146,12 +148,14 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		});
 
 		// Format @-links
-		msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
-			var h = (''+$1).toLowerCase();
-			var div = jquery('<div/>');
-			var a = jquery('<a href="http://'+h+'."'+SERVER_CONFIG.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
-			a.appendTo(div);
-			return div.html();
+		get_config(function(config) {
+			msg = msg.replace(/@([a-zA-Z0-9\._]+)/g, function($0, $1) {
+				var h = (''+$1).toLowerCase();
+				var div = jquery('<div/>');
+				var a = jquery('<a href="http://'+h+'."'+config.TOP_DOMAIN+' class="label label-success" />').text('@'+$1);
+				a.appendTo(div);
+				return div.html();
+			});
 		});
 
 		var elem = jquery('<span/>').html(msg);
@@ -262,16 +266,24 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		setTimeout(update_events_timer, 1000);
 	}
 
-	/* Init everything at onLoad event */
-	window.onload = function() {
-	
+	function get_config(fn) {
+
+		if(SERVER_CONFIG.time) {
+			return fn(SERVER_CONFIG);
+		}
+
 		// Setup SERVER_CONFIG
 		jquery.getJSON('/api/config.json', function(data){
 			SERVER_CONFIG = data;
+			return fn(SERVER_CONFIG);
 		}).error(function() {
 			add_error("Failed to load server config");
 		});
-		
+	}
+
+	/* Init everything at onLoad event */
+	window.onload = function() {
+	
 		// TODO: Setup simple clock on control form
 			
 		// TODO: Setup previous event history
@@ -335,7 +347,9 @@ require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, 
 		jquery("#join_channel").submit(function(event) {
 			var channel = jquery(this).find('.channel_field').val();
 			if(channel.match(/^[a-zA-Z0-9\._]+$/)) {
-				window.location = 'http://' + channel + '.' + SERVER_CONFIG.TOP_DOMAIN;
+				get_config(function(config) {
+					window.location = 'http://' + channel + '.' + config.TOP_DOMAIN;
+				});
 			} else {
 				add_error("Channel name invalid: " + channel);
 			}
