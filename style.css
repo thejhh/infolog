@@ -10,3 +10,19 @@
 #events {
 	margin-bottom: 30px;
 }
+
+/* Site Generator Line */
+#site-generator {
+	background: #f9f9f9;
+	border-top: 1px solid #ddd;
+	color: #666;
+	font-size: 12px;
+	line-height: 2.2em;
+	padding: 2.2em 0.5em;
+	text-align: center;
+}
+
+#site-generator a {
+	color: #555;
+	font-weight: bold;
+}
