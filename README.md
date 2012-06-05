@@ -75,3 +75,4 @@ Known bugs
 * <del>IE had cache problem</del>, fixed.
 * <del>Problem with illegal UTF-8 characters</del>, fixed.
 * URLs like "http://www.jhh.me/games.php#label" will be formated badly
+* When screen is small "fork me on GitHub" might be over the message deletion icon
