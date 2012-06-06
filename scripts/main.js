@@ -290,7 +290,9 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 			// Optional global auth cookie authentication
 			if(config.require_global_auth_cookie) {
 				var pw = prompt("Please enter AUTH-KEY","");
-				$.cookies.set(config.GLOBAL_AUTH_COOKIE_NAME, pw, { expires: new Date(2022, 1, 1), path:'/', domain:config.COOKIE_DOMAIN });
+				var expires = new Date();
+				expires.setTime( expires.getTime() + 10*365*24*60*60*1000 );
+				$.cookies.set(config.GLOBAL_AUTH_COOKIE_NAME, pw, { expires: expires, path:'/', domain:config.COOKIE_DOMAIN });
 			}
 
 			// TODO: Setup simple clock on control form
