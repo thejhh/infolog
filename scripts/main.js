@@ -13,7 +13,7 @@ requirejs.config({
 	}
 });
 
-require(["jquery", "moment", "bootstrap", "showdown"], function(jquery, moment, bootstrap, Showdown) {
+require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], function(jquery, moment, bootstrap, Showdown, cookies) {
 
 	var SERVER_CONFIG = {};
 	var INFODESK_GLOBAL = {};

@@ -33,5 +33,8 @@ define('SQL_PREFIX', 'infodesk_');
 
 //define('USER_ID_SALT', 'YOUR SECRET SALT');
 
+// Setup global authentication key
+//define('GLOBAL_AUTH_KEY', '[crypt(3) hash]');
+
 return;
 ?>

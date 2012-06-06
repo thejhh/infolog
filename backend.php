@@ -2,6 +2,14 @@
 try {
 	require_once(dirname(__FILE__) . '/main.php');
 
+	/* Check optional authentication */
+	if(defined('GLOBAL_AUTH_KEY')) {
+		$pw = isset($_COOKIES['InfoLogAuthKey']) ? (string)$_COOKIES['InfoLogAuthKey'] : '';
+		if(crypt($pw, GLOBAL_AUTH_KEY) !== GLOBAL_AUTH_KEY) {
+			throw Exception("Authentication failed.");
+		}
+	}
+
 	/* Test server environment */
 	if(isset($_POST['test']) || isset($_GET['test'])) {
 		if(!extension_loaded('intl')) {
