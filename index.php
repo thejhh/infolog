@@ -69,6 +69,7 @@
     </a>
     <ul class="dropdown-menu">
       <li><a data-toggle="modal" href="#join_channel"><i class="icon-edit"></i> Join/Create Channel</a></li>
+      <li><a data-toggle="modal" href="#setup-auth"><i class="icon-edit"></i> Set auth key</a></li>
       <li class="divider"></li>
       <li><a data-toggle="modal" href="#about"><i class="icon-info-sign"></i> About</a></li>
       <li><a data-toggle="modal" href="#contact"><i class="icon-question-sign"></i> Contact</a></li>

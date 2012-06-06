@@ -287,13 +287,19 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 		
 		get_config(function(config) {
 
-			// Optional global auth cookie authentication
-			if(config.require_global_auth_cookie) {
-				var pw = prompt("Please enter AUTH-KEY","");
-				var expires = new Date();
-				expires.setTime( expires.getTime() + 10*365*24*60*60*1000 );
-				$.cookies.set(config.GLOBAL_AUTH_COOKIE_NAME, pw, { expires: expires, path:'/', domain:config.COOKIE_DOMAIN });
-			}
+			// Setup auth dialog
+			jquery("#setup_auth").submit(function(event) {
+				// Optional global auth cookie authentication
+				if(config.require_global_auth_cookie) {
+					var pw = prompt("Please enter AUTH-KEY","");
+					var expires = new Date();
+					expires.setTime( expires.getTime() + 10*365*24*60*60*1000 );
+					$.cookies.set(config.GLOBAL_AUTH_COOKIE_NAME, pw, { expires: expires, path:'/', domain:config.COOKIE_DOMAIN });
+				} else {
+					alert("Server doesn't use authentication.");
+				}
+				return false;
+			});
 
 			// TODO: Setup simple clock on control form
 			
