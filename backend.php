@@ -2,22 +2,6 @@
 try {
 	require_once(dirname(__FILE__) . '/main.php');
 
-	/* Check optional authentication */
-	if(defined('GLOBAL_AUTH_KEY')) {
-		$pw = isset($_COOKIES['InfoLogAuthKey']) ? (string)$_COOKIES['InfoLogAuthKey'] : '';
-		if(crypt($pw, GLOBAL_AUTH_KEY) !== GLOBAL_AUTH_KEY) {
-			throw Exception("Authentication failed.");
-		}
-	}
-
-	/* Test server environment */
-	if(isset($_POST['test']) || isset($_GET['test'])) {
-		if(!extension_loaded('intl')) {
-			throw new Exception('PHP extension is not loaded: intl');
-		}
-		return;
-	}
-
 	/* Get server configurations */
 	if(isset($_GET['config'])) {
 		$server_time = time();
@@ -32,6 +16,22 @@ try {
 			'CURRENT_DOMAIN' => CURRENT_DOMAIN,
 			'CURRENT_DOMAIN_TAG' => CURRENT_DOMAIN_TAG
 		));
+		return;
+	}
+
+	/* Check optional authentication */
+	if(defined('GLOBAL_AUTH_KEY')) {
+		$pw = isset($_COOKIES['InfoLogAuthKey']) ? (string)$_COOKIES['InfoLogAuthKey'] : '';
+		if(crypt($pw, GLOBAL_AUTH_KEY) !== GLOBAL_AUTH_KEY) {
+			throw Exception("Authentication failed.");
+		}
+	}
+
+	/* Test server environment */
+	if(isset($_POST['test']) || isset($_GET['test'])) {
+		if(!extension_loaded('intl')) {
+			throw new Exception('PHP extension is not loaded: intl');
+		}
 		return;
 	}
 
