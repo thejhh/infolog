@@ -296,6 +296,7 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 					var expires = new Date();
 					expires.setTime( expires.getTime() + 10*365*24*60*60*1000 );
 					$.cookies.set(config.GLOBAL_AUTH_COOKIE_NAME, pw, { expires: expires, path:'/', domain:config.COOKIE_DOMAIN });
+					window.location.reload();
 				} else {
 					alert("Server doesn't use authentication.");
 				}
