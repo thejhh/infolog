@@ -287,6 +287,12 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 		
 		get_config(function(config) {
 
+			// Optional global auth cookie authentication
+			if(config.require_global_auth_cookie) {
+				var pw = prompt("Please enter AUTH-KEY","");
+				$.cookie(config.GLOBAL_AUTH_COOKIE_NAME, pw);
+			}
+
 			// TODO: Setup simple clock on control form
 			
 			// TODO: Setup previous event history
