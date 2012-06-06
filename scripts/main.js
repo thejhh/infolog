@@ -288,7 +288,7 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 		get_config(function(config) {
 
 			// Setup auth dialog
-			jquery("#setup_auth").submit(function(event) {
+			jquery("#setup_auth_link").click(function(event) {
 				// Optional global auth cookie authentication
 				if(config.require_global_auth_cookie) {
 					var pw = prompt("Please enter AUTH-KEY","");
