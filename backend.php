@@ -23,7 +23,7 @@ try {
 	if(defined('GLOBAL_AUTH_KEY')) {
 		$pw = isset($_COOKIES['InfoLogAuthKey']) ? (string)$_COOKIES['InfoLogAuthKey'] : '';
 		if(crypt($pw, GLOBAL_AUTH_KEY) !== GLOBAL_AUTH_KEY) {
-			throw Exception("Authentication failed.");
+			throw new Exception("Authentication failed.");
 		}
 	}
 
