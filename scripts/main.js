@@ -240,7 +240,7 @@ require(["jquery", "moment", "bootstrap", "showdown", "jquery.cookies"], functio
 					add_error(data);
 				}
 			} else {
-				add_error(status + ' with ' + data);
+				add_error(status + ' with ' + JSON.stringify(data));
 			}
 		});
 	}
