@@ -14,7 +14,9 @@ try {
 			'USER_COOKIE_NAME' => USER_COOKIE_NAME,
 			'COOKIE_DOMAIN' => COOKIE_DOMAIN,
 			'CURRENT_DOMAIN' => CURRENT_DOMAIN,
-			'CURRENT_DOMAIN_TAG' => CURRENT_DOMAIN_TAG
+			'CURRENT_DOMAIN_TAG' => CURRENT_DOMAIN_TAG,
+			'GLOBAL_AUTH_COOKIE_NAME' => 'InfoLogAuthKey',
+			'require_global_auth_cookie' => (defined('GLOBAL_AUTH_KEY') ? true : false)
 		));
 		return;
 	}
