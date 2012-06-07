@@ -193,7 +193,9 @@
 			Proudly powered by <a href="https://github.com/jheusala/infolog#infolog" title="Infolog" rel="generator">Infolog</a>
 		</div>
 
+		<?php /*
 		<a target="_blank" href="https://github.com/jheusala/infolog"><img style="position: absolute; top: 45px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+		*/ ?>
 
     </div> <!-- /container -->
 
